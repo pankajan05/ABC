@@ -75,6 +75,29 @@ public class ABC extends javax.swing.JFrame {
         jButtonDeleteLecturer = new javax.swing.JButton();
         jButtonClearLecturer = new javax.swing.JButton();
         jPanelSubject = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTableSubject = new javax.swing.JTable();
+        jButtonAddSubject = new javax.swing.JButton();
+        jButtonUpdateSubject = new javax.swing.JButton();
+        jButtonDeleteSubject = new javax.swing.JButton();
+        jButtonClearSubject = new javax.swing.JButton();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jSpinnerLectureHour = new javax.swing.JSpinner();
+        jSpinnerTutorialHour = new javax.swing.JSpinner();
+        jSpinnerEvalutionHour = new javax.swing.JSpinner();
+        jTextFieldOfferedYear = new javax.swing.JTextField();
+        jTextFieldSubjectName = new javax.swing.JTextField();
+        jTextFieldSubjectCode = new javax.swing.JTextField();
+        jRadioButtonSemester1 = new javax.swing.JRadioButton();
+        jRadioButtonSemester2 = new javax.swing.JRadioButton();
+        jLabel20 = new javax.swing.JLabel();
+        jSpinnerLabHour = new javax.swing.JSpinner();
         jPanelStatistic = new javax.swing.JPanel();
         jPanelTag = new javax.swing.JPanel();
         jPanelLocation = new javax.swing.JPanel();
@@ -412,15 +435,153 @@ public class ABC extends javax.swing.JFrame {
 
         DynamicPanel.add(jPanelLectuers, "card2");
 
+        jTableSubject.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Subject Code", "Subject Name", "Offered Year", "Offered Semester", "Lecture Hour", "Tutorial Hours", "Lab Hours", "Evolution Hours"
+            }
+        ));
+        jScrollPane3.setViewportView(jTableSubject);
+
+        jButtonAddSubject.setText("Add");
+
+        jButtonUpdateSubject.setText("Update");
+
+        jButtonDeleteSubject.setText("Delete");
+
+        jButtonClearSubject.setText("Clear");
+
+        jLabel14.setText("Offered Year");
+
+        jLabel15.setText("Offered Semester");
+
+        jLabel16.setText("Subject Name");
+
+        jLabel17.setText("Subject Code");
+
+        jLabel18.setText("Number of Lecture Hours");
+
+        jLabel19.setText("Number of Tutorial Hours");
+
+        jLabel21.setText("Number of Evalution Hours");
+
+        jRadioButtonSemester1.setText("Semester 1");
+
+        jRadioButtonSemester2.setText("Semester 2");
+
+        jLabel20.setText("Number of Lab Hours");
+
         javax.swing.GroupLayout jPanelSubjectLayout = new javax.swing.GroupLayout(jPanelSubject);
         jPanelSubject.setLayout(jPanelSubjectLayout);
         jPanelSubjectLayout.setHorizontalGroup(
             jPanelSubjectLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1200, Short.MAX_VALUE)
+            .addGroup(jPanelSubjectLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelSubjectLayout.createSequentialGroup()
+                .addGap(132, 132, 132)
+                .addGroup(jPanelSubjectLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanelSubjectLayout.createSequentialGroup()
+                        .addComponent(jLabel16)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jTextFieldSubjectName, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelSubjectLayout.createSequentialGroup()
+                        .addComponent(jLabel17)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jTextFieldSubjectCode, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelSubjectLayout.createSequentialGroup()
+                        .addGroup(jPanelSubjectLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel14)
+                            .addComponent(jLabel15))
+                        .addGap(100, 100, 100)
+                        .addGroup(jPanelSubjectLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jRadioButtonSemester1)
+                            .addComponent(jTextFieldOfferedYear, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jRadioButtonSemester2))))
+                .addGap(149, 149, 149)
+                .addGroup(jPanelSubjectLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel18)
+                    .addComponent(jLabel19)
+                    .addComponent(jLabel21)
+                    .addComponent(jLabel20))
+                .addGap(83, 83, 83)
+                .addGroup(jPanelSubjectLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jSpinnerEvalutionHour, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
+                    .addComponent(jSpinnerTutorialHour, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
+                    .addComponent(jSpinnerLectureHour)
+                    .addComponent(jSpinnerLabHour))
+                .addGap(91, 91, 91)
+                .addGroup(jPanelSubjectLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButtonClearSubject, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanelSubjectLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jButtonDeleteSubject, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonUpdateSubject, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonAddSubject, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(120, Short.MAX_VALUE))
         );
         jPanelSubjectLayout.setVerticalGroup(
             jPanelSubjectLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 668, Short.MAX_VALUE)
+            .addGroup(jPanelSubjectLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
+                .addGroup(jPanelSubjectLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelSubjectLayout.createSequentialGroup()
+                        .addGroup(jPanelSubjectLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelSubjectLayout.createSequentialGroup()
+                                .addGap(2, 2, 2)
+                                .addGroup(jPanelSubjectLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel14)
+                                    .addComponent(jTextFieldOfferedYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanelSubjectLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanelSubjectLayout.createSequentialGroup()
+                                        .addGap(42, 42, 42)
+                                        .addComponent(jLabel15))
+                                    .addGroup(jPanelSubjectLayout.createSequentialGroup()
+                                        .addGap(26, 26, 26)
+                                        .addComponent(jRadioButtonSemester1)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jRadioButtonSemester2)))
+                                .addGap(26, 26, 26)
+                                .addGroup(jPanelSubjectLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel16)
+                                    .addComponent(jTextFieldSubjectName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(34, 34, 34)
+                                .addGroup(jPanelSubjectLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel17)
+                                    .addComponent(jTextFieldSubjectCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanelSubjectLayout.createSequentialGroup()
+                                .addGroup(jPanelSubjectLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel18)
+                                    .addComponent(jSpinnerLectureHour, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(34, 34, 34)
+                                .addGroup(jPanelSubjectLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel19)
+                                    .addComponent(jSpinnerTutorialHour, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(38, 38, 38)
+                                .addGroup(jPanelSubjectLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel20)
+                                    .addComponent(jSpinnerLabHour, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(40, 40, 40)
+                                .addGroup(jPanelSubjectLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel21)
+                                    .addComponent(jSpinnerEvalutionHour, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(60, 60, 60))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelSubjectLayout.createSequentialGroup()
+                        .addComponent(jButtonAddSubject, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27)
+                        .addComponent(jButtonUpdateSubject, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(25, 25, 25)
+                        .addComponent(jButtonDeleteSubject, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonClearSubject, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(45, 45, 45))))
         );
 
         DynamicPanel.add(jPanelSubject, "card2");
@@ -535,15 +696,35 @@ public class ABC extends javax.swing.JFrame {
         jMenu1.add(jMenuItemLecturesDetails);
 
         jMenuItemSubject.setText("Subject Details Management");
+        jMenuItemSubject.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemSubjectActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItemSubject);
 
         jMenuItemStudents.setText("Student Details Management");
+        jMenuItemStudents.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemStudentsActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItemStudents);
 
         jMenuItemTags.setText("Tag Details Management");
+        jMenuItemTags.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemTagsActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItemTags);
 
         jMenuItemLocation.setText("Location Details Management");
+        jMenuItemLocation.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemLocationActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItemLocation);
 
         jMenuBar1.add(jMenu1);
@@ -551,6 +732,11 @@ public class ABC extends javax.swing.JFrame {
         jMenu2.setText("Statistics");
 
         jMenuItemStatistic.setText("View Statistic");
+        jMenuItemStatistic.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemStatisticActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItemStatistic);
 
         jMenuBar1.add(jMenu2);
@@ -593,6 +779,56 @@ public class ABC extends javax.swing.JFrame {
             DynamicPanel.revalidate();
     }//GEN-LAST:event_jMenuItemLecturesDetailsActionPerformed
 
+    private void jMenuItemSubjectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSubjectActionPerformed
+            DynamicPanel.removeAll();
+            DynamicPanel.repaint();
+            DynamicPanel.revalidate();
+            
+            DynamicPanel.add(jPanelSubject);
+            DynamicPanel.repaint();
+            DynamicPanel.revalidate();
+    }//GEN-LAST:event_jMenuItemSubjectActionPerformed
+
+    private void jMenuItemStudentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemStudentsActionPerformed
+            DynamicPanel.removeAll();
+            DynamicPanel.repaint();
+            DynamicPanel.revalidate();
+            
+            DynamicPanel.add(jPanelStudents);
+            DynamicPanel.repaint();
+            DynamicPanel.revalidate();
+    }//GEN-LAST:event_jMenuItemStudentsActionPerformed
+
+    private void jMenuItemTagsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemTagsActionPerformed
+            DynamicPanel.removeAll();
+            DynamicPanel.repaint();
+            DynamicPanel.revalidate();
+            
+            DynamicPanel.add(jPanelTag);
+            DynamicPanel.repaint();
+            DynamicPanel.revalidate();
+    }//GEN-LAST:event_jMenuItemTagsActionPerformed
+
+    private void jMenuItemLocationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemLocationActionPerformed
+            DynamicPanel.removeAll();
+            DynamicPanel.repaint();
+            DynamicPanel.revalidate();
+            
+            DynamicPanel.add(jPanelLocation);
+            DynamicPanel.repaint();
+            DynamicPanel.revalidate();
+    }//GEN-LAST:event_jMenuItemLocationActionPerformed
+
+    private void jMenuItemStatisticActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemStatisticActionPerformed
+            DynamicPanel.removeAll();
+            DynamicPanel.repaint();
+            DynamicPanel.revalidate();
+            
+            DynamicPanel.add(jPanelStatistic);
+            DynamicPanel.repaint();
+            DynamicPanel.revalidate();
+    }//GEN-LAST:event_jMenuItemStatisticActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -631,13 +867,17 @@ public class ABC extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel DynamicPanel;
     private javax.swing.JButton jButtonAddLecturer;
+    private javax.swing.JButton jButtonAddSubject;
     private javax.swing.JButton jButtonAddWorkingday;
     private javax.swing.JButton jButtonClearLecturer;
+    private javax.swing.JButton jButtonClearSubject;
     private javax.swing.JButton jButtonClearWorkingDay;
     private javax.swing.JButton jButtonDeleteLecturer;
+    private javax.swing.JButton jButtonDeleteSubject;
     private javax.swing.JButton jButtonDeleteWorkingDay;
     private javax.swing.JButton jButtonGenerateRank;
     private javax.swing.JButton jButtonUpdateLecturer;
+    private javax.swing.JButton jButtonUpdateSubject;
     private javax.swing.JButton jButtonUpdateWorkingDay;
     private javax.swing.JCheckBox jCheckBoxFriday;
     private javax.swing.JCheckBox jCheckBoxMonday;
@@ -656,7 +896,15 @@ public class ABC extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -685,15 +933,26 @@ public class ABC extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelSubject;
     private javax.swing.JPanel jPanelTag;
     private javax.swing.JPanel jPanelWorkingDay;
+    private javax.swing.JRadioButton jRadioButtonSemester1;
+    private javax.swing.JRadioButton jRadioButtonSemester2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JSpinner jSpinnerEvalutionHour;
     private javax.swing.JSpinner jSpinnerHour;
+    private javax.swing.JSpinner jSpinnerLabHour;
+    private javax.swing.JSpinner jSpinnerLectureHour;
     private javax.swing.JSpinner jSpinnerMinutes;
+    private javax.swing.JSpinner jSpinnerTutorialHour;
     private javax.swing.JSpinner jSpinnerWorkingDays;
     private javax.swing.JTable jTableLecturer;
+    private javax.swing.JTable jTableSubject;
     private javax.swing.JTable jTableWorkingDay;
     private javax.swing.JTextField jTextFieldEmpId;
     private javax.swing.JTextField jTextFieldLecturerName;
+    private javax.swing.JTextField jTextFieldOfferedYear;
     private javax.swing.JTextField jTextFieldRand;
+    private javax.swing.JTextField jTextFieldSubjectCode;
+    private javax.swing.JTextField jTextFieldSubjectName;
     // End of variables declaration//GEN-END:variables
 }
