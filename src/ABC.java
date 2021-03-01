@@ -179,9 +179,9 @@ public class ABC extends javax.swing.JFrame {
         jLabel46 = new javax.swing.JLabel();
         jComboBoxLedcturer = new javax.swing.JComboBox();
         jComboBoxTag = new javax.swing.JComboBox();
-        jTextFieldLecturerer = new javax.swing.JTextField();
         jLabel52 = new javax.swing.JLabel();
         jComboBoxRoomsession = new javax.swing.JComboBox();
+        jComboBoxLedcturer1 = new javax.swing.JComboBox();
         jPanel2 = new javax.swing.JPanel();
         jLabel43 = new javax.swing.JLabel();
         jLabel47 = new javax.swing.JLabel();
@@ -200,6 +200,21 @@ public class ABC extends javax.swing.JFrame {
         jLabel53 = new javax.swing.JLabel();
         jPanelConsecutive = new javax.swing.JPanel();
         jLabel61 = new javax.swing.JLabel();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        jTableConsecutive = new javax.swing.JTable();
+        jComboBoxSection1 = new javax.swing.JComboBox();
+        jComboBoxSection2 = new javax.swing.JComboBox();
+        jComboBoxSection3 = new javax.swing.JComboBox();
+        jComboBoxSection4 = new javax.swing.JComboBox();
+        jLabel68 = new javax.swing.JLabel();
+        jLabel69 = new javax.swing.JLabel();
+        jLabel70 = new javax.swing.JLabel();
+        jLabel71 = new javax.swing.JLabel();
+        jLabel72 = new javax.swing.JLabel();
+        jButtonAddConsecutive = new javax.swing.JButton();
+        jButtonUpdateConsecutive = new javax.swing.JButton();
+        jButtonDeleteConsecutive = new javax.swing.JButton();
+        jButtonClearConsecutive = new javax.swing.JButton();
         jPanelNotAvailable = new javax.swing.JPanel();
         jLabel62 = new javax.swing.JLabel();
         jPanelLecturerTimetable = new javax.swing.JPanel();
@@ -305,12 +320,10 @@ public class ABC extends javax.swing.JFrame {
             .addGroup(jPanelWorkingDayLayout.createSequentialGroup()
                 .addGroup(jPanelWorkingDayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelWorkingDayLayout.createSequentialGroup()
+                        .addGap(266, 266, 266)
                         .addGroup(jPanelWorkingDayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButtonClearWorkingDay, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanelWorkingDayLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jButtonClearWorkingDay, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanelWorkingDayLayout.createSequentialGroup()
-                                .addGap(266, 266, 266)
                                 .addGroup(jPanelWorkingDayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel1)
                                     .addComponent(jLabel2)
@@ -466,9 +479,7 @@ public class ABC extends javax.swing.JFrame {
                         .addGroup(jPanelStudentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel26)
                             .addComponent(jLabel25)
-                            .addGroup(jPanelStudentsLayout.createSequentialGroup()
-                                .addComponent(jLabel27)
-                                .addGap(9, 9, 9)))
+                            .addComponent(jLabel27))
                         .addGap(39, 39, 39)
                         .addGroup(jPanelStudentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jTextFieldGroupId, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
@@ -498,7 +509,7 @@ public class ABC extends javax.swing.JFrame {
             .addGroup(jPanelStudentsLayout.createSequentialGroup()
                 .addComponent(jLabel55)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 419, Short.MAX_VALUE)
+                .addComponent(jScrollPane4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanelStudentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelStudentsLayout.createSequentialGroup()
@@ -658,7 +669,6 @@ public class ABC extends javax.swing.JFrame {
                 .addComponent(jLabel56)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
                 .addGroup(jPanelLectuersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelLectuersLayout.createSequentialGroup()
                         .addGap(13, 13, 13)
@@ -1325,7 +1335,7 @@ public class ABC extends javax.swing.JFrame {
         jLabel42.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel42.setText("Select Lecturer and Tag");
 
-        jLabel44.setText("Select Lecturer");
+        jLabel44.setText("Select Lecturer 1");
 
         jLabel45.setText("Select Tag");
 
@@ -1338,6 +1348,8 @@ public class ABC extends javax.swing.JFrame {
         jLabel52.setText("Select Room");
 
         jComboBoxRoomsession.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jComboBoxLedcturer1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -1355,18 +1367,20 @@ public class ABC extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel44)
                                     .addComponent(jLabel46))
-                                .addGap(71, 71, 71)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jComboBoxLedcturer, 0, 168, Short.MAX_VALUE)
-                                    .addComponent(jTextFieldLecturerer, javax.swing.GroupLayout.Alignment.TRAILING)))
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel45)
-                                .addComponent(jLabel52)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGap(152, 152, 152)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jComboBoxTag, 0, 168, Short.MAX_VALUE)
-                                        .addComponent(jComboBoxRoomsession, 0, 168, Short.MAX_VALUE)))))))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(71, 71, 71)
+                                        .addComponent(jComboBoxLedcturer, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jComboBoxLedcturer1, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jLabel45)
+                            .addComponent(jLabel52)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(152, 152, 152)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jComboBoxTag, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jComboBoxRoomsession, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
                 .addContainerGap(91, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -1381,7 +1395,7 @@ public class ABC extends javax.swing.JFrame {
                 .addGap(31, 31, 31)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel46)
-                    .addComponent(jTextFieldLecturerer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBoxLedcturer1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel45)
@@ -1390,13 +1404,13 @@ public class ABC extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel52)
                     .addComponent(jComboBoxRoomsession, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
 
         jPanel2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel43.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel43.setText("Select Lecturer and Tag");
+        jLabel43.setText("Select Group and Subject");
 
         jLabel47.setText("Select Group");
 
@@ -1496,10 +1510,9 @@ public class ABC extends javax.swing.JFrame {
                 .addGap(70, 70, 70)
                 .addGroup(jPanelSessionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jButtonClearWorkingDay1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanelSessionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jButtonDeleteWorkingDay1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButtonUpdateWorkingDay1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButtonAddWorkingday1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jButtonDeleteWorkingDay1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonUpdateWorkingDay1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonAddWorkingday1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(75, Short.MAX_VALUE))
             .addGroup(jPanelSessionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelSessionLayout.createSequentialGroup()
@@ -1541,21 +1554,117 @@ public class ABC extends javax.swing.JFrame {
         jLabel61.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel61.setText("Consecutive Session Management");
 
+        jTableConsecutive.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Section 1", "Section 2", "Section 3", "Section 4"
+            }
+        ));
+        jScrollPane7.setViewportView(jTableConsecutive);
+
+        jComboBoxSection1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jComboBoxSection2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jComboBoxSection3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jComboBoxSection4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabel68.setText("Select Consecutive Sections");
+
+        jLabel69.setText("Section 1");
+
+        jLabel70.setText("Section 2");
+
+        jLabel71.setText("Section 3");
+
+        jLabel72.setText("Section 4");
+
+        jButtonAddConsecutive.setText("Add");
+
+        jButtonUpdateConsecutive.setText("Update");
+
+        jButtonDeleteConsecutive.setText("Delete");
+
+        jButtonClearConsecutive.setText("Clear");
+
         javax.swing.GroupLayout jPanelConsecutiveLayout = new javax.swing.GroupLayout(jPanelConsecutive);
         jPanelConsecutive.setLayout(jPanelConsecutiveLayout);
         jPanelConsecutiveLayout.setHorizontalGroup(
             jPanelConsecutiveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelConsecutiveLayout.createSequentialGroup()
-                .addGap(435, 435, 435)
-                .addComponent(jLabel61)
-                .addContainerGap(508, Short.MAX_VALUE))
+                .addGroup(jPanelConsecutiveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelConsecutiveLayout.createSequentialGroup()
+                        .addGap(435, 435, 435)
+                        .addComponent(jLabel61))
+                    .addGroup(jPanelConsecutiveLayout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 554, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(56, 56, 56)
+                        .addGroup(jPanelConsecutiveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel68)
+                            .addGroup(jPanelConsecutiveLayout.createSequentialGroup()
+                                .addGroup(jPanelConsecutiveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jComboBoxSection1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel69))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanelConsecutiveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jComboBoxSection2, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel70))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanelConsecutiveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jComboBoxSection3, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel71))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanelConsecutiveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel72)
+                                    .addComponent(jComboBoxSection4, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanelConsecutiveLayout.createSequentialGroup()
+                                .addComponent(jButtonAddConsecutive, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButtonUpdateConsecutive, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButtonDeleteConsecutive, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButtonClearConsecutive, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(87, Short.MAX_VALUE))
         );
         jPanelConsecutiveLayout.setVerticalGroup(
             jPanelConsecutiveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelConsecutiveLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel61)
-                .addContainerGap(641, Short.MAX_VALUE))
+                .addGroup(jPanelConsecutiveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelConsecutiveLayout.createSequentialGroup()
+                        .addGap(66, 66, 66)
+                        .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelConsecutiveLayout.createSequentialGroup()
+                        .addGap(183, 183, 183)
+                        .addComponent(jLabel68)
+                        .addGap(34, 34, 34)
+                        .addGroup(jPanelConsecutiveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jComboBoxSection1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBoxSection2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBoxSection3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBoxSection4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(44, 44, 44)
+                        .addGroup(jPanelConsecutiveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel70)
+                            .addComponent(jLabel71)
+                            .addComponent(jLabel72)
+                            .addComponent(jLabel69))
+                        .addGap(69, 69, 69)
+                        .addGroup(jPanelConsecutiveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButtonAddConsecutive, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonUpdateConsecutive, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonDeleteConsecutive, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonClearConsecutive, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
 
         DynamicPanel.add(jPanelConsecutive, "card2");
@@ -2101,6 +2210,7 @@ public class ABC extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel DynamicPanel;
+    private javax.swing.JButton jButtonAddConsecutive;
     private javax.swing.JButton jButtonAddLecturer;
     private javax.swing.JButton jButtonAddLocation;
     private javax.swing.JButton jButtonAddStudentGroup;
@@ -2108,6 +2218,7 @@ public class ABC extends javax.swing.JFrame {
     private javax.swing.JButton jButtonAddTag;
     private javax.swing.JButton jButtonAddWorkingday;
     private javax.swing.JButton jButtonAddWorkingday1;
+    private javax.swing.JButton jButtonClearConsecutive;
     private javax.swing.JButton jButtonClearLecturer;
     private javax.swing.JButton jButtonClearLocation;
     private javax.swing.JButton jButtonClearStudentGroup;
@@ -2115,6 +2226,7 @@ public class ABC extends javax.swing.JFrame {
     private javax.swing.JButton jButtonClearTag;
     private javax.swing.JButton jButtonClearWorkingDay;
     private javax.swing.JButton jButtonClearWorkingDay1;
+    private javax.swing.JButton jButtonDeleteConsecutive;
     private javax.swing.JButton jButtonDeleteLecturer;
     private javax.swing.JButton jButtonDeleteLocation;
     private javax.swing.JButton jButtonDeleteStudentGroup;
@@ -2130,6 +2242,7 @@ public class ABC extends javax.swing.JFrame {
     private javax.swing.JButton jButtonPringLecturerTimetable2;
     private javax.swing.JButton jButtonPringRoomTimetable;
     private javax.swing.JButton jButtonPringStudentTimetable;
+    private javax.swing.JButton jButtonUpdateConsecutive;
     private javax.swing.JButton jButtonUpdateLecturer;
     private javax.swing.JButton jButtonUpdateLocation;
     private javax.swing.JButton jButtonUpdateStudentGroup;
@@ -2151,11 +2264,16 @@ public class ABC extends javax.swing.JFrame {
     private javax.swing.JComboBox jComboBoxGroup;
     private javax.swing.JComboBox jComboBoxLecturer;
     private javax.swing.JComboBox jComboBoxLedcturer;
+    private javax.swing.JComboBox jComboBoxLedcturer1;
     private javax.swing.JComboBox jComboBoxLevel;
     private javax.swing.JComboBox jComboBoxProgram;
     private javax.swing.JComboBox jComboBoxRelatedTag;
     private javax.swing.JComboBox jComboBoxRoom;
     private javax.swing.JComboBox jComboBoxRoomsession;
+    private javax.swing.JComboBox jComboBoxSection1;
+    private javax.swing.JComboBox jComboBoxSection2;
+    private javax.swing.JComboBox jComboBoxSection3;
+    private javax.swing.JComboBox jComboBoxSection4;
     private javax.swing.JComboBox jComboBoxStudentGroup;
     private javax.swing.JComboBox jComboBoxTag;
     private javax.swing.JComboBox jComboBoxsubject;
@@ -2223,7 +2341,12 @@ public class ABC extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel65;
     private javax.swing.JLabel jLabel66;
     private javax.swing.JLabel jLabel67;
+    private javax.swing.JLabel jLabel68;
+    private javax.swing.JLabel jLabel69;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel70;
+    private javax.swing.JLabel jLabel71;
+    private javax.swing.JLabel jLabel72;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabelLectureNumber;
@@ -2252,7 +2375,6 @@ public class ABC extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
@@ -2282,6 +2404,7 @@ public class ABC extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPaneSession;
     private javax.swing.JSpinner jSpinnerEvalutionHour;
@@ -2295,6 +2418,7 @@ public class ABC extends javax.swing.JFrame {
     private javax.swing.JSpinner jSpinnerWorkingDays;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
+    private javax.swing.JTable jTableConsecutive;
     private javax.swing.JTable jTableLecturer;
     private javax.swing.JTable jTableSRoomTimetable;
     private javax.swing.JTable jTableSRoomTimetable2;
@@ -2310,7 +2434,6 @@ public class ABC extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldEmpId;
     private javax.swing.JTextField jTextFieldGroupId;
     private javax.swing.JTextField jTextFieldLecturerName;
-    private javax.swing.JTextField jTextFieldLecturerer;
     private javax.swing.JTextField jTextFieldNoOfStudent;
     private javax.swing.JTextField jTextFieldOfferedYear;
     private javax.swing.JTextField jTextFieldRand;
