@@ -1,3 +1,12 @@
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Vector;
+import javax.swing.table.DefaultTableModel;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -9,12 +18,19 @@
  * @author Pankajan05
  */
 public class ABC extends javax.swing.JFrame {
-
+     private Connection conn;
     /**
      * Creates new form ABC
      */
     public ABC() {
         initComponents();
+        try {
+            
+           conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/ABC","root","1234");
+            System.out.println("Connection established successfully.");
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 
     /**
@@ -423,13 +439,13 @@ public class ABC extends javax.swing.JFrame {
 
         jTableWorkingDay.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "WorkingDays", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday", "Hours", "Minutes"
+                "Id", "WorkingDays", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday", "Hours", "Minutes"
             }
         ));
         jScrollPane1.setViewportView(jTableWorkingDay);
@@ -459,12 +475,22 @@ public class ABC extends javax.swing.JFrame {
         jCheckBoxSunday.setText("Sunday");
 
         jButtonAddWorkingday.setText("Add");
+        jButtonAddWorkingday.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAddWorkingdayActionPerformed(evt);
+            }
+        });
 
         jButtonUpdateWorkingDay.setText("Update");
 
         jButtonDeleteWorkingDay.setText("Delete");
 
         jButtonClearWorkingDay.setText("Clear");
+        jButtonClearWorkingDay.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonClearWorkingDayActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelWorkingDayLayout = new javax.swing.GroupLayout(jPanelWorkingDay);
         jPanelWorkingDay.setLayout(jPanelWorkingDayLayout);
@@ -2428,6 +2454,8 @@ public class ABC extends javax.swing.JFrame {
             DynamicPanel.add(jPanelWorkingDay);
             DynamicPanel.repaint();
             DynamicPanel.revalidate();
+            
+            loadWorkingDays();
     }//GEN-LAST:event_jMenuItemWorkingDaysActionPerformed
 
     private void jMenuItemLecturesDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemLecturesDetailsActionPerformed
@@ -2550,9 +2578,83 @@ public class ABC extends javax.swing.JFrame {
             DynamicPanel.revalidate();
     }//GEN-LAST:event_jMenuItemRoomTImeTableActionPerformed
 
+    private void jButtonAddWorkingdayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddWorkingdayActionPerformed
+        StringBuilder sql = new StringBuilder();
+        sql.append("INSERT INTO workingday (WorkingDays, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, Hours, Minutes) values('");
+        sql.append(this.jSpinnerWorkingDays.getValue()).append("','");
+        sql.append(this.jCheckBoxMonday.isSelected()? 1 : 0).append("','");
+        sql.append(this.jCheckBoxTuesday.isSelected()? 1 : 0).append("','");
+        sql.append(this.jCheckBoxWednesday.isSelected()? 1 : 0).append("','");
+        sql.append(this.jCheckBoxThursday.isSelected()? 1 : 0).append("','");
+        sql.append(this.jCheckBoxFriday.isSelected()? 1 : 0).append("','");
+        sql.append(this.jCheckBoxSaturday.isSelected()? 1 : 0).append("','");
+        sql.append(this.jCheckBoxSunday.isSelected()? 1 : 0).append("','");
+        sql.append(this.jSpinnerHour.getValue()).append("','");
+        sql.append(this.jSpinnerMinutes.getValue()).append("')");
+        try {
+          PreparedStatement ps = conn.prepareStatement(sql.toString());
+          ps.execute();
+        } catch (SQLException ex) {
+            System.out.print(ex);
+        }   
+        this.loadWorkingDays();
+        this.clearWorkingDays();
+    }//GEN-LAST:event_jButtonAddWorkingdayActionPerformed
+
+    private void jButtonClearWorkingDayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClearWorkingDayActionPerformed
+        this.clearWorkingDays();
+    }//GEN-LAST:event_jButtonClearWorkingDayActionPerformed
+
     /**
      * @param args the command line arguments
      */
+    
+    private void clearWorkingDays() {
+        this.jSpinnerWorkingDays.setValue(0);
+        this.jCheckBoxMonday.setSelected(false);
+        this.jCheckBoxTuesday.setSelected(false);
+        this.jCheckBoxWednesday.setSelected(false);
+        this.jCheckBoxThursday.setSelected(false);
+        this.jCheckBoxFriday.setSelected(false);
+        this.jCheckBoxSaturday.setSelected(false);
+        this.jCheckBoxSunday.setSelected(false);
+        this.jSpinnerHour.setValue(0);
+        this.jSpinnerMinutes.setValue(0);
+        
+    }
+    
+    private void loadWorkingDays() {
+        String sql = "SELECT * FROM workingday";  
+        try {
+          PreparedStatement ps = conn.prepareStatement(sql);
+          ResultSet rs = ps.executeQuery();
+          
+          DefaultTableModel dtm = (DefaultTableModel) jTableWorkingDay.getModel();
+                    dtm.setRowCount(0);
+
+                    while (rs.next()) {
+
+                        Vector v = new Vector();
+                        v.add(rs.getInt("Id"));
+                        v.add(rs.getInt("WorkingDays"));
+                        v.add(rs.getBoolean("Monday"));
+                        v.add(rs.getBoolean("Tuesday"));
+                        v.add(rs.getBoolean("Wednesday"));
+                        v.add(rs.getBoolean("Thursday"));
+                        v.add(rs.getBoolean("Friday"));
+                        v.add(rs.getBoolean("Saturday"));
+                        v.add(rs.getBoolean("Sunday"));
+                        v.add(rs.getInt("Hours"));
+                        v.add(rs.getInt("Minutes"));
+
+                        dtm.addRow(v);
+
+                    }
+        } catch (SQLException ex) {
+            System.out.print(ex);
+        } 
+    }
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -2866,4 +2968,6 @@ public class ABC extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldTagCode;
     private javax.swing.JTextField jTextFieldTagName;
     // End of variables declaration//GEN-END:variables
+
+
 }
