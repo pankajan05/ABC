@@ -19,6 +19,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ABC extends javax.swing.JFrame {
      private Connection conn;
+     private Integer Id;
     /**
      * Creates new form ABC
      */
@@ -448,6 +449,11 @@ public class ABC extends javax.swing.JFrame {
                 "Id", "WorkingDays", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday", "Hours", "Minutes"
             }
         ));
+        jTableWorkingDay.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableWorkingDayMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTableWorkingDay);
 
         jLabel5.setText("Minutes");
@@ -482,8 +488,18 @@ public class ABC extends javax.swing.JFrame {
         });
 
         jButtonUpdateWorkingDay.setText("Update");
+        jButtonUpdateWorkingDay.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonUpdateWorkingDayActionPerformed(evt);
+            }
+        });
 
         jButtonDeleteWorkingDay.setText("Delete");
+        jButtonDeleteWorkingDay.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDeleteWorkingDayActionPerformed(evt);
+            }
+        });
 
         jButtonClearWorkingDay.setText("Clear");
         jButtonClearWorkingDay.addActionListener(new java.awt.event.ActionListener() {
@@ -2580,17 +2596,17 @@ public class ABC extends javax.swing.JFrame {
 
     private void jButtonAddWorkingdayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddWorkingdayActionPerformed
         StringBuilder sql = new StringBuilder();
-        sql.append("INSERT INTO workingday (WorkingDays, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, Hours, Minutes) values('");
-        sql.append(this.jSpinnerWorkingDays.getValue()).append("','");
-        sql.append(this.jCheckBoxMonday.isSelected()? 1 : 0).append("','");
-        sql.append(this.jCheckBoxTuesday.isSelected()? 1 : 0).append("','");
-        sql.append(this.jCheckBoxWednesday.isSelected()? 1 : 0).append("','");
-        sql.append(this.jCheckBoxThursday.isSelected()? 1 : 0).append("','");
-        sql.append(this.jCheckBoxFriday.isSelected()? 1 : 0).append("','");
-        sql.append(this.jCheckBoxSaturday.isSelected()? 1 : 0).append("','");
-        sql.append(this.jCheckBoxSunday.isSelected()? 1 : 0).append("','");
-        sql.append(this.jSpinnerHour.getValue()).append("','");
-        sql.append(this.jSpinnerMinutes.getValue()).append("')");
+        sql.append("INSERT INTO workingday (WorkingDays, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, Hours, Minutes) values(");
+        sql.append(this.jSpinnerWorkingDays.getValue()).append(",");
+        sql.append(this.jCheckBoxMonday.isSelected()? 1 : 0).append(",");
+        sql.append(this.jCheckBoxTuesday.isSelected()? 1 : 0).append(",");
+        sql.append(this.jCheckBoxWednesday.isSelected()? 1 : 0).append(",");
+        sql.append(this.jCheckBoxThursday.isSelected()? 1 : 0).append(",");
+        sql.append(this.jCheckBoxFriday.isSelected()? 1 : 0).append(",");
+        sql.append(this.jCheckBoxSaturday.isSelected()? 1 : 0).append(",");
+        sql.append(this.jCheckBoxSunday.isSelected()? 1 : 0).append(",");
+        sql.append(this.jSpinnerHour.getValue()).append(",");
+        sql.append(this.jSpinnerMinutes.getValue()).append(")");
         try {
           PreparedStatement ps = conn.prepareStatement(sql.toString());
           ps.execute();
@@ -2604,6 +2620,49 @@ public class ABC extends javax.swing.JFrame {
     private void jButtonClearWorkingDayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClearWorkingDayActionPerformed
         this.clearWorkingDays();
     }//GEN-LAST:event_jButtonClearWorkingDayActionPerformed
+
+    private void jTableWorkingDayMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableWorkingDayMouseClicked
+        int z = jTableWorkingDay.getSelectedRow();
+
+        this.Id = (Integer) jTableWorkingDay.getValueAt(z,0);
+        this.jSpinnerWorkingDays.setValue((Integer) jTableWorkingDay.getValueAt(z,1));
+        this.jCheckBoxMonday.setSelected((boolean) jTableWorkingDay.getValueAt(z, 2));
+        this.jCheckBoxTuesday.setSelected((boolean) jTableWorkingDay.getValueAt(z, 3));
+        this.jCheckBoxWednesday.setSelected((boolean) jTableWorkingDay.getValueAt(z, 4));
+        this.jCheckBoxThursday.setSelected((boolean) jTableWorkingDay.getValueAt(z, 5));
+        this.jCheckBoxFriday.setSelected((boolean) jTableWorkingDay.getValueAt(z, 6));
+        this.jCheckBoxSaturday.setSelected((boolean) jTableWorkingDay.getValueAt(z, 7));
+        this.jCheckBoxSunday.setSelected((boolean) jTableWorkingDay.getValueAt(z, 8));
+        this.jSpinnerHour.setValue((Integer) jTableWorkingDay.getValueAt(z,9));
+        this.jSpinnerMinutes.setValue((Integer) jTableWorkingDay.getValueAt(z,10));
+    }//GEN-LAST:event_jTableWorkingDayMouseClicked
+
+    private void jButtonUpdateWorkingDayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateWorkingDayActionPerformed
+        StringBuilder sql = new StringBuilder();
+        sql.append("UPDATE workingday SET WorkingDays = ");
+        sql.append(this.jSpinnerWorkingDays.getValue()).append(",Monday = ");
+        sql.append(this.jCheckBoxMonday.isSelected()? 1 : 0).append(", Tuesday = ");
+        sql.append(this.jCheckBoxTuesday.isSelected()? 1 : 0).append(", Wednesday =");
+        sql.append(this.jCheckBoxWednesday.isSelected()? 1 : 0).append(", Thursday =");
+        sql.append(this.jCheckBoxThursday.isSelected()? 1 : 0).append(", Friday = ");
+        sql.append(this.jCheckBoxFriday.isSelected()? 1 : 0).append(", Saturday =");
+        sql.append(this.jCheckBoxSaturday.isSelected()? 1 : 0).append(", Sunday =");
+        sql.append(this.jCheckBoxSunday.isSelected()? 1 : 0).append(", Hours =");
+        sql.append(this.jSpinnerHour.getValue()).append(", Minutes =");
+        sql.append(this.jSpinnerMinutes.getValue()).append(" WHERE ID = ").append(this.Id);
+        try {
+          PreparedStatement ps = conn.prepareStatement(sql.toString());
+          ps.execute();
+        } catch (SQLException ex) {
+            System.out.print(ex);
+        }  
+        this.loadWorkingDays();
+        this.clearWorkingDays();
+    }//GEN-LAST:event_jButtonUpdateWorkingDayActionPerformed
+
+    private void jButtonDeleteWorkingDayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteWorkingDayActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonDeleteWorkingDayActionPerformed
 
     /**
      * @param args the command line arguments
