@@ -2661,7 +2661,17 @@ public class ABC extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonUpdateWorkingDayActionPerformed
 
     private void jButtonDeleteWorkingDayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteWorkingDayActionPerformed
-        // TODO add your handling code here:
+        String sql = "DELETE FROM workingday WHERE Id='" + this.Id + "'";
+        
+        try {
+          PreparedStatement ps = conn.prepareStatement(sql);
+          ps.execute();
+        } catch (SQLException ex) {
+            System.out.print(ex);
+        }
+        
+        this.loadWorkingDays();
+        this.clearWorkingDays();
     }//GEN-LAST:event_jButtonDeleteWorkingDayActionPerformed
 
     /**
