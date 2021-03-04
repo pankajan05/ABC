@@ -626,29 +626,44 @@ public class ABC extends javax.swing.JFrame {
         jLabel27.setText("Sub-Group Id");
 
         jButtonAddStudentGroup.setText("Add");
+        jButtonAddStudentGroup.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAddStudentGroupActionPerformed(evt);
+            }
+        });
 
         jButtonUpdateStudentGroup.setText("Update");
 
         jButtonDeleteStudentGroup.setText("Delete");
 
         jButtonClearStudentGroup.setText("Clear");
+        jButtonClearStudentGroup.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonClearStudentGroupActionPerformed(evt);
+            }
+        });
 
-        jComboBoxProgram.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxProgram.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "IT", "CSSE", "CSE", "IM" }));
 
         jTableStudent.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Acadamic year And sem", "Programe", "Group Number", "Sub group Number", "Group Id", "Sub Group Id"
+                "Id", "Acadamic year And sem", "Programe", "Group Number", "Sub group Number", "Group Id", "Sub Group Id"
             }
         ));
         jScrollPane4.setViewportView(jTableStudent);
 
         jButtonGenerateGroup.setText("Generate");
+        jButtonGenerateGroup.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonGenerateGroupActionPerformed(evt);
+            }
+        });
 
         jLabel55.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel55.setText("Student Group Details Management");
@@ -2502,6 +2517,7 @@ public class ABC extends javax.swing.JFrame {
             DynamicPanel.add(jPanelStudents);
             DynamicPanel.repaint();
             DynamicPanel.revalidate();
+            this.loadStudentGroup();
     }//GEN-LAST:event_jMenuItemStudentsActionPerformed
 
     private void jMenuItemTagsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemTagsActionPerformed
@@ -2674,6 +2690,38 @@ public class ABC extends javax.swing.JFrame {
         this.clearWorkingDays();
     }//GEN-LAST:event_jButtonDeleteWorkingDayActionPerformed
 
+    private void jButtonGenerateGroupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGenerateGroupActionPerformed
+        String groupId = this.jTextFieldAcadamicYearSem.getText() + "." +  this.jComboBoxProgram.getSelectedItem().toString() + "." +this.jSpinnerGroupNo.getValue().toString();
+        String SubGroupId = groupId +"."+ this.jSpinnerSubGroupNo.getValue().toString();
+        
+        this.jTextFieldGroupId.setText(groupId);
+        this.jTextFieldSubGroupId.setText(SubGroupId);
+    }//GEN-LAST:event_jButtonGenerateGroupActionPerformed
+
+    private void jButtonAddStudentGroupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddStudentGroupActionPerformed
+        StringBuilder sql = new StringBuilder();
+        sql.append("INSERT INTO studentGroub (AcadamicYearSem, Program, GroupNo, SubGroupNo, GroupId, SubGroupId) values('");
+        sql.append(this.jTextFieldAcadamicYearSem.getText()).append("','");
+        sql.append(this.jComboBoxProgram.getSelectedItem().toString()).append("',");
+        sql.append(this.jSpinnerGroupNo.getValue()).append(",");
+        sql.append( this.jSpinnerSubGroupNo.getValue()).append(",'");
+        sql.append(this.jTextFieldGroupId.getText()).append("','");
+        sql.append(this.jTextFieldSubGroupId.getText()).append("')");
+        try {
+            System.out.println(sql.toString());
+          PreparedStatement ps = conn.prepareStatement(sql.toString());
+          ps.execute();
+        } catch (SQLException ex) {
+            System.out.print(ex);
+        } 
+        
+        loadStudentGroup();
+    }//GEN-LAST:event_jButtonAddStudentGroupActionPerformed
+
+    private void jButtonClearStudentGroupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClearStudentGroupActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonClearStudentGroupActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -2724,6 +2772,34 @@ public class ABC extends javax.swing.JFrame {
         } 
     }
     
+        private void loadStudentGroup() {
+            String sql = "SELECT * FROM studentgroub";  
+        try {
+          PreparedStatement ps = conn.prepareStatement(sql);
+          ResultSet rs = ps.executeQuery();
+          
+          DefaultTableModel dtm = (DefaultTableModel) jTableStudent.getModel();
+                    dtm.setRowCount(0);
+
+                    while (rs.next()) {
+
+                        Vector v = new Vector();
+                        v.add(rs.getInt("Id"));
+                        v.add(rs.getString("AcadamicYearSem"));
+                        v.add(rs.getString("Program"));
+                        v.add(rs.getInt("GroupNo"));
+                        v.add(rs.getInt("SubGroupNo"));
+                        v.add(rs.getString("GroupId"));
+                        v.add(rs.getString("SubGroupId"));
+
+                        dtm.addRow(v);
+
+                    }
+        } catch (SQLException ex) {
+            System.out.print(ex);
+        } 
+    }
+        
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -3037,6 +3113,8 @@ public class ABC extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldTagCode;
     private javax.swing.JTextField jTextFieldTagName;
     // End of variables declaration//GEN-END:variables
+
+
 
 
 }
