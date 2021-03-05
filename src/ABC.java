@@ -348,13 +348,13 @@ public class ABC extends javax.swing.JFrame {
         jLabel83.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel83.setText("Rooms Details");
 
-        jLabel86.setIcon(new javax.swing.ImageIcon("C:\\Users\\Pankajan05\\Pictures\\New folder (2)\\306249.png")); // NOI18N
+        jLabel86.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagepackage/306249.png"))); // NOI18N
 
-        jLabel87.setIcon(new javax.swing.ImageIcon("C:\\Users\\Pankajan05\\Pictures\\New folder (2)\\hotel-icon-png-flat-4-Transparent-Images.png")); // NOI18N
+        jLabel87.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagepackage/hotel-icon-png-flat-4-Transparent-Images.png"))); // NOI18N
 
-        jLabel88.setIcon(new javax.swing.ImageIcon("C:\\Users\\Pankajan05\\Pictures\\New folder (2)\\194931d.png")); // NOI18N
+        jLabel88.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagepackage/194931d.png"))); // NOI18N
 
-        jLabel89.setIcon(new javax.swing.ImageIcon("C:\\Users\\Pankajan05\\Pictures\\New folder (2)\\class_Rupa-mehta.png")); // NOI18N
+        jLabel89.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagepackage/class_Rupa-mehta.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanelWelcomeLayout = new javax.swing.GroupLayout(jPanelWelcome);
         jPanelWelcome.setLayout(jPanelWelcomeLayout);
@@ -1106,7 +1106,7 @@ public class ABC extends javax.swing.JFrame {
         jLabel63.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
         jLabel63.setText("Total Number Of Lecturers");
 
-        jLabel99.setIcon(new javax.swing.ImageIcon("C:\\Users\\Pankajan05\\Pictures\\New folder (2)\\306249.png")); // NOI18N
+        jLabel99.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagepackage/306249.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -1147,7 +1147,7 @@ public class ABC extends javax.swing.JFrame {
         jLabel64.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
         jLabel64.setText("Total Number Of Students");
 
-        jLabel101.setIcon(new javax.swing.ImageIcon("C:\\Users\\Pankajan05\\Pictures\\New folder (2)\\194931d.png")); // NOI18N
+        jLabel101.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagepackage/194931d.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -1188,7 +1188,7 @@ public class ABC extends javax.swing.JFrame {
         jLabel65.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
         jLabel65.setText("Total Number Of Subjects");
 
-        jLabel100.setIcon(new javax.swing.ImageIcon("C:\\Users\\Pankajan05\\Pictures\\New folder (2)\\class_Rupa-mehta.png")); // NOI18N
+        jLabel100.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagepackage/class_Rupa-mehta.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -1229,7 +1229,7 @@ public class ABC extends javax.swing.JFrame {
         jLabel66.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
         jLabel66.setText("Total Number Of Rooms");
 
-        jLabel102.setIcon(new javax.swing.ImageIcon("C:\\Users\\Pankajan05\\Pictures\\New folder (2)\\hotel-icon-png-flat-4-Transparent-Images.png")); // NOI18N
+        jLabel102.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagepackage/hotel-icon-png-flat-4-Transparent-Images.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -1270,10 +1270,13 @@ public class ABC extends javax.swing.JFrame {
 
         jLabel91.setText("Room Name");
 
+        jLabel92.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel92.setText("DevOps Engineering");
 
+        jLabel93.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel93.setText("Dr. Lankeshwara Munasinghe");
 
+        jLabel94.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel94.setText("Elec Building");
 
         jLabel95.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
