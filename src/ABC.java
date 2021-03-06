@@ -1453,14 +1453,34 @@ public class ABC extends javax.swing.JFrame {
         jLabel30.setText("Related Tag");
 
         jButtonUpdateTag.setText("Update");
+        jButtonUpdateTag.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonUpdateTagActionPerformed(evt);
+            }
+        });
 
         jButtonAddTag.setText("Add");
+        jButtonAddTag.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAddTagActionPerformed(evt);
+            }
+        });
 
         jButtonDeleteTag.setText("Delete");
+        jButtonDeleteTag.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDeleteTagActionPerformed(evt);
+            }
+        });
 
         jButtonClearTag.setText("Clear");
+        jButtonClearTag.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonClearTagActionPerformed(evt);
+            }
+        });
 
-        jComboBoxRelatedTag.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxRelatedTag.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Lecture", "Tutorial", "Lab", "Pratical" }));
 
         jTableTag.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1473,6 +1493,11 @@ public class ABC extends javax.swing.JFrame {
                 "Tag Name", "Tag Code", "Related Tag"
             }
         ));
+        jTableTag.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableTagMouseClicked(evt);
+            }
+        });
         jScrollPane5.setViewportView(jTableTag);
 
         javax.swing.GroupLayout jPanelTagLayout = new javax.swing.GroupLayout(jPanelTag);
@@ -2581,6 +2606,7 @@ public class ABC extends javax.swing.JFrame {
             DynamicPanel.add(jPanelTag);
             DynamicPanel.repaint();
             DynamicPanel.revalidate();
+            this.loadTag();
     }//GEN-LAST:event_jMenuItemTagsActionPerformed
 
     private void jMenuItemLocationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemLocationActionPerformed
@@ -2902,6 +2928,66 @@ public class ABC extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jRadioButtonLaboratoryActionPerformed
 
+    private void jTableTagMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableTagMouseClicked
+        int z = this.jTableTag.getSelectedRow();
+
+        this.Id = (Integer) jTableTag.getValueAt(z,0);
+        this.jTextFieldTagCode.setText(jTableTag.getValueAt(z,0).toString());
+        this.jTextFieldTagName.setText(jTableTag.getValueAt(z,1).toString());
+        this.jComboBoxRelatedTag.setSelectedItem(jTableTag.getValueAt(z,2).toString());
+    }//GEN-LAST:event_jTableTagMouseClicked
+
+    private void jButtonAddTagActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddTagActionPerformed
+        StringBuilder sql = new StringBuilder();
+        sql.append("INSERT INTO tag (TagCode, TagName, RelatedTag) values('");
+        sql.append(this.jTextFieldTagCode.getText()).append("','");
+        sql.append(this.jTextFieldTagName.getText()).append("','");
+        sql.append(this.jComboBoxRelatedTag.getSelectedItem().toString()).append("')");
+        try {
+          PreparedStatement ps = conn.prepareStatement(sql.toString());
+          ps.execute();
+        } catch (SQLException ex) {
+            System.out.print(ex);
+        } 
+        
+        this.loadTag();
+        this.clearTagForm();
+    }//GEN-LAST:event_jButtonAddTagActionPerformed
+
+    private void jButtonUpdateTagActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateTagActionPerformed
+        StringBuilder sql = new StringBuilder();
+        sql.append("UPDATE tag SET TagName = '");
+        sql.append(this.jTextFieldTagName.getText()).append("',RelatedTag = '");
+        sql.append(this.jComboBoxRelatedTag.getSelectedItem().toString()).append("' WHERE TagCode = ").append(this.Id);
+        try {
+          PreparedStatement ps = conn.prepareStatement(sql.toString());
+          ps.execute();
+        } catch (SQLException ex) {
+            System.out.print(ex);
+        }
+        
+        this.loadTag();
+        this.clearTagForm();
+    }//GEN-LAST:event_jButtonUpdateTagActionPerformed
+
+    private void jButtonClearTagActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClearTagActionPerformed
+        this.clearTagForm();
+    }//GEN-LAST:event_jButtonClearTagActionPerformed
+
+    private void jButtonDeleteTagActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteTagActionPerformed
+        String sql = "DELETE FROM tag WHERE TagCode='" + this.Id + "'";
+        
+        try {
+          PreparedStatement ps = conn.prepareStatement(sql);
+          ps.execute();
+        } catch (SQLException ex) {
+            System.out.print(ex);
+        }
+        
+        this.loadTag();
+        this.clearTagForm();
+    }//GEN-LAST:event_jButtonDeleteTagActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -2989,7 +3075,7 @@ public class ABC extends javax.swing.JFrame {
         this.jTextFieldSubGroupId.setText("");
     }
     
-       private void loadLocation() {
+    private void loadLocation() {
             String sql = "SELECT * FROM location";  
         try {
           PreparedStatement ps = conn.prepareStatement(sql);
@@ -3023,6 +3109,37 @@ public class ABC extends javax.swing.JFrame {
         this.jRadioButtonLectureHall.setSelected(false);
         this.jRadioButtonLaboratory.setSelected(false);
     }
+    
+    private void loadTag() {
+            String sql = "SELECT * FROM tag";  
+        try {
+          PreparedStatement ps = conn.prepareStatement(sql);
+          ResultSet rs = ps.executeQuery();
+          
+          DefaultTableModel dtm = (DefaultTableModel) jTableTag.getModel();
+                    dtm.setRowCount(0);
+
+                    while (rs.next()) {
+
+                        Vector v = new Vector();
+                        v.add(rs.getInt("TagCode"));
+                        v.add(rs.getString("TagName"));
+                        v.add(rs.getString("RelatedTag"));
+
+                        dtm.addRow(v);
+
+                    }
+        } catch (SQLException ex) {
+            System.out.print(ex);
+        } 
+    }
+        
+        
+    private void clearTagForm() {
+        this.jTextFieldTagName.setText("");
+        this.jTextFieldTagCode.setText("");
+    }
+
 
         
     public static void main(String args[]) {
