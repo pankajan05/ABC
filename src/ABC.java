@@ -127,6 +127,7 @@ public class ABC extends javax.swing.JFrame {
         jButtonClearLecturer = new javax.swing.JButton();
         jLabel56 = new javax.swing.JLabel();
         jTextFieldDepartment = new javax.swing.JTextField();
+        jLabel103 = new javax.swing.JLabel();
         jPanelSubject = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTableSubject = new javax.swing.JTable();
@@ -861,6 +862,9 @@ public class ABC extends javax.swing.JFrame {
         jLabel56.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel56.setText("Lecturer Details Management");
 
+        jLabel103.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel103.setText("#If you add this to table then you can't modify this Id");
+
         javax.swing.GroupLayout jPanelLectuersLayout = new javax.swing.GroupLayout(jPanelLectuers);
         jPanelLectuers.setLayout(jPanelLectuersLayout);
         jPanelLectuersLayout.setHorizontalGroup(
@@ -880,14 +884,15 @@ public class ABC extends javax.swing.JFrame {
                             .addComponent(jLabel6)
                             .addComponent(jLabel7)
                             .addComponent(jLabel8)
-                            .addComponent(jLabel9))
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel103))
                         .addGap(82, 82, 82)
                         .addGroup(jPanelLectuersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jTextFieldEmpId, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
                             .addComponent(jTextFieldLecturerName)
                             .addComponent(jComboBoxFaculty, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jTextFieldDepartment, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 172, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
                         .addGroup(jPanelLectuersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanelLectuersLayout.createSequentialGroup()
                                 .addComponent(jLabel13)
@@ -900,9 +905,9 @@ public class ABC extends javax.swing.JFrame {
                                     .addComponent(jLabel11))
                                 .addGap(69, 69, 69)
                                 .addGroup(jPanelLectuersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jComboBoxCenter, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jComboBoxBuilding, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jComboBoxLevel, 0, 171, Short.MAX_VALUE))))))
+                                    .addComponent(jComboBoxCenter, 0, 77, Short.MAX_VALUE)
+                                    .addComponent(jComboBoxBuilding, 0, 77, Short.MAX_VALUE)
+                                    .addComponent(jComboBoxLevel, 0, 77, Short.MAX_VALUE))))))
                 .addGap(160, 160, 160)
                 .addGroup(jPanelLectuersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButtonUpdateLecturer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -932,7 +937,9 @@ public class ABC extends javax.swing.JFrame {
                         .addGroup(jPanelLectuersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel7)
                             .addComponent(jTextFieldEmpId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(39, 39, 39)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel103)
+                        .addGap(25, 25, 25)
                         .addGroup(jPanelLectuersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel8)
                             .addComponent(jComboBoxFaculty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -3023,7 +3030,17 @@ public class ABC extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonGenerateRankActionPerformed
 
     private void jTableLecturerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableLecturerMouseClicked
-        
+        int z = this.jTableLecturer.getSelectedRow();
+
+        this.EId =  jTableLecturer.getValueAt(z,0).toString();
+        this.jTextFieldEmpId.setText(jTableLecturer.getValueAt(z,0).toString());
+        this.jTextFieldLecturerName.setText(jTableLecturer.getValueAt(z,1).toString());
+        this.jComboBoxFaculty.setSelectedItem(jTableLecturer.getValueAt(z,2).toString());
+        this.jTextFieldDepartment.setText(jTableLecturer.getValueAt(z,3).toString());
+        this.jComboBoxLevel.setSelectedItem(jTableLecturer.getValueAt(z,4).toString());
+        this.jTextFieldRand.setText(jTableLecturer.getValueAt(z,5).toString());
+        this.jComboBoxCenter.setSelectedItem(jTableLecturer.getValueAt(z,6).toString());
+        this.jComboBoxBuilding.setSelectedItem(jTableLecturer.getValueAt(z,7).toString());
     }//GEN-LAST:event_jTableLecturerMouseClicked
 
     private void jButtonAddLecturerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddLecturerActionPerformed
@@ -3048,6 +3065,21 @@ public class ABC extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonAddLecturerActionPerformed
 
     private void jButtonUpdateLecturerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateLecturerActionPerformed
+        StringBuilder sql = new StringBuilder();
+        sql.append("UPDATE lecturer SET LecturerName = '");
+        sql.append(this.jTextFieldLecturerName.getText()).append("',Faculty = '");
+        sql.append(this.jComboBoxFaculty.getSelectedItem().toString()).append("',Center = '");
+        sql.append(this.jComboBoxCenter.getSelectedItem().toString()).append("',Building = '");
+        sql.append(this.jComboBoxBuilding.getSelectedItem().toString()).append("',Department = '");
+        sql.append(this.jTextFieldDepartment.getText()).append("',Rank = '");
+        sql.append(this.jTextFieldRand.getText()).append("',Level = '");
+        sql.append(this.jComboBoxLevel.getSelectedItem().toString()).append("' WHERE EmployeeId = ").append(this.EId);
+        try {
+          PreparedStatement ps = conn.prepareStatement(sql.toString());
+          ps.execute();
+        } catch (SQLException ex) {
+            System.out.print(ex);
+        }
         
         this.loadLecturer();
         this.clearLecturerForm();
@@ -3234,11 +3266,11 @@ public class ABC extends javax.swing.JFrame {
                     while (rs.next()) {
 
                         Vector v = new Vector();
-                        v.add(rs.getInt("EmployeeId"));
+                        v.add(rs.getString("EmployeeId"));
                         v.add(rs.getString("LecturerName"));
                         v.add(rs.getString("Faculty"));
-                        v.add(rs.getString("Deparment"));
-                        v.add(rs.getString("Level"));
+                        v.add(rs.getString("Department"));
+                        v.add(rs.getInt("Level"));
                         v.add(rs.getString("Rank"));
                         v.add(rs.getString("Center"));
                         v.add(rs.getString("Building"));
@@ -3371,6 +3403,7 @@ public class ABC extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel100;
     private javax.swing.JLabel jLabel101;
     private javax.swing.JLabel jLabel102;
+    private javax.swing.JLabel jLabel103;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
