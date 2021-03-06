@@ -20,6 +20,7 @@ import javax.swing.table.DefaultTableModel;
 public class ABC extends javax.swing.JFrame {
      private Connection conn;
      private Integer Id;
+     private String EId;
     /**
      * Creates new form ABC
      */
@@ -115,7 +116,6 @@ public class ABC extends javax.swing.JFrame {
         jTextFieldLecturerName = new javax.swing.JTextField();
         jTextFieldEmpId = new javax.swing.JTextField();
         jComboBoxFaculty = new javax.swing.JComboBox();
-        jComboBoxDepartment = new javax.swing.JComboBox();
         jComboBoxCenter = new javax.swing.JComboBox();
         jComboBoxBuilding = new javax.swing.JComboBox();
         jComboBoxLevel = new javax.swing.JComboBox();
@@ -126,6 +126,7 @@ public class ABC extends javax.swing.JFrame {
         jButtonDeleteLecturer = new javax.swing.JButton();
         jButtonClearLecturer = new javax.swing.JButton();
         jLabel56 = new javax.swing.JLabel();
+        jTextFieldDepartment = new javax.swing.JTextField();
         jPanelSubject = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTableSubject = new javax.swing.JTable();
@@ -814,15 +815,13 @@ public class ABC extends javax.swing.JFrame {
 
         jLabel13.setText("Rank");
 
-        jComboBoxFaculty.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxFaculty.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Computing", "Engineering", "Business", "Humanities And Sciences" }));
 
-        jComboBoxDepartment.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxCenter.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Malabe", "Metro", "Matara", "Kandy", "Kurunagala", "Jaffna" }));
 
-        jComboBoxCenter.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxBuilding.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "A-Block", "B-Block", "C-Block", "D-Block", "New Building" }));
 
-        jComboBoxBuilding.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jComboBoxLevel.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxLevel.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6" }));
 
         jButtonGenerateRank.setText("Generate Rank");
         jButtonGenerateRank.addActionListener(new java.awt.event.ActionListener() {
@@ -883,13 +882,12 @@ public class ABC extends javax.swing.JFrame {
                             .addComponent(jLabel8)
                             .addComponent(jLabel9))
                         .addGap(82, 82, 82)
-                        .addGroup(jPanelLectuersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBoxDepartment, 0, 192, Short.MAX_VALUE)
-                            .addGroup(jPanelLectuersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jTextFieldEmpId, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
-                                .addComponent(jTextFieldLecturerName)
-                                .addComponent(jComboBoxFaculty, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGap(147, 147, 147)
+                        .addGroup(jPanelLectuersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextFieldEmpId, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
+                            .addComponent(jTextFieldLecturerName)
+                            .addComponent(jComboBoxFaculty, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jTextFieldDepartment, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 172, Short.MAX_VALUE)
                         .addGroup(jPanelLectuersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanelLectuersLayout.createSequentialGroup()
                                 .addComponent(jLabel13)
@@ -941,7 +939,7 @@ public class ABC extends javax.swing.JFrame {
                         .addGap(40, 40, 40)
                         .addGroup(jPanelLectuersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel9)
-                            .addComponent(jComboBoxDepartment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jTextFieldDepartment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanelLectuersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(jPanelLectuersLayout.createSequentialGroup()
                             .addGap(0, 0, Short.MAX_VALUE)
@@ -3025,23 +3023,36 @@ public class ABC extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonGenerateRankActionPerformed
 
     private void jTableLecturerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableLecturerMouseClicked
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jTableLecturerMouseClicked
 
     private void jButtonAddLecturerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddLecturerActionPerformed
-        // TODO add your handling code here:
+        
+        this.loadLecturer();
+        this.clearLecturerForm();
     }//GEN-LAST:event_jButtonAddLecturerActionPerformed
 
     private void jButtonUpdateLecturerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateLecturerActionPerformed
-        // TODO add your handling code here:
+        
+        this.loadLecturer();
+        this.clearLecturerForm();
     }//GEN-LAST:event_jButtonUpdateLecturerActionPerformed
 
     private void jButtonClearLecturerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClearLecturerActionPerformed
-        // TODO add your handling code here:
+        this.clearLecturerForm();
     }//GEN-LAST:event_jButtonClearLecturerActionPerformed
 
     private void jButtonDeleteLecturerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteLecturerActionPerformed
-        // TODO add your handling code here:
+        String sql = "DELETE FROM lecturer WHERE EmployeeId='" + this.EId + "'";
+        
+        try {
+          PreparedStatement ps = conn.prepareStatement(sql);
+          ps.execute();
+        } catch (SQLException ex) {
+            System.out.print(ex);
+        }
+        this.loadLecturer();
+        this.clearLecturerForm();
     }//GEN-LAST:event_jButtonDeleteLecturerActionPerformed
 
     /**
@@ -3226,8 +3237,11 @@ public class ABC extends javax.swing.JFrame {
         
         
     private void clearLecturerForm() {
-        this.jTextFieldTagName.setText("");
-        this.jTextFieldTagCode.setText("");
+        this.jTextFieldLecturerName.setText("");
+        this.jTextFieldEmpId.setText("");
+        this.jTextFieldRand.setText("");
+        this.jTextFieldDepartment.setText("");
+        
     }
 
 
@@ -3323,7 +3337,6 @@ public class ABC extends javax.swing.JFrame {
     private javax.swing.JComboBox jComboBox6;
     private javax.swing.JComboBox jComboBoxBuilding;
     private javax.swing.JComboBox jComboBoxCenter;
-    private javax.swing.JComboBox jComboBoxDepartment;
     private javax.swing.JComboBox jComboBoxFaculty;
     private javax.swing.JComboBox jComboBoxGroup;
     private javax.swing.JComboBox jComboBoxLecturer;
@@ -3531,6 +3544,7 @@ public class ABC extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldAcadamicYearSem;
     private javax.swing.JTextField jTextFieldBuildingName;
     private javax.swing.JTextField jTextFieldCapacity;
+    private javax.swing.JTextField jTextFieldDepartment;
     private javax.swing.JTextField jTextFieldDuration;
     private javax.swing.JTextField jTextFieldEmpId;
     private javax.swing.JTextField jTextFieldGroupId;
