@@ -791,6 +791,11 @@ public class ABC extends javax.swing.JFrame {
                 "Employee Id", "Name", "Faculty", "Department", "Level", "Rank", "Center", "Building"
             }
         ));
+        jTableLecturer.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableLecturerMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(jTableLecturer);
 
         jLabel6.setText("Lecturer Name");
@@ -820,14 +825,39 @@ public class ABC extends javax.swing.JFrame {
         jComboBoxLevel.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jButtonGenerateRank.setText("Generate Rank");
+        jButtonGenerateRank.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonGenerateRankActionPerformed(evt);
+            }
+        });
 
         jButtonAddLecturer.setText("Add");
+        jButtonAddLecturer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAddLecturerActionPerformed(evt);
+            }
+        });
 
         jButtonUpdateLecturer.setText("Update");
+        jButtonUpdateLecturer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonUpdateLecturerActionPerformed(evt);
+            }
+        });
 
         jButtonDeleteLecturer.setText("Delete");
+        jButtonDeleteLecturer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDeleteLecturerActionPerformed(evt);
+            }
+        });
 
         jButtonClearLecturer.setText("Clear");
+        jButtonClearLecturer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonClearLecturerActionPerformed(evt);
+            }
+        });
 
         jLabel56.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel56.setText("Lecturer Details Management");
@@ -2575,6 +2605,8 @@ public class ABC extends javax.swing.JFrame {
             DynamicPanel.add(jPanelLectuers);
             DynamicPanel.repaint();
             DynamicPanel.revalidate();
+            
+            this.loadLecturer();
     }//GEN-LAST:event_jMenuItemLecturesDetailsActionPerformed
 
     private void jMenuItemSubjectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSubjectActionPerformed
@@ -2988,6 +3020,30 @@ public class ABC extends javax.swing.JFrame {
         this.clearTagForm();
     }//GEN-LAST:event_jButtonDeleteTagActionPerformed
 
+    private void jButtonGenerateRankActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGenerateRankActionPerformed
+        this.jTextFieldRand.setText( this.jComboBoxLevel.getSelectedItem().toString() + "." + this.jTextFieldEmpId.getText());
+    }//GEN-LAST:event_jButtonGenerateRankActionPerformed
+
+    private void jTableLecturerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableLecturerMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTableLecturerMouseClicked
+
+    private void jButtonAddLecturerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddLecturerActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonAddLecturerActionPerformed
+
+    private void jButtonUpdateLecturerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateLecturerActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonUpdateLecturerActionPerformed
+
+    private void jButtonClearLecturerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClearLecturerActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonClearLecturerActionPerformed
+
+    private void jButtonDeleteLecturerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteLecturerActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonDeleteLecturerActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -3136,6 +3192,40 @@ public class ABC extends javax.swing.JFrame {
         
         
     private void clearTagForm() {
+        this.jTextFieldTagName.setText("");
+        this.jTextFieldTagCode.setText("");
+    }
+    
+    private void loadLecturer() {
+            String sql = "SELECT * FROM lecturer";  
+        try {
+          PreparedStatement ps = conn.prepareStatement(sql);
+          ResultSet rs = ps.executeQuery();
+          
+          DefaultTableModel dtm = (DefaultTableModel) this.jTableLecturer.getModel();
+                    dtm.setRowCount(0);
+
+                    while (rs.next()) {
+
+                        Vector v = new Vector();
+                        v.add(rs.getInt("EmployeeId"));
+                        v.add(rs.getString("LecturerName"));
+                        v.add(rs.getString("Faculty"));
+                        v.add(rs.getString("Level"));
+                        v.add(rs.getString("Rank"));
+                        v.add(rs.getString("Center"));
+                        v.add(rs.getString("Building"));
+
+                        dtm.addRow(v);
+
+                    }
+        } catch (SQLException ex) {
+            System.out.print(ex);
+        } 
+    }
+        
+        
+    private void clearLecturerForm() {
         this.jTextFieldTagName.setText("");
         this.jTextFieldTagCode.setText("");
     }
