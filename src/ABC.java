@@ -3027,7 +3027,22 @@ public class ABC extends javax.swing.JFrame {
     }//GEN-LAST:event_jTableLecturerMouseClicked
 
     private void jButtonAddLecturerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddLecturerActionPerformed
-        
+        StringBuilder sql = new StringBuilder();
+        sql.append("INSERT INTO lecturer (EmployeeId, LecturerName, Faculty, Department, Center, Building, Level, Rank) values('");
+        sql.append(this.jTextFieldEmpId.getText()).append("','");
+        sql.append(this.jTextFieldLecturerName.getText()).append("','");
+        sql.append(this.jComboBoxFaculty.getSelectedItem().toString()).append("','");
+        sql.append(this.jTextFieldDepartment.getText()).append("','");
+        sql.append(this.jComboBoxCenter.getSelectedItem().toString()).append("','");
+        sql.append(this.jComboBoxBuilding.getSelectedItem().toString()).append("',");
+        sql.append(this.jComboBoxLevel.getSelectedItem()).append(",'");
+        sql.append(this.jTextFieldRand.getText()).append("')");
+        try {
+          PreparedStatement ps = conn.prepareStatement(sql.toString());
+          ps.execute();
+        } catch (SQLException ex) {
+            System.out.print(ex);
+        } 
         this.loadLecturer();
         this.clearLecturerForm();
     }//GEN-LAST:event_jButtonAddLecturerActionPerformed
@@ -3222,6 +3237,7 @@ public class ABC extends javax.swing.JFrame {
                         v.add(rs.getInt("EmployeeId"));
                         v.add(rs.getString("LecturerName"));
                         v.add(rs.getString("Faculty"));
+                        v.add(rs.getString("Deparment"));
                         v.add(rs.getString("Level"));
                         v.add(rs.getString("Rank"));
                         v.add(rs.getString("Center"));
