@@ -214,7 +214,7 @@ public class ABC extends javax.swing.JFrame {
         jRadioButtonLectureHall = new javax.swing.JRadioButton();
         jRadioButtonLaboratory = new javax.swing.JRadioButton();
         jScrollPane6 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTableLocation = new javax.swing.JTable();
         jLabel60 = new javax.swing.JLabel();
         jPanelSession = new javax.swing.JPanel();
         jScrollPaneSession = new javax.swing.JScrollPane();
@@ -1550,6 +1550,11 @@ public class ABC extends javax.swing.JFrame {
         jLabel32.setText("Room Name");
 
         jButtonAddLocation.setText("Add");
+        jButtonAddLocation.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAddLocationActionPerformed(evt);
+            }
+        });
 
         jButtonUpdateLocation.setText("Update");
         jButtonUpdateLocation.addActionListener(new java.awt.event.ActionListener() {
@@ -1566,27 +1571,47 @@ public class ABC extends javax.swing.JFrame {
         });
 
         jButtonClearLocation.setText("Clear");
+        jButtonClearLocation.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonClearLocationActionPerformed(evt);
+            }
+        });
 
         jLabel33.setText("Capacity");
 
         jLabel34.setText("Room Type");
 
         jRadioButtonLectureHall.setText("Lecture Hall");
+        jRadioButtonLectureHall.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonLectureHallActionPerformed(evt);
+            }
+        });
 
         jRadioButtonLaboratory.setText("Laboratory");
+        jRadioButtonLaboratory.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonLaboratoryActionPerformed(evt);
+            }
+        });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableLocation.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Building Name", "Room Name", "Capacity", "Room Type"
+                "Id", "Building Name", "Room Name", "Capacity", "Room Type"
             }
         ));
-        jScrollPane6.setViewportView(jTable1);
+        jTableLocation.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableLocationMouseClicked(evt);
+            }
+        });
+        jScrollPane6.setViewportView(jTableLocation);
 
         jLabel60.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel60.setText("Location Details Management");
@@ -2566,6 +2591,7 @@ public class ABC extends javax.swing.JFrame {
             DynamicPanel.add(jPanelLocation);
             DynamicPanel.repaint();
             DynamicPanel.revalidate();
+            this.loadLocation();
     }//GEN-LAST:event_jMenuItemLocationActionPerformed
 
     private void jMenuItemStatisticActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemStatisticActionPerformed
@@ -2765,13 +2791,11 @@ public class ABC extends javax.swing.JFrame {
 
     private void jButtonUpdateLocationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateLocationActionPerformed
         StringBuilder sql = new StringBuilder();
-        sql.append("UPDATE studentgroub SET AcadamicYearSem = '");
-        sql.append(this.jTextFieldAcadamicYearSem.getText()).append("',Program = '");
-        sql.append(this.jComboBoxProgram.getSelectedItem().toString()).append("', GroupNo = ");
-        sql.append(this.jSpinnerGroupNo.getValue()).append(", SubGroupNo =");
-        sql.append(this.jSpinnerSubGroupNo.getValue()).append(", GroupId ='");
-        sql.append(this.jTextFieldGroupId.getText()).append("', SubGroupId = '");
-        sql.append(this.jTextFieldSubGroupId.getText()).append("' WHERE ID = ").append(this.Id);
+        sql.append("UPDATE location SET BuildingName = '");
+        sql.append(this.jTextFieldBuildingName.getText()).append("',RoomName = '");
+        sql.append(this.jTextFieldRoomName.getText()).append("',Capacity = ");
+        sql.append(this.jTextFieldCapacity.getText()).append(",RoomType = '");;
+        sql.append(this.jRadioButtonLaboratory.isSelected()? "Laboratory": "LectureHall").append("' WHERE ID = ").append(this.Id);
         try {
             System.out.println(sql.toString());
           PreparedStatement ps = conn.prepareStatement(sql.toString());
@@ -2779,12 +2803,12 @@ public class ABC extends javax.swing.JFrame {
         } catch (SQLException ex) {
             System.out.print(ex);
         }
-        loadStudentGroup();
-        clearStudentForm();
+        this.loadLocation();
+        this.clearLocationForm();
     }//GEN-LAST:event_jButtonUpdateLocationActionPerformed
 
     private void jButtonDeleteLocationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteLocationActionPerformed
-       String sql = "DELETE FROM studentgroub WHERE Id='" + this.Id + "'";
+       String sql = "DELETE FROM location WHERE Id='" + this.Id + "'";
         
         try {
           PreparedStatement ps = conn.prepareStatement(sql);
@@ -2792,8 +2816,8 @@ public class ABC extends javax.swing.JFrame {
         } catch (SQLException ex) {
             System.out.print(ex);
         }
-        loadStudentGroup();
-        clearStudentForm();
+        this.loadLocation();
+        this.clearLocationForm();
     }//GEN-LAST:event_jButtonDeleteLocationActionPerformed
 
     private void jButtonUpdateStudentGroupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateStudentGroupActionPerformed
@@ -2806,7 +2830,6 @@ public class ABC extends javax.swing.JFrame {
         sql.append(this.jTextFieldGroupId.getText()).append("', SubGroupId = '");
         sql.append(this.jTextFieldSubGroupId.getText()).append("' WHERE ID = ").append(this.Id);
         try {
-            System.out.println(sql.toString());
           PreparedStatement ps = conn.prepareStatement(sql.toString());
           ps.execute();
         } catch (SQLException ex) {
@@ -2828,6 +2851,56 @@ public class ABC extends javax.swing.JFrame {
         loadStudentGroup();
         clearStudentForm();
     }//GEN-LAST:event_jButtonDeleteStudentGroupActionPerformed
+
+    private void jButtonAddLocationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddLocationActionPerformed
+         StringBuilder sql = new StringBuilder();
+        sql.append("INSERT INTO location (BuildingName, RoomName, Capacity, RoomType) values('");
+        sql.append(this.jTextFieldBuildingName.getText()).append("','");
+        sql.append(this.jTextFieldRoomName.getText()).append("',");
+        sql.append(this.jTextFieldCapacity.getText()).append(",'");
+        sql.append(this.jRadioButtonLaboratory.isSelected() ? "Laboratory" : "LectureHall").append("')");
+        try {
+          PreparedStatement ps = conn.prepareStatement(sql.toString());
+          ps.execute();
+        } catch (SQLException ex) {
+            System.out.print(ex);
+        } 
+        
+        this.loadLocation();
+        this.clearLocationForm();
+    }//GEN-LAST:event_jButtonAddLocationActionPerformed
+
+    private void jButtonClearLocationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClearLocationActionPerformed
+        this.clearLocationForm();
+    }//GEN-LAST:event_jButtonClearLocationActionPerformed
+
+    private void jTableLocationMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableLocationMouseClicked
+        int z = this.jTableLocation.getSelectedRow();
+
+        this.Id = (Integer) jTableLocation.getValueAt(z,0);
+        this.jTextFieldBuildingName.setText(jTableLocation.getValueAt(z,1).toString());
+        this.jTextFieldRoomName.setText(jTableLocation.getValueAt(z,2).toString());
+        this.jTextFieldCapacity.setText(jTableLocation.getValueAt(z,3).toString());
+        if("Laboratory".equals(this.jTableLocation.getValueAt(z,4).toString())){
+            this.jRadioButtonLectureHall.setSelected(false);
+            this.jRadioButtonLaboratory.setSelected(true);
+        } else{
+            this.jRadioButtonLectureHall.setSelected(true);
+            this.jRadioButtonLaboratory.setSelected(false);
+        }
+    }//GEN-LAST:event_jTableLocationMouseClicked
+
+    private void jRadioButtonLectureHallActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonLectureHallActionPerformed
+        if(this.jRadioButtonLectureHall.isSelected()){
+            this.jRadioButtonLaboratory.setSelected(false);
+        }
+    }//GEN-LAST:event_jRadioButtonLectureHallActionPerformed
+
+    private void jRadioButtonLaboratoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonLaboratoryActionPerformed
+        if(this.jRadioButtonLaboratory.isSelected()){
+            this.jRadioButtonLectureHall.setSelected(false);
+        }
+    }//GEN-LAST:event_jRadioButtonLaboratoryActionPerformed
 
     /**
      * @param args the command line arguments
@@ -2914,6 +2987,41 @@ public class ABC extends javax.swing.JFrame {
         this.jSpinnerSubGroupNo.setValue(0);
         this.jTextFieldGroupId.setText("");
         this.jTextFieldSubGroupId.setText("");
+    }
+    
+       private void loadLocation() {
+            String sql = "SELECT * FROM location";  
+        try {
+          PreparedStatement ps = conn.prepareStatement(sql);
+          ResultSet rs = ps.executeQuery();
+          
+          DefaultTableModel dtm = (DefaultTableModel) jTableLocation.getModel();
+                    dtm.setRowCount(0);
+
+                    while (rs.next()) {
+
+                        Vector v = new Vector();
+                        v.add(rs.getInt("Id"));
+                        v.add(rs.getString("BuildingName"));
+                        v.add(rs.getString("RoomName"));
+                        v.add(rs.getInt("Capacity"));
+                        v.add(rs.getString("RoomType"));
+
+                        dtm.addRow(v);
+
+                    }
+        } catch (SQLException ex) {
+            System.out.print(ex);
+        } 
+    }
+        
+        
+    private void clearLocationForm() {
+        this.jTextFieldBuildingName.setText("");
+        this.jTextFieldRoomName.setText("");
+        this.jTextFieldCapacity.setText("");
+        this.jRadioButtonLectureHall.setSelected(false);
+        this.jRadioButtonLaboratory.setSelected(false);
     }
 
         
@@ -3198,12 +3306,12 @@ public class ABC extends javax.swing.JFrame {
     private javax.swing.JSpinner jSpinnerSubGroupNo;
     private javax.swing.JSpinner jSpinnerTutorialHour;
     private javax.swing.JSpinner jSpinnerWorkingDays;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
     private javax.swing.JTable jTable4;
     private javax.swing.JTable jTableConsecutive;
     private javax.swing.JTable jTableLecturer;
+    private javax.swing.JTable jTableLocation;
     private javax.swing.JTable jTableSRoomTimetable;
     private javax.swing.JTable jTableSRoomTimetable2;
     private javax.swing.JTable jTableSRoomTimetable3;
