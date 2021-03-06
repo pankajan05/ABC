@@ -633,8 +633,18 @@ public class ABC extends javax.swing.JFrame {
         });
 
         jButtonUpdateStudentGroup.setText("Update");
+        jButtonUpdateStudentGroup.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonUpdateStudentGroupActionPerformed(evt);
+            }
+        });
 
         jButtonDeleteStudentGroup.setText("Delete");
+        jButtonDeleteStudentGroup.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDeleteStudentGroupActionPerformed(evt);
+            }
+        });
 
         jButtonClearStudentGroup.setText("Clear");
         jButtonClearStudentGroup.addActionListener(new java.awt.event.ActionListener() {
@@ -656,6 +666,11 @@ public class ABC extends javax.swing.JFrame {
                 "Id", "Acadamic year And sem", "Programe", "Group Number", "Sub group Number", "Group Id", "Sub Group Id"
             }
         ));
+        jTableStudent.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableStudentMouseClicked(evt);
+            }
+        });
         jScrollPane4.setViewportView(jTableStudent);
 
         jButtonGenerateGroup.setText("Generate");
@@ -1537,8 +1552,18 @@ public class ABC extends javax.swing.JFrame {
         jButtonAddLocation.setText("Add");
 
         jButtonUpdateLocation.setText("Update");
+        jButtonUpdateLocation.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonUpdateLocationActionPerformed(evt);
+            }
+        });
 
         jButtonDeleteLocation.setText("Delete");
+        jButtonDeleteLocation.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDeleteLocationActionPerformed(evt);
+            }
+        });
 
         jButtonClearLocation.setText("Clear");
 
@@ -2719,11 +2744,90 @@ public class ABC extends javax.swing.JFrame {
         } 
         
         loadStudentGroup();
+        clearStudentForm();
     }//GEN-LAST:event_jButtonAddStudentGroupActionPerformed
 
     private void jButtonClearStudentGroupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClearStudentGroupActionPerformed
-        // TODO add your handling code here:
+        this.clearStudentForm();
     }//GEN-LAST:event_jButtonClearStudentGroupActionPerformed
+
+    private void jTableStudentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableStudentMouseClicked
+        int z = jTableStudent.getSelectedRow();
+
+        this.Id = (Integer) jTableStudent.getValueAt(z,0);
+        this.jTextFieldAcadamicYearSem.setText(jTableStudent.getValueAt(z,1).toString());
+        this.jComboBoxProgram.setSelectedItem(jTableStudent.getValueAt(z, 2).toString());
+        this.jSpinnerGroupNo.setValue((Integer) jTableStudent.getValueAt(z,3));
+        this.jSpinnerSubGroupNo.setValue((Integer) jTableStudent.getValueAt(z,4));
+        this.jTextFieldGroupId.setText(jTableStudent.getValueAt(z,5).toString());
+        this.jTextFieldSubGroupId.setText(jTableStudent.getValueAt(z,6).toString());
+    }//GEN-LAST:event_jTableStudentMouseClicked
+
+    private void jButtonUpdateLocationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateLocationActionPerformed
+        StringBuilder sql = new StringBuilder();
+        sql.append("UPDATE studentgroub SET AcadamicYearSem = '");
+        sql.append(this.jTextFieldAcadamicYearSem.getText()).append("',Program = '");
+        sql.append(this.jComboBoxProgram.getSelectedItem().toString()).append("', GroupNo = ");
+        sql.append(this.jSpinnerGroupNo.getValue()).append(", SubGroupNo =");
+        sql.append(this.jSpinnerSubGroupNo.getValue()).append(", GroupId ='");
+        sql.append(this.jTextFieldGroupId.getText()).append("', SubGroupId = '");
+        sql.append(this.jTextFieldSubGroupId.getText()).append("' WHERE ID = ").append(this.Id);
+        try {
+            System.out.println(sql.toString());
+          PreparedStatement ps = conn.prepareStatement(sql.toString());
+          ps.execute();
+        } catch (SQLException ex) {
+            System.out.print(ex);
+        }
+        loadStudentGroup();
+        clearStudentForm();
+    }//GEN-LAST:event_jButtonUpdateLocationActionPerformed
+
+    private void jButtonDeleteLocationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteLocationActionPerformed
+       String sql = "DELETE FROM studentgroub WHERE Id='" + this.Id + "'";
+        
+        try {
+          PreparedStatement ps = conn.prepareStatement(sql);
+          ps.execute();
+        } catch (SQLException ex) {
+            System.out.print(ex);
+        }
+        loadStudentGroup();
+        clearStudentForm();
+    }//GEN-LAST:event_jButtonDeleteLocationActionPerformed
+
+    private void jButtonUpdateStudentGroupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateStudentGroupActionPerformed
+        StringBuilder sql = new StringBuilder();
+        sql.append("UPDATE studentgroub SET AcadamicYearSem = '");
+        sql.append(this.jTextFieldAcadamicYearSem.getText()).append("',Program = '");
+        sql.append(this.jComboBoxProgram.getSelectedItem().toString()).append("', GroupNo = ");
+        sql.append(this.jSpinnerGroupNo.getValue()).append(", SubGroupNo =");
+        sql.append(this.jSpinnerSubGroupNo.getValue()).append(", GroupId ='");
+        sql.append(this.jTextFieldGroupId.getText()).append("', SubGroupId = '");
+        sql.append(this.jTextFieldSubGroupId.getText()).append("' WHERE ID = ").append(this.Id);
+        try {
+            System.out.println(sql.toString());
+          PreparedStatement ps = conn.prepareStatement(sql.toString());
+          ps.execute();
+        } catch (SQLException ex) {
+            System.out.print(ex);
+        }
+        loadStudentGroup();
+        clearStudentForm();
+    }//GEN-LAST:event_jButtonUpdateStudentGroupActionPerformed
+
+    private void jButtonDeleteStudentGroupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteStudentGroupActionPerformed
+        String sql = "DELETE FROM studentgroub WHERE Id='" + this.Id + "'";
+        
+        try {
+          PreparedStatement ps = conn.prepareStatement(sql);
+          ps.execute();
+        } catch (SQLException ex) {
+            System.out.print(ex);
+        }
+        loadStudentGroup();
+        clearStudentForm();
+    }//GEN-LAST:event_jButtonDeleteStudentGroupActionPerformed
 
     /**
      * @param args the command line arguments
@@ -2802,6 +2906,16 @@ public class ABC extends javax.swing.JFrame {
             System.out.print(ex);
         } 
     }
+        
+        
+    private void clearStudentForm() {
+        this.jTextFieldAcadamicYearSem.setText("");
+        this.jSpinnerGroupNo.setValue(0);
+        this.jSpinnerSubGroupNo.setValue(0);
+        this.jTextFieldGroupId.setText("");
+        this.jTextFieldSubGroupId.setText("");
+    }
+
         
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
