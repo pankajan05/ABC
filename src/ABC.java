@@ -3162,7 +3162,22 @@ public class ABC extends javax.swing.JFrame {
     }//GEN-LAST:event_jTableSubjectMouseClicked
 
     private void jButtonAddSubjectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddSubjectActionPerformed
-        
+        StringBuilder sql = new StringBuilder();
+        sql.append("INSERT INTO subject (SubjectCode, SubjectName, OfferedYear, OfferedSem, LectureHour, LabHour, TuteHour, EvaluationHour) values('");
+        sql.append(this.jTextFieldSubjectCode.getText()).append("','");
+        sql.append(this.jTextFieldSubjectName.getText()).append("',");
+        sql.append(this.jComboBoxYear.getSelectedItem().toString()).append(",");
+        sql.append(this.jRadioButtonSemester1.isSelected() ? 1 : 2).append(",");
+        sql.append(this.jSpinnerLectureHour.getValue()).append(",");
+        sql.append(this.jSpinnerLabHour.getValue()).append(",");
+        sql.append(this.jSpinnerTutorialHour.getValue()).append(",");
+        sql.append(this.jSpinnerEvalutionHour.getValue()).append(")");
+        try {
+          PreparedStatement ps = conn.prepareStatement(sql.toString());
+          ps.execute();
+        } catch (SQLException ex) {
+            System.out.print(ex);
+        } 
         this.loadSubject();
         this.clearSubjectForm();
     }//GEN-LAST:event_jButtonAddSubjectActionPerformed
@@ -3411,7 +3426,7 @@ public class ABC extends javax.swing.JFrame {
                         v.add(rs.getInt("LectureHour"));
                         v.add(rs.getInt("TuteHour"));
                         v.add(rs.getInt("LabHour"));
-                        v.add(rs.getInt("EvalutionHour"));
+                        v.add(rs.getInt("EvaluationHour"));
 
                         dtm.addRow(v);
 
