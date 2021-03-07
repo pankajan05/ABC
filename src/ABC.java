@@ -160,15 +160,15 @@ public class ABC extends javax.swing.JFrame {
         jLabel63 = new javax.swing.JLabel();
         jLabel99 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
-        jLabelLectureNumber1 = new javax.swing.JLabel();
+        jLabelStudentNumber = new javax.swing.JLabel();
         jLabel64 = new javax.swing.JLabel();
         jLabel101 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
-        jLabelLectureNumber2 = new javax.swing.JLabel();
+        jLabelSubjectNumber = new javax.swing.JLabel();
         jLabel65 = new javax.swing.JLabel();
         jLabel100 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
-        jLabelLectureNumber3 = new javax.swing.JLabel();
+        jLabelRoomNumber = new javax.swing.JLabel();
         jLabel66 = new javax.swing.JLabel();
         jLabel102 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
@@ -1227,8 +1227,8 @@ public class ABC extends javax.swing.JFrame {
 
         jPanel4.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jLabelLectureNumber1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabelLectureNumber1.setText("1000");
+        jLabelStudentNumber.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabelStudentNumber.setText("1000");
 
         jLabel64.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
         jLabel64.setText("Total Number Of Students");
@@ -1248,7 +1248,7 @@ public class ABC extends javax.swing.JFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel101)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabelLectureNumber1, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabelStudentNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(32, 32, 32))))
         );
         jPanel4Layout.setVerticalGroup(
@@ -1257,7 +1257,7 @@ public class ABC extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(55, 55, 55)
-                        .addComponent(jLabelLectureNumber1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabelStudentNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel101)))
@@ -1268,8 +1268,8 @@ public class ABC extends javax.swing.JFrame {
 
         jPanel6.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jLabelLectureNumber2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabelLectureNumber2.setText("10");
+        jLabelSubjectNumber.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabelSubjectNumber.setText("10");
 
         jLabel65.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
         jLabel65.setText("Total Number Of Subjects");
@@ -1288,7 +1288,7 @@ public class ABC extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel100)
                 .addGap(44, 44, 44)
-                .addComponent(jLabelLectureNumber2, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabelSubjectNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
@@ -1301,7 +1301,7 @@ public class ABC extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabelLectureNumber2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabelSubjectNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(46, 46, 46)))
                 .addComponent(jLabel65)
                 .addContainerGap())
@@ -1309,8 +1309,8 @@ public class ABC extends javax.swing.JFrame {
 
         jPanel7.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jLabelLectureNumber3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabelLectureNumber3.setText("15");
+        jLabelRoomNumber.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabelRoomNumber.setText("15");
 
         jLabel66.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
         jLabel66.setText("Total Number Of Rooms");
@@ -1329,7 +1329,7 @@ public class ABC extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel102)
                 .addGap(52, 52, 52)
-                .addComponent(jLabelLectureNumber3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabelRoomNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
@@ -1342,7 +1342,7 @@ public class ABC extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabelLectureNumber3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabelRoomNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(44, 44, 44)))
                 .addComponent(jLabel66)
                 .addContainerGap())
@@ -2702,6 +2702,8 @@ public class ABC extends javax.swing.JFrame {
             DynamicPanel.add(jPanelStatistic);
             DynamicPanel.repaint();
             DynamicPanel.revalidate();
+            
+            this.loadStat();
     }//GEN-LAST:event_jMenuItemStatisticActionPerformed
 
     private void jMenuItemSessionManagementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSessionManagementActionPerformed
@@ -3461,7 +3463,60 @@ public class ABC extends javax.swing.JFrame {
         this.jSpinnerTutorialHour.setValue(0);
         this.jSpinnerEvalutionHour.setValue(0);
     }
-
+    
+    private void loadStat() {
+        String sql = "SELECT COUNT(*) AS count FROM subject";  
+        try {
+          PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            
+            rs.next();
+            this.jLabelSubjectNumber.setText(rs.getString("count"));
+            rs.close();
+            
+          } catch (SQLException ex) {
+            System.out.print(ex);
+        } 
+        
+        sql = "SELECT COUNT(*) AS count FROM lecturer";  
+        try {
+          PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            
+            rs.next();
+            this.jLabelLectureNumber.setText(rs.getString("count"));
+            rs.close();
+            
+          } catch (SQLException ex) {
+            System.out.print(ex);
+        } 
+        
+        sql = "SELECT COUNT(*) AS count FROM studentgroub";  
+        try {
+          PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            
+            rs.next();
+            this.jLabelStudentNumber.setText(rs.getString("count"));
+            rs.close();
+            
+          } catch (SQLException ex) {
+            System.out.print(ex);
+        } 
+        
+        sql = "SELECT COUNT(*) AS count FROM location";  
+        try {
+          PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            
+            rs.next();
+            this.jLabelRoomNumber.setText(rs.getString("count"));
+            rs.close();
+            
+          } catch (SQLException ex) {
+            System.out.print(ex);
+        } 
+    }
 
         
     public static void main(String args[]) {
@@ -3673,9 +3728,9 @@ public class ABC extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel98;
     private javax.swing.JLabel jLabel99;
     private javax.swing.JLabel jLabelLectureNumber;
-    private javax.swing.JLabel jLabelLectureNumber1;
-    private javax.swing.JLabel jLabelLectureNumber2;
-    private javax.swing.JLabel jLabelLectureNumber3;
+    private javax.swing.JLabel jLabelRoomNumber;
+    private javax.swing.JLabel jLabelStudentNumber;
+    private javax.swing.JLabel jLabelSubjectNumber;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
