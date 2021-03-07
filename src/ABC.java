@@ -175,9 +175,9 @@ public class ABC extends javax.swing.JFrame {
         jLabel85 = new javax.swing.JLabel();
         jLabel90 = new javax.swing.JLabel();
         jLabel91 = new javax.swing.JLabel();
-        jLabel92 = new javax.swing.JLabel();
-        jLabel93 = new javax.swing.JLabel();
-        jLabel94 = new javax.swing.JLabel();
+        jLabelSubject = new javax.swing.JLabel();
+        jLabelLecturer = new javax.swing.JLabel();
+        jLabelRoom = new javax.swing.JLabel();
         jLabel95 = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
         jProgressBar1 = new javax.swing.JProgressBar();
@@ -1356,14 +1356,14 @@ public class ABC extends javax.swing.JFrame {
 
         jLabel91.setText("Room Name");
 
-        jLabel92.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel92.setText("DevOps Engineering");
+        jLabelSubject.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabelSubject.setText("DevOps Engineering");
 
-        jLabel93.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel93.setText("Dr. Lankeshwara Munasinghe");
+        jLabelLecturer.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabelLecturer.setText("Dr. Lankeshwara Munasinghe");
 
-        jLabel94.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel94.setText("Elec Building");
+        jLabelRoom.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabelRoom.setText("Elec Building");
 
         jLabel95.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
         jLabel95.setText("What's New");
@@ -1380,9 +1380,9 @@ public class ABC extends javax.swing.JFrame {
                     .addComponent(jLabel91))
                 .addGap(123, 123, 123)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel92)
-                    .addComponent(jLabel93)
-                    .addComponent(jLabel94))
+                    .addComponent(jLabelSubject)
+                    .addComponent(jLabelLecturer)
+                    .addComponent(jLabelRoom))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel8Layout.createSequentialGroup()
@@ -1396,15 +1396,15 @@ public class ABC extends javax.swing.JFrame {
                 .addGap(80, 80, 80)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel85)
-                    .addComponent(jLabel92))
+                    .addComponent(jLabelSubject))
                 .addGap(64, 64, 64)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel90)
-                    .addComponent(jLabel93))
+                    .addComponent(jLabelLecturer))
                 .addGap(75, 75, 75)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel91)
-                    .addComponent(jLabel94))
+                    .addComponent(jLabelRoom))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel8Layout.createSequentialGroup()
@@ -2779,6 +2779,8 @@ public class ABC extends javax.swing.JFrame {
         sql.append(this.jCheckBoxSunday.isSelected()? 1 : 0).append(",");
         sql.append(this.jSpinnerHour.getValue()).append(",");
         sql.append(this.jSpinnerMinutes.getValue()).append(")");
+        
+        
         try {
           PreparedStatement ps = conn.prepareStatement(sql.toString());
           ps.execute();
@@ -2961,8 +2963,14 @@ public class ABC extends javax.swing.JFrame {
         sql.append(this.jTextFieldRoomName.getText()).append("',");
         sql.append(this.jTextFieldCapacity.getText()).append(",'");
         sql.append(this.jRadioButtonLaboratory.isSelected() ? "Laboratory" : "LectureHall").append("')");
+        
+        String newsql = "UPDATE new SET RoomName = '" + this.jTextFieldRoomName.getText() + "' WHERE Id = 1" ;
+        
         try {
           PreparedStatement ps = conn.prepareStatement(sql.toString());
+          ps.execute();
+          
+          ps = conn.prepareStatement(newsql);
           ps.execute();
         } catch (SQLException ex) {
             System.out.print(ex);
@@ -3093,8 +3101,15 @@ public class ABC extends javax.swing.JFrame {
         sql.append(this.jComboBoxBuilding.getSelectedItem().toString()).append("',");
         sql.append(this.jComboBoxLevel.getSelectedItem()).append(",'");
         sql.append(this.jTextFieldRand.getText()).append("')");
+        
+        String newsql = "UPDATE new SET LecturerName = '" + this.jTextFieldLecturerName.getText() + "' WHERE Id = 1" ;
+        
         try {
           PreparedStatement ps = conn.prepareStatement(sql.toString());
+          ps.execute();
+          
+          
+          ps = conn.prepareStatement(newsql);
           ps.execute();
         } catch (SQLException ex) {
             System.out.print(ex);
@@ -3174,8 +3189,14 @@ public class ABC extends javax.swing.JFrame {
         sql.append(this.jSpinnerLabHour.getValue()).append(",");
         sql.append(this.jSpinnerTutorialHour.getValue()).append(",");
         sql.append(this.jSpinnerEvalutionHour.getValue()).append(")");
+        
+        String newsql = "UPDATE new SET SubjectName = '" + this.jTextFieldSubjectName.getText() + "' WHERE Id = 1" ;
+                
         try {
           PreparedStatement ps = conn.prepareStatement(sql.toString());
+          ps.execute();
+          
+          ps = conn.prepareStatement(newsql);
           ps.execute();
         } catch (SQLException ex) {
             System.out.print(ex);
@@ -3516,6 +3537,23 @@ public class ABC extends javax.swing.JFrame {
           } catch (SQLException ex) {
             System.out.print(ex);
         } 
+        
+        sql = "SELECT * FROM new";
+        try {
+          PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            
+            rs.next();
+            
+            this.jLabelLecturer.setText(rs.getString("LecturerName"));
+            this.jLabelSubject.setText(rs.getString("SubjectName"));
+            this.jLabelRoom.setText(rs.getString("RoomName"));
+            rs.close();
+            
+          } catch (SQLException ex) {
+            System.out.print(ex);
+        } 
+        
     }
 
         
@@ -3719,17 +3757,17 @@ public class ABC extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabel90;
     private javax.swing.JLabel jLabel91;
-    private javax.swing.JLabel jLabel92;
-    private javax.swing.JLabel jLabel93;
-    private javax.swing.JLabel jLabel94;
     private javax.swing.JLabel jLabel95;
     private javax.swing.JLabel jLabel96;
     private javax.swing.JLabel jLabel97;
     private javax.swing.JLabel jLabel98;
     private javax.swing.JLabel jLabel99;
     private javax.swing.JLabel jLabelLectureNumber;
+    private javax.swing.JLabel jLabelLecturer;
+    private javax.swing.JLabel jLabelRoom;
     private javax.swing.JLabel jLabelRoomNumber;
     private javax.swing.JLabel jLabelStudentNumber;
+    private javax.swing.JLabel jLabelSubject;
     private javax.swing.JLabel jLabelSubjectNumber;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
