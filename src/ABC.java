@@ -220,7 +220,7 @@ public class ABC extends javax.swing.JFrame {
         jLabel60 = new javax.swing.JLabel();
         jPanelSession = new javax.swing.JPanel();
         jScrollPaneSession = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        jTableSession = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         jLabel42 = new javax.swing.JLabel();
         jLabel44 = new javax.swing.JLabel();
@@ -240,10 +240,10 @@ public class ABC extends javax.swing.JFrame {
         jTextFieldNoOfStudent = new javax.swing.JTextField();
         jTextFieldDuration = new javax.swing.JTextField();
         jLabel51 = new javax.swing.JLabel();
-        jButtonAddWorkingday1 = new javax.swing.JButton();
-        jButtonUpdateWorkingDay1 = new javax.swing.JButton();
-        jButtonDeleteWorkingDay1 = new javax.swing.JButton();
-        jButtonClearWorkingDay1 = new javax.swing.JButton();
+        jButtonAddSession = new javax.swing.JButton();
+        jButtonUpdateSession = new javax.swing.JButton();
+        jButtonDeleteSession = new javax.swing.JButton();
+        jButtonClearSession = new javax.swing.JButton();
         jLabel53 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jLabel73 = new javax.swing.JLabel();
@@ -1797,23 +1797,23 @@ public class ABC extends javax.swing.JFrame {
 
         DynamicPanel.add(jPanelLocation, "card2");
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        jTableSession.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Id", "Lecture1", "Lecture2", "Subject Code", "Subject Name", "GroupId", "Tag", "Room"
+                "Id", "Lecture1", "Lecture2", "Subject Code", "GroupId", "Tag", "Room", "TotalStudents", "Duration"
             }
         ));
-        jTable2.addMouseListener(new java.awt.event.MouseAdapter() {
+        jTableSession.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTable2MouseClicked(evt);
+                jTableSessionMouseClicked(evt);
             }
         });
-        jScrollPaneSession.setViewportView(jTable2);
+        jScrollPaneSession.setViewportView(jTableSession);
 
         jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -1825,12 +1825,6 @@ public class ABC extends javax.swing.JFrame {
         jLabel45.setText("Select Tag");
 
         jLabel46.setText("Select Lecturer 2");
-
-        jComboBoxLedcturer.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jComboBoxTag.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jComboBoxLedcturer1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -1894,10 +1888,6 @@ public class ABC extends javax.swing.JFrame {
 
         jLabel50.setText("Duration");
 
-        jComboBoxGroup.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jComboBoxsubject.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         jLabel51.setText("Hours");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -1957,31 +1947,31 @@ public class ABC extends javax.swing.JFrame {
                 .addContainerGap(37, Short.MAX_VALUE))
         );
 
-        jButtonAddWorkingday1.setText("Add");
-        jButtonAddWorkingday1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonAddSession.setText("Add");
+        jButtonAddSession.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonAddWorkingday1ActionPerformed(evt);
+                jButtonAddSessionActionPerformed(evt);
             }
         });
 
-        jButtonUpdateWorkingDay1.setText("Update");
-        jButtonUpdateWorkingDay1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonUpdateSession.setText("Update");
+        jButtonUpdateSession.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonUpdateWorkingDay1ActionPerformed(evt);
+                jButtonUpdateSessionActionPerformed(evt);
             }
         });
 
-        jButtonDeleteWorkingDay1.setText("Delete");
-        jButtonDeleteWorkingDay1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonDeleteSession.setText("Delete");
+        jButtonDeleteSession.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonDeleteWorkingDay1ActionPerformed(evt);
+                jButtonDeleteSessionActionPerformed(evt);
             }
         });
 
-        jButtonClearWorkingDay1.setText("Clear");
-        jButtonClearWorkingDay1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonClearSession.setText("Clear");
+        jButtonClearSession.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonClearWorkingDay1ActionPerformed(evt);
+                jButtonClearSessionActionPerformed(evt);
             }
         });
 
@@ -1992,8 +1982,6 @@ public class ABC extends javax.swing.JFrame {
 
         jLabel73.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel73.setText("Allocate Room");
-
-        jComboBoxRoomsession.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel52.setText("Select Room");
 
@@ -2044,10 +2032,10 @@ public class ABC extends javax.swing.JFrame {
                         .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(30, 30, 30)
                         .addGroup(jPanelSessionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButtonClearWorkingDay1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonDeleteWorkingDay1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonUpdateWorkingDay1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonAddWorkingday1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jButtonClearSession, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonDeleteSession, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonUpdateSession, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonAddSession, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(23, 23, 23))))
             .addGroup(jPanelSessionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelSessionLayout.createSequentialGroup()
@@ -2066,13 +2054,13 @@ public class ABC extends javax.swing.JFrame {
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanelSessionLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButtonAddWorkingday1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonAddSession, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(27, 27, 27)
-                        .addComponent(jButtonUpdateWorkingDay1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonUpdateSession, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(33, 33, 33)
-                        .addComponent(jButtonDeleteWorkingDay1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonDeleteSession, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(30, 30, 30)
-                        .addComponent(jButtonClearWorkingDay1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jButtonClearSession, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
             .addGroup(jPanelSessionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2739,6 +2727,8 @@ public class ABC extends javax.swing.JFrame {
             DynamicPanel.add(jPanelSession);
             DynamicPanel.repaint();
             DynamicPanel.revalidate();
+            
+            this.loadSession();
     }//GEN-LAST:event_jMenuItemSessionManagementActionPerformed
 
     private void jMenuItemConsecutiveSessionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemConsecutiveSessionActionPerformed
@@ -3279,19 +3269,23 @@ public class ABC extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jRadioButtonSemester2ActionPerformed
 
-    private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTable2MouseClicked
+    private void jTableSessionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableSessionMouseClicked
+        
+    }//GEN-LAST:event_jTableSessionMouseClicked
 
-    private void jButtonAddWorkingday1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddWorkingday1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonAddWorkingday1ActionPerformed
+    private void jButtonAddSessionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddSessionActionPerformed
+        
+        this.loadSession();
+        this.clearSessionForm();
+    }//GEN-LAST:event_jButtonAddSessionActionPerformed
 
-    private void jButtonUpdateWorkingDay1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateWorkingDay1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonUpdateWorkingDay1ActionPerformed
+    private void jButtonUpdateSessionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateSessionActionPerformed
+        
+        this.loadSession();
+        this.clearSessionForm();
+    }//GEN-LAST:event_jButtonUpdateSessionActionPerformed
 
-    private void jButtonDeleteWorkingDay1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteWorkingDay1ActionPerformed
+    private void jButtonDeleteSessionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteSessionActionPerformed
         String sql = "DELETE FROM session WHERE Id = " + this.Id ;
         
         try {
@@ -3300,13 +3294,13 @@ public class ABC extends javax.swing.JFrame {
         } catch (SQLException ex) {
             System.out.print(ex);
         }
-        this.loadSubject();
-        this.clearSubjectForm();
-    }//GEN-LAST:event_jButtonDeleteWorkingDay1ActionPerformed
+        this.loadSession();
+        this.clearSessionForm();
+    }//GEN-LAST:event_jButtonDeleteSessionActionPerformed
 
-    private void jButtonClearWorkingDay1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClearWorkingDay1ActionPerformed
-        
-    }//GEN-LAST:event_jButtonClearWorkingDay1ActionPerformed
+    private void jButtonClearSessionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClearSessionActionPerformed
+        this.clearSessionForm();
+    }//GEN-LAST:event_jButtonClearSessionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -3609,6 +3603,42 @@ public class ABC extends javax.swing.JFrame {
         } 
         
     }
+    
+    private void loadSession() {
+            String sql = "SELECT * FROM session t JOIN lecturer t1 ON t1.EmployeeId = t.Lecturer1Id JOIN lecturer t2 ON t2.EmployeeId = t.Lecturer2Id JOIN location t3 ON t3.Id = t.Room";  
+        try {
+          PreparedStatement ps = conn.prepareStatement(sql);
+          ResultSet rs = ps.executeQuery();
+          
+          DefaultTableModel dtm = (DefaultTableModel) jTableSession.getModel();
+                    dtm.setRowCount(0);
+
+                    while (rs.next()) {
+
+                        Vector v = new Vector();
+                        v.add(rs.getInt("Id"));
+                        v.add(rs.getString(19));
+                        v.add(rs.getString(11));
+                        v.add(rs.getString("SubjectCode"));
+                        v.add(rs.getString("GroupId"));
+                        v.add(rs.getString("Tag"));
+                        v.add(rs.getString("RoomName"));
+                        v.add(rs.getString("TotalStudent"));
+                        v.add(rs.getString("Duration"));
+
+                        dtm.addRow(v);
+
+                    }
+        } catch (SQLException ex) {
+            System.out.print(ex);
+        } 
+    }
+        
+        
+    private void clearSessionForm() {
+        this.jTextFieldNoOfStudent.setText("");
+        this.jTextFieldDuration.setText("");
+    }
 
         
     public static void main(String args[]) {
@@ -3652,26 +3682,26 @@ public class ABC extends javax.swing.JFrame {
     private javax.swing.JButton jButtonAddConsecutive;
     private javax.swing.JButton jButtonAddLecturer;
     private javax.swing.JButton jButtonAddLocation;
+    private javax.swing.JButton jButtonAddSession;
     private javax.swing.JButton jButtonAddStudentGroup;
     private javax.swing.JButton jButtonAddSubject;
     private javax.swing.JButton jButtonAddTag;
     private javax.swing.JButton jButtonAddWorkingday;
-    private javax.swing.JButton jButtonAddWorkingday1;
     private javax.swing.JButton jButtonClearLecturer;
     private javax.swing.JButton jButtonClearLocation;
+    private javax.swing.JButton jButtonClearSession;
     private javax.swing.JButton jButtonClearStudentGroup;
     private javax.swing.JButton jButtonClearSubject;
     private javax.swing.JButton jButtonClearTag;
     private javax.swing.JButton jButtonClearWorkingDay;
-    private javax.swing.JButton jButtonClearWorkingDay1;
     private javax.swing.JButton jButtonDeleteConsecutive;
     private javax.swing.JButton jButtonDeleteLecturer;
     private javax.swing.JButton jButtonDeleteLocation;
+    private javax.swing.JButton jButtonDeleteSession;
     private javax.swing.JButton jButtonDeleteStudentGroup;
     private javax.swing.JButton jButtonDeleteSubject;
     private javax.swing.JButton jButtonDeleteTag;
     private javax.swing.JButton jButtonDeleteWorkingDay;
-    private javax.swing.JButton jButtonDeleteWorkingDay1;
     private javax.swing.JButton jButtonGenerateGroup;
     private javax.swing.JButton jButtonGenerateLecturerTimetable2;
     private javax.swing.JButton jButtonGenerateRank;
@@ -3682,11 +3712,11 @@ public class ABC extends javax.swing.JFrame {
     private javax.swing.JButton jButtonPringStudentTimetable;
     private javax.swing.JButton jButtonUpdateLecturer;
     private javax.swing.JButton jButtonUpdateLocation;
+    private javax.swing.JButton jButtonUpdateSession;
     private javax.swing.JButton jButtonUpdateStudentGroup;
     private javax.swing.JButton jButtonUpdateSubject;
     private javax.swing.JButton jButtonUpdateTag;
     private javax.swing.JButton jButtonUpdateWorkingDay;
-    private javax.swing.JButton jButtonUpdateWorkingDay1;
     private javax.swing.JCheckBox jCheckBoxFriday;
     private javax.swing.JCheckBox jCheckBoxMonday;
     private javax.swing.JCheckBox jCheckBoxSaturday;
@@ -3893,7 +3923,6 @@ public class ABC extends javax.swing.JFrame {
     private javax.swing.JSpinner jSpinnerSubGroupNo;
     private javax.swing.JSpinner jSpinnerTutorialHour;
     private javax.swing.JSpinner jSpinnerWorkingDays;
-    private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
     private javax.swing.JTable jTable4;
     private javax.swing.JTable jTableConsecutive;
@@ -3902,6 +3931,7 @@ public class ABC extends javax.swing.JFrame {
     private javax.swing.JTable jTableSRoomTimetable;
     private javax.swing.JTable jTableSRoomTimetable2;
     private javax.swing.JTable jTableSRoomTimetable3;
+    private javax.swing.JTable jTableSession;
     private javax.swing.JTable jTableStudent;
     private javax.swing.JTable jTableSubject;
     private javax.swing.JTable jTableTag;

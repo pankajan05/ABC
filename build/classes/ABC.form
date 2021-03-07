@@ -2835,10 +2835,10 @@
                               <Component id="jPanel5" max="32767" attributes="0"/>
                               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="jButtonClearWorkingDay1" alignment="0" min="-2" pref="117" max="-2" attributes="0"/>
-                                  <Component id="jButtonDeleteWorkingDay1" alignment="1" min="-2" pref="117" max="-2" attributes="0"/>
-                                  <Component id="jButtonUpdateWorkingDay1" alignment="1" min="-2" pref="117" max="-2" attributes="0"/>
-                                  <Component id="jButtonAddWorkingday1" alignment="1" min="-2" pref="117" max="-2" attributes="0"/>
+                                  <Component id="jButtonClearSession" alignment="0" min="-2" pref="117" max="-2" attributes="0"/>
+                                  <Component id="jButtonDeleteSession" alignment="1" min="-2" pref="117" max="-2" attributes="0"/>
+                                  <Component id="jButtonUpdateSession" alignment="1" min="-2" pref="117" max="-2" attributes="0"/>
+                                  <Component id="jButtonAddSession" alignment="1" min="-2" pref="117" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                           </Group>
@@ -2864,13 +2864,13 @@
                           <Component id="jPanel1" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                              <Component id="jButtonAddWorkingday1" min="-2" pref="39" max="-2" attributes="0"/>
+                              <Component id="jButtonAddSession" min="-2" pref="39" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                              <Component id="jButtonUpdateWorkingDay1" min="-2" pref="39" max="-2" attributes="0"/>
+                              <Component id="jButtonUpdateSession" min="-2" pref="39" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-                              <Component id="jButtonDeleteWorkingDay1" min="-2" pref="39" max="-2" attributes="0"/>
+                              <Component id="jButtonDeleteSession" min="-2" pref="39" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                              <Component id="jButtonClearWorkingDay1" min="-2" pref="39" max="-2" attributes="0"/>
+                              <Component id="jButtonClearSession" min="-2" pref="39" max="-2" attributes="0"/>
                           </Group>
                           <Component id="jPanel5" max="32767" attributes="0"/>
                       </Group>
@@ -2894,22 +2894,28 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTable" name="jTable2">
+                <Component class="javax.swing.JTable" name="jTableSession">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="8" rowCount="4">
+                      <Table columnCount="9" rowCount="4">
                         <Column editable="true" title="Id" type="java.lang.Object"/>
                         <Column editable="true" title="Lecture1" type="java.lang.Object"/>
                         <Column editable="true" title="Lecture2" type="java.lang.Object"/>
                         <Column editable="true" title="Subject Code" type="java.lang.Object"/>
-                        <Column editable="true" title="Subject Name" type="java.lang.Object"/>
                         <Column editable="true" title="GroupId" type="java.lang.Object"/>
                         <Column editable="true" title="Tag" type="java.lang.Object"/>
                         <Column editable="true" title="Room" type="java.lang.Object"/>
+                        <Column editable="true" title="TotalStudents" type="java.lang.Object"/>
+                        <Column editable="true" title="Duration" type="java.lang.Object"/>
                       </Table>
                     </Property>
                     <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                       <TableColumnModel selectionModel="0">
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
                         <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                           <Title/>
                           <Editor/>
@@ -2957,7 +2963,7 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTable2MouseClicked"/>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTableSessionMouseClicked"/>
                   </Events>
                 </Component>
               </SubComponents>
@@ -3063,36 +3069,21 @@
                 <Component class="javax.swing.JComboBox" name="jComboBoxLedcturer">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="4">
-                        <StringItem index="0" value="Item 1"/>
-                        <StringItem index="1" value="Item 2"/>
-                        <StringItem index="2" value="Item 3"/>
-                        <StringItem index="3" value="Item 4"/>
-                      </StringArray>
+                      <StringArray count="0"/>
                     </Property>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JComboBox" name="jComboBoxTag">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="4">
-                        <StringItem index="0" value="Item 1"/>
-                        <StringItem index="1" value="Item 2"/>
-                        <StringItem index="2" value="Item 3"/>
-                        <StringItem index="3" value="Item 4"/>
-                      </StringArray>
+                      <StringArray count="0"/>
                     </Property>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JComboBox" name="jComboBoxLedcturer1">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="4">
-                        <StringItem index="0" value="Item 1"/>
-                        <StringItem index="1" value="Item 2"/>
-                        <StringItem index="2" value="Item 3"/>
-                        <StringItem index="3" value="Item 4"/>
-                      </StringArray>
+                      <StringArray count="0"/>
                     </Property>
                   </Properties>
                 </Component>
@@ -3212,24 +3203,14 @@
                 <Component class="javax.swing.JComboBox" name="jComboBoxGroup">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="4">
-                        <StringItem index="0" value="Item 1"/>
-                        <StringItem index="1" value="Item 2"/>
-                        <StringItem index="2" value="Item 3"/>
-                        <StringItem index="3" value="Item 4"/>
-                      </StringArray>
+                      <StringArray count="0"/>
                     </Property>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JComboBox" name="jComboBoxsubject">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="4">
-                        <StringItem index="0" value="Item 1"/>
-                        <StringItem index="1" value="Item 2"/>
-                        <StringItem index="2" value="Item 3"/>
-                        <StringItem index="3" value="Item 4"/>
-                      </StringArray>
+                      <StringArray count="0"/>
                     </Property>
                   </Properties>
                 </Component>
@@ -3244,36 +3225,36 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JButton" name="jButtonAddWorkingday1">
+            <Component class="javax.swing.JButton" name="jButtonAddSession">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Add"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonAddWorkingday1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonAddSessionActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jButtonUpdateWorkingDay1">
+            <Component class="javax.swing.JButton" name="jButtonUpdateSession">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Update"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonUpdateWorkingDay1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonUpdateSessionActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jButtonDeleteWorkingDay1">
+            <Component class="javax.swing.JButton" name="jButtonDeleteSession">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Delete"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonDeleteWorkingDay1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonDeleteSessionActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jButtonClearWorkingDay1">
+            <Component class="javax.swing.JButton" name="jButtonClearSession">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Clear"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonClearWorkingDay1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonClearSessionActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel53">
@@ -3340,12 +3321,7 @@
                 <Component class="javax.swing.JComboBox" name="jComboBoxRoomsession">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="4">
-                        <StringItem index="0" value="Item 1"/>
-                        <StringItem index="1" value="Item 2"/>
-                        <StringItem index="2" value="Item 3"/>
-                        <StringItem index="3" value="Item 4"/>
-                      </StringArray>
+                      <StringArray count="0"/>
                     </Property>
                   </Properties>
                 </Component>
