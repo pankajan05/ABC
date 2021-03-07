@@ -4,6 +4,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
 
@@ -3632,6 +3633,60 @@ public class ABC extends javax.swing.JFrame {
         } catch (SQLException ex) {
             System.out.print(ex);
         } 
+        
+        
+       String rq1 = "SELECT *  FROM  location";
+       String rq2 = "SELECT *  FROM  lecturer";
+       String rq3 = "SELECT *  FROM  tag";
+       String rq4 = "SELECT *  FROM  subject";
+       String rq5 = "SELECT *  FROM  studentgroub";
+
+       
+
+       try {
+
+           Statement  st =  conn.createStatement();
+           ResultSet rs = st.executeQuery(rq2);
+
+           while (rs.next()) {
+            this.jComboBoxLedcturer1.addItem(rs.getString("EmployeeId") + "-"+rs.getString("LecturerName"));
+            this.jComboBoxLedcturer.addItem(rs.getString("EmployeeId") + "-"+rs.getString("LecturerName"));
+           }
+           
+           st = conn.createStatement();
+           rs = st.executeQuery(rq3);
+           
+           while (rs.next()) {
+               this.jComboBoxTag.addItem(rs.getString("TagName"));
+           }
+           
+           st = conn.createStatement();
+           rs = st.executeQuery(rq5);
+           
+           while (rs.next()) {
+               this.jComboBoxGroup.addItem(rs.getString("GroupId"));
+           }
+           
+           st = conn.createStatement();
+           rs = st.executeQuery(rq4);
+           
+           while (rs.next()) {
+               this.jComboBoxsubject.addItem(rs.getString("SubjectCode")+"-"+rs.getString("SubjectName"));
+           }
+           
+           st = conn.createStatement();
+           rs = st.executeQuery(rq1);
+           
+           while (rs.next()) {
+               this.jComboBoxRoomsession.addItem(rs.getString("Id")+"-"+rs.getString("RoomName"));
+           }
+           
+           st.close();
+           rs.close();
+
+       }  catch (SQLException e) { 
+            e.printStackTrace();
+       }
     }
         
         
