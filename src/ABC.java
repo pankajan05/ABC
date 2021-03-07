@@ -145,7 +145,6 @@ public class ABC extends javax.swing.JFrame {
         jSpinnerLectureHour = new javax.swing.JSpinner();
         jSpinnerTutorialHour = new javax.swing.JSpinner();
         jSpinnerEvalutionHour = new javax.swing.JSpinner();
-        jTextFieldOfferedYear = new javax.swing.JTextField();
         jTextFieldSubjectName = new javax.swing.JTextField();
         jTextFieldSubjectCode = new javax.swing.JTextField();
         jRadioButtonSemester1 = new javax.swing.JRadioButton();
@@ -153,6 +152,7 @@ public class ABC extends javax.swing.JFrame {
         jLabel20 = new javax.swing.JLabel();
         jSpinnerLabHour = new javax.swing.JSpinner();
         jLabel57 = new javax.swing.JLabel();
+        jComboBoxYear = new javax.swing.JComboBox();
         jPanelStatistic = new javax.swing.JPanel();
         jLabel58 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
@@ -991,15 +991,40 @@ public class ABC extends javax.swing.JFrame {
                 "Subject Code", "Subject Name", "Offered Year", "Offered Semester", "Lecture Hour", "Tutorial Hours", "Lab Hours", "Evolution Hours"
             }
         ));
+        jTableSubject.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableSubjectMouseClicked(evt);
+            }
+        });
         jScrollPane3.setViewportView(jTableSubject);
 
         jButtonAddSubject.setText("Add");
+        jButtonAddSubject.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAddSubjectActionPerformed(evt);
+            }
+        });
 
         jButtonUpdateSubject.setText("Update");
+        jButtonUpdateSubject.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonUpdateSubjectActionPerformed(evt);
+            }
+        });
 
         jButtonDeleteSubject.setText("Delete");
+        jButtonDeleteSubject.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDeleteSubjectActionPerformed(evt);
+            }
+        });
 
         jButtonClearSubject.setText("Clear");
+        jButtonClearSubject.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonClearSubjectActionPerformed(evt);
+            }
+        });
 
         jLabel14.setText("Offered Year");
 
@@ -1016,13 +1041,25 @@ public class ABC extends javax.swing.JFrame {
         jLabel21.setText("Number of Evalution Hours");
 
         jRadioButtonSemester1.setText("Semester 1");
+        jRadioButtonSemester1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonSemester1ActionPerformed(evt);
+            }
+        });
 
         jRadioButtonSemester2.setText("Semester 2");
+        jRadioButtonSemester2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonSemester2ActionPerformed(evt);
+            }
+        });
 
         jLabel20.setText("Number of Lab Hours");
 
         jLabel57.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel57.setText("Subject Details Management");
+
+        jComboBoxYear.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4" }));
 
         javax.swing.GroupLayout jPanelSubjectLayout = new javax.swing.GroupLayout(jPanelSubject);
         jPanelSubject.setLayout(jPanelSubjectLayout);
@@ -1037,22 +1074,22 @@ public class ABC extends javax.swing.JFrame {
                         .addGap(132, 132, 132)
                         .addGroup(jPanelSubjectLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanelSubjectLayout.createSequentialGroup()
-                                .addComponent(jLabel16)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jTextFieldSubjectName, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanelSubjectLayout.createSequentialGroup()
-                                .addComponent(jLabel17)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jTextFieldSubjectCode, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanelSubjectLayout.createSequentialGroup()
                                 .addGroup(jPanelSubjectLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel14)
                                     .addComponent(jLabel15))
                                 .addGap(100, 100, 100)
                                 .addGroup(jPanelSubjectLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jRadioButtonSemester1)
-                                    .addComponent(jTextFieldOfferedYear, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jRadioButtonSemester2))))
+                                    .addComponent(jRadioButtonSemester2)
+                                    .addComponent(jComboBoxYear, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(jPanelSubjectLayout.createSequentialGroup()
+                                .addComponent(jLabel16)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 120, Short.MAX_VALUE)
+                                .addComponent(jTextFieldSubjectName, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanelSubjectLayout.createSequentialGroup()
+                                .addComponent(jLabel17)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jTextFieldSubjectCode, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(149, 149, 149)
                         .addGroup(jPanelSubjectLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel18)
@@ -1082,7 +1119,7 @@ public class ABC extends javax.swing.JFrame {
         jPanelSubjectLayout.setVerticalGroup(
             jPanelSubjectLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelSubjectLayout.createSequentialGroup()
-                .addComponent(jLabel57, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
+                .addComponent(jLabel57, javax.swing.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 389, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1090,10 +1127,8 @@ public class ABC extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelSubjectLayout.createSequentialGroup()
                         .addGroup(jPanelSubjectLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanelSubjectLayout.createSequentialGroup()
-                                .addGap(2, 2, 2)
-                                .addGroup(jPanelSubjectLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel14)
-                                    .addComponent(jTextFieldOfferedYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(5, 5, 5)
+                                .addComponent(jLabel14)
                                 .addGroup(jPanelSubjectLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanelSubjectLayout.createSequentialGroup()
                                         .addGap(42, 42, 42)
@@ -1114,7 +1149,8 @@ public class ABC extends javax.swing.JFrame {
                             .addGroup(jPanelSubjectLayout.createSequentialGroup()
                                 .addGroup(jPanelSubjectLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel18)
-                                    .addComponent(jSpinnerLectureHour, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jSpinnerLectureHour, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jComboBoxYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(jPanelSubjectLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanelSubjectLayout.createSequentialGroup()
                                         .addGap(34, 34, 34)
@@ -2599,7 +2635,7 @@ public class ABC extends javax.swing.JFrame {
             DynamicPanel.repaint();
             DynamicPanel.revalidate();
             
-            loadWorkingDays();
+            this.loadWorkingDays();
     }//GEN-LAST:event_jMenuItemWorkingDaysActionPerformed
 
     private void jMenuItemLecturesDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemLecturesDetailsActionPerformed
@@ -2622,6 +2658,7 @@ public class ABC extends javax.swing.JFrame {
             DynamicPanel.add(jPanelSubject);
             DynamicPanel.repaint();
             DynamicPanel.revalidate();
+            this.loadSubject();
     }//GEN-LAST:event_jMenuItemSubjectActionPerformed
 
     private void jMenuItemStudentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemStudentsActionPerformed
@@ -3102,6 +3139,69 @@ public class ABC extends javax.swing.JFrame {
         this.clearLecturerForm();
     }//GEN-LAST:event_jButtonDeleteLecturerActionPerformed
 
+    private void jTableSubjectMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableSubjectMouseClicked
+        int z = this.jTableSubject.getSelectedRow();
+
+        this.EId =  jTableSubject.getValueAt(z,0).toString();
+        this.jTextFieldSubjectCode.setText(jTableSubject.getValueAt(z,0).toString());
+        this.jTextFieldSubjectName.setText(jTableSubject.getValueAt(z,1).toString());
+        this.jComboBoxYear.setSelectedItem(jTableSubject.getValueAt(z,2).toString());
+        
+        if("1".equals(this.jTableSubject.getValueAt(z,3).toString())){
+            this.jRadioButtonSemester2.setSelected(false);
+            this.jRadioButtonSemester1.setSelected(true);
+        } else{
+            this.jRadioButtonSemester2.setSelected(true);
+            this.jRadioButtonSemester1.setSelected(false);
+        }
+        
+        this.jSpinnerLectureHour.setValue((Integer) jTableSubject.getValueAt(z,4));
+        this.jSpinnerTutorialHour.setValue((Integer) jTableSubject.getValueAt(z,5));
+        this.jSpinnerLabHour.setValue((Integer) jTableSubject.getValueAt(z,4));
+        this.jSpinnerEvalutionHour.setValue((Integer) jTableSubject.getValueAt(z,4));
+    }//GEN-LAST:event_jTableSubjectMouseClicked
+
+    private void jButtonAddSubjectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddSubjectActionPerformed
+        
+        this.loadSubject();
+        this.clearSubjectForm();
+    }//GEN-LAST:event_jButtonAddSubjectActionPerformed
+
+    private void jButtonUpdateSubjectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateSubjectActionPerformed
+        
+        this.loadSubject();
+        this.clearSubjectForm();
+    }//GEN-LAST:event_jButtonUpdateSubjectActionPerformed
+
+    private void jButtonDeleteSubjectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteSubjectActionPerformed
+        String sql = "DELETE FROM subject WHERE SubjectCode ='" + this.EId + "'";
+        
+        try {
+          PreparedStatement ps = conn.prepareStatement(sql);
+          ps.execute();
+        } catch (SQLException ex) {
+            System.out.print(ex);
+        }
+        this.loadSubject();
+        this.clearSubjectForm();
+    }//GEN-LAST:event_jButtonDeleteSubjectActionPerformed
+
+    private void jButtonClearSubjectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClearSubjectActionPerformed
+        this.clearSubjectForm();
+    }//GEN-LAST:event_jButtonClearSubjectActionPerformed
+
+    private void jRadioButtonSemester1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonSemester1ActionPerformed
+        if(this.jRadioButtonSemester1.isSelected()){
+            this.jRadioButtonSemester2.setSelected(false);
+        }
+    }//GEN-LAST:event_jRadioButtonSemester1ActionPerformed
+
+    private void jRadioButtonSemester2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonSemester2ActionPerformed
+        if(this.jRadioButtonSemester2.isSelected()){
+            this.jRadioButtonSemester1.setSelected(false);
+        }
+    }//GEN-LAST:event_jRadioButtonSemester2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -3291,6 +3391,47 @@ public class ABC extends javax.swing.JFrame {
         this.jTextFieldDepartment.setText("");
         
     }
+    
+    private void loadSubject() {
+            String sql = "SELECT * FROM subject";  
+        try {
+          PreparedStatement ps = conn.prepareStatement(sql);
+          ResultSet rs = ps.executeQuery();
+          
+          DefaultTableModel dtm = (DefaultTableModel) this.jTableSubject.getModel();
+                    dtm.setRowCount(0);
+
+                    while (rs.next()) {
+
+                        Vector v = new Vector();
+                        v.add(rs.getString("SubjectCode"));
+                        v.add(rs.getString("SubjectName"));
+                        v.add(rs.getInt("OfferedYear"));
+                        v.add(rs.getInt("OfferedSem"));
+                        v.add(rs.getInt("LectureHour"));
+                        v.add(rs.getInt("TuteHour"));
+                        v.add(rs.getInt("LabHour"));
+                        v.add(rs.getInt("EvalutionHour"));
+
+                        dtm.addRow(v);
+
+                    }
+        } catch (SQLException ex) {
+            System.out.print(ex);
+        } 
+    }
+        
+        
+    private void clearSubjectForm() {
+        this.jTextFieldSubjectCode.setText("");
+        this.jTextFieldSubjectName.setText("");
+        this.jRadioButtonSemester1.setSelected(false);
+        this.jRadioButtonSemester2.setSelected(false);
+        this.jSpinnerLectureHour.setValue(0);
+        this.jSpinnerLabHour.setValue(0);
+        this.jSpinnerTutorialHour.setValue(0);
+        this.jSpinnerEvalutionHour.setValue(0);
+    }
 
 
         
@@ -3397,6 +3538,7 @@ public class ABC extends javax.swing.JFrame {
     private javax.swing.JComboBox jComboBoxRoomsession;
     private javax.swing.JComboBox jComboBoxStudentGroup;
     private javax.swing.JComboBox jComboBoxTag;
+    private javax.swing.JComboBox jComboBoxYear;
     private javax.swing.JComboBox jComboBoxsubject;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -3599,7 +3741,6 @@ public class ABC extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldGroupId;
     private javax.swing.JTextField jTextFieldLecturerName;
     private javax.swing.JTextField jTextFieldNoOfStudent;
-    private javax.swing.JTextField jTextFieldOfferedYear;
     private javax.swing.JTextField jTextFieldRand;
     private javax.swing.JTextField jTextFieldRoomName;
     private javax.swing.JTextField jTextFieldSubGroupId;
