@@ -3183,7 +3183,21 @@ public class ABC extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonAddSubjectActionPerformed
 
     private void jButtonUpdateSubjectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateSubjectActionPerformed
-        
+        StringBuilder sql = new StringBuilder();
+        sql.append("UPDATE subject SET SubjectName = '");
+        sql.append(this.jTextFieldSubjectName.getText()).append("',OfferedYear = ");
+        sql.append(this.jComboBoxYear.getSelectedItem().toString()).append(",OfferedSem = ");
+        sql.append(this.jRadioButtonSemester1.isSelected() ? 1 : 2).append(",LectureHour = ");
+        sql.append(this.jSpinnerLectureHour.getValue()).append(", TuteHour =");
+        sql.append(this.jSpinnerTutorialHour.getValue()).append(", LabHour =");
+        sql.append(this.jSpinnerLabHour.getValue()).append(", EvaluationHour =");
+        sql.append(this.jSpinnerEvalutionHour.getValue()).append(" WHERE SubjectCode = '").append(this.EId).append("'");
+        try {
+          PreparedStatement ps = conn.prepareStatement(sql.toString());
+          ps.execute();
+        } catch (SQLException ex) {
+            System.out.print(ex);
+        }
         this.loadSubject();
         this.clearSubjectForm();
     }//GEN-LAST:event_jButtonUpdateSubjectActionPerformed
