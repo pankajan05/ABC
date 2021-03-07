@@ -1808,6 +1808,11 @@ public class ABC extends javax.swing.JFrame {
                 "Id", "Lecture1", "Lecture2", "Subject Code", "Subject Name", "GroupId", "Tag", "Room"
             }
         ));
+        jTable2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable2MouseClicked(evt);
+            }
+        });
         jScrollPaneSession.setViewportView(jTable2);
 
         jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -1953,12 +1958,32 @@ public class ABC extends javax.swing.JFrame {
         );
 
         jButtonAddWorkingday1.setText("Add");
+        jButtonAddWorkingday1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAddWorkingday1ActionPerformed(evt);
+            }
+        });
 
         jButtonUpdateWorkingDay1.setText("Update");
+        jButtonUpdateWorkingDay1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonUpdateWorkingDay1ActionPerformed(evt);
+            }
+        });
 
         jButtonDeleteWorkingDay1.setText("Delete");
+        jButtonDeleteWorkingDay1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDeleteWorkingDay1ActionPerformed(evt);
+            }
+        });
 
         jButtonClearWorkingDay1.setText("Clear");
+        jButtonClearWorkingDay1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonClearWorkingDay1ActionPerformed(evt);
+            }
+        });
 
         jLabel53.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel53.setText("Session Management");
@@ -2054,7 +2079,7 @@ public class ABC extends javax.swing.JFrame {
                 .addGroup(jPanelSessionLayout.createSequentialGroup()
                     .addContainerGap()
                     .addComponent(jLabel53, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(624, Short.MAX_VALUE)))
+                    .addContainerGap(628, Short.MAX_VALUE)))
         );
 
         DynamicPanel.add(jPanelSession, "card2");
@@ -3253,6 +3278,35 @@ public class ABC extends javax.swing.JFrame {
             this.jRadioButtonSemester1.setSelected(false);
         }
     }//GEN-LAST:event_jRadioButtonSemester2ActionPerformed
+
+    private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTable2MouseClicked
+
+    private void jButtonAddWorkingday1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddWorkingday1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonAddWorkingday1ActionPerformed
+
+    private void jButtonUpdateWorkingDay1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateWorkingDay1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonUpdateWorkingDay1ActionPerformed
+
+    private void jButtonDeleteWorkingDay1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteWorkingDay1ActionPerformed
+        String sql = "DELETE FROM session WHERE Id = " + this.Id ;
+        
+        try {
+          PreparedStatement ps = conn.prepareStatement(sql);
+          ps.execute();
+        } catch (SQLException ex) {
+            System.out.print(ex);
+        }
+        this.loadSubject();
+        this.clearSubjectForm();
+    }//GEN-LAST:event_jButtonDeleteWorkingDay1ActionPerformed
+
+    private void jButtonClearWorkingDay1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClearWorkingDay1ActionPerformed
+        
+    }//GEN-LAST:event_jButtonClearWorkingDay1ActionPerformed
 
     /**
      * @param args the command line arguments
