@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Hashtable;
 import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
 
@@ -22,10 +23,17 @@ public class ABC extends javax.swing.JFrame {
      private Connection conn;
      private Integer Id;
      private String EId;
+     
+     Hashtable<String, String> lec_dict;
+     Hashtable<String, String> room_dict;
+     Hashtable<String, String> sub_dict;
     /**
      * Creates new form ABC
      */
     public ABC() {
+        this.lec_dict = new Hashtable<String, String>();
+        this.room_dict = new Hashtable<String, String>();
+        this.sub_dict = new Hashtable<String, String>();
         initComponents();
         try {
             
@@ -3272,7 +3280,17 @@ public class ABC extends javax.swing.JFrame {
     }//GEN-LAST:event_jRadioButtonSemester2ActionPerformed
 
     private void jTableSessionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableSessionMouseClicked
-        
+        int z = this.jTableSession.getSelectedRow();
+
+        this.Id =  (Integer) jTableSession.getValueAt(z,0);
+        this.jComboBoxLedcturer.setSelectedItem(this.lec_dict.get(jTableSession.getValueAt(z,1).toString())+"-"+jTableSession.getValueAt(z,1).toString());
+        this.jComboBoxLedcturer1.setSelectedItem(this.lec_dict.get(jTableSession.getValueAt(z,2).toString())+"-"+jTableSession.getValueAt(z,2).toString());
+        this.jComboBoxsubject.setSelectedItem(jTableSession.getValueAt(z,3).toString()+"-"+this.sub_dict.get(jTableSession.getValueAt(z,3).toString()));
+        this.jComboBoxGroup.setSelectedItem(jTableSession.getValueAt(z,4).toString());
+        this.jComboBoxTag.setSelectedItem(jTableSession.getValueAt(z,5).toString());
+        this.jComboBoxRoomsession.setSelectedItem(this.room_dict.get(jTableSession.getValueAt(z,6).toString())+"-"+jTableSession.getValueAt(z,6).toString());
+        this.jTextFieldNoOfStudent.setText(jTableSession.getValueAt(z,7).toString());
+        this.jTextFieldDuration.setText(jTableSession.getValueAt(z,8).toString());
     }//GEN-LAST:event_jTableSessionMouseClicked
 
     private void jButtonAddSessionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddSessionActionPerformed
@@ -3674,6 +3692,7 @@ public class ABC extends javax.swing.JFrame {
            while (rs.next()) {
             this.jComboBoxLedcturer1.addItem(rs.getString("EmployeeId") + "-"+rs.getString("LecturerName"));
             this.jComboBoxLedcturer.addItem(rs.getString("EmployeeId") + "-"+rs.getString("LecturerName"));
+            this.lec_dict.put(rs.getString("LecturerName"),rs.getString("EmployeeId"));
            }
            
            st = conn.createStatement();
@@ -3695,6 +3714,7 @@ public class ABC extends javax.swing.JFrame {
            
            while (rs.next()) {
                this.jComboBoxsubject.addItem(rs.getString("SubjectCode")+"-"+rs.getString("SubjectName"));
+               this.sub_dict.put(rs.getString("SubjectCode"),rs.getString("SubjectName"));
            }
            
            st = conn.createStatement();
@@ -3702,6 +3722,7 @@ public class ABC extends javax.swing.JFrame {
            
            while (rs.next()) {
                this.jComboBoxRoomsession.addItem(rs.getString("Id")+"-"+rs.getString("RoomName"));
+               this.room_dict.put(rs.getString("RoomName"),rs.getString("Id"));
            }
            
            st.close();
