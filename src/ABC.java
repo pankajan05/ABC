@@ -3275,7 +3275,25 @@ public class ABC extends javax.swing.JFrame {
     }//GEN-LAST:event_jTableSessionMouseClicked
 
     private void jButtonAddSessionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddSessionActionPerformed
+        StringBuilder sql = new StringBuilder();
+        sql.append("INSERT INTO session (Lecturer1Id, Lecturer2Id, SubjectCode, GroupId, Tag, Room, TotalStudent, Duration) values('");
+        sql.append(this.jComboBoxLedcturer.getSelectedItem().toString().split("-")[0]).append("','");
+        sql.append(this.jComboBoxLedcturer1.getSelectedItem().toString().split("-")[0]).append("','");
+        sql.append(this.jComboBoxsubject.getSelectedItem().toString().split("-")[0]).append("','");
+        sql.append(this.jComboBoxGroup.getSelectedItem().toString()).append("','");
+        sql.append(this.jComboBoxTag.getSelectedItem().toString()).append("','");
+        sql.append(this.jComboBoxRoomsession.getSelectedItem().toString().split("-")[0]).append("',");
+        sql.append(this.jTextFieldNoOfStudent.getText()).append(",");
+        sql.append(this.jTextFieldDuration.getText()).append(")");
         
+                
+        try {
+          PreparedStatement ps = conn.prepareStatement(sql.toString());
+          ps.execute();
+          
+        } catch (SQLException ex) {
+            System.out.print(ex);
+        } 
         this.loadSession();
         this.clearSessionForm();
     }//GEN-LAST:event_jButtonAddSessionActionPerformed
