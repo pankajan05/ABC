@@ -3318,6 +3318,25 @@ public class ABC extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonAddSessionActionPerformed
 
     private void jButtonUpdateSessionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateSessionActionPerformed
+                                                         
+        StringBuilder sql = new StringBuilder();
+        sql.append("UPDATE session SET Lecturer1Id = '");
+        sql.append(this.jComboBoxLedcturer.getSelectedItem().toString().split("-")[0]).append("', Lecturer2Id ='");
+        sql.append(this.jComboBoxLedcturer1.getSelectedItem().toString().split("-")[0]).append("', SubjectCode ='");
+        sql.append(this.jComboBoxsubject.getSelectedItem().toString().split("-")[0]).append("', GroupId ='");
+        sql.append(this.jComboBoxGroup.getSelectedItem().toString()).append("', Tag ='");
+        sql.append(this.jComboBoxTag.getSelectedItem().toString()).append("', Room ='");
+        sql.append(this.jComboBoxRoomsession.getSelectedItem().toString().split("-")[0]).append("', TotalStudent =");
+        sql.append(this.jTextFieldNoOfStudent.getText()).append(", Duration =");
+        sql.append(this.jTextFieldDuration.getText()).append(" WHERE Id = ").append(this.Id);
+        
+        try {
+          PreparedStatement ps = conn.prepareStatement(sql.toString());
+          ps.execute();
+          
+        } catch (SQLException ex) {
+            System.out.print(ex);
+        }
         
         this.loadSession();
         this.clearSessionForm();
