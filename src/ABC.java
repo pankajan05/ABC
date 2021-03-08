@@ -2730,6 +2730,7 @@ public class ABC extends javax.swing.JFrame {
             DynamicPanel.revalidate();
             
             this.loadSession();
+            this.fillCombo();
     }//GEN-LAST:event_jMenuItemSessionManagementActionPerformed
 
     private void jMenuItemConsecutiveSessionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemConsecutiveSessionActionPerformed
@@ -3653,7 +3654,11 @@ public class ABC extends javax.swing.JFrame {
         } 
         
         
-       String rq1 = "SELECT *  FROM  location";
+       
+    }
+        
+    private void fillCombo(){
+        String rq1 = "SELECT *  FROM  location";
        String rq2 = "SELECT *  FROM  lecturer";
        String rq3 = "SELECT *  FROM  tag";
        String rq4 = "SELECT *  FROM  subject";
@@ -3705,9 +3710,7 @@ public class ABC extends javax.swing.JFrame {
        }  catch (SQLException e) { 
             e.printStackTrace();
        }
-    }
-        
-        
+    }   
     private void clearSessionForm() {
         this.jTextFieldNoOfStudent.setText("");
         this.jTextFieldDuration.setText("");
