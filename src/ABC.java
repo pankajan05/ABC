@@ -5,8 +5,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Vector;
+import javax.swing.JCheckBox;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /*
@@ -27,6 +30,7 @@ public class ABC extends javax.swing.JFrame {
      Hashtable<String, String> lec_dict;
      Hashtable<String, String> room_dict;
      Hashtable<String, String> sub_dict;
+     Hashtable<String, String> sussion_dict;
     /**
      * Creates new form ABC
      */
@@ -34,11 +38,13 @@ public class ABC extends javax.swing.JFrame {
         this.lec_dict = new Hashtable<String, String>();
         this.room_dict = new Hashtable<String, String>();
         this.sub_dict = new Hashtable<String, String>();
+        this.sussion_dict = new Hashtable<String, String>();
+        
         initComponents();
         try {
             
            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/ABC","root","1234");
-            System.out.println("Connection established successfully.");
+           System.out.println("Connection established successfully.");
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -254,22 +260,18 @@ public class ABC extends javax.swing.JFrame {
         jButtonDeleteSession = new javax.swing.JButton();
         jButtonClearSession = new javax.swing.JButton();
         jLabel53 = new javax.swing.JLabel();
-        jPanel5 = new javax.swing.JPanel();
-        jLabel73 = new javax.swing.JLabel();
-        jComboBoxRoomsession = new javax.swing.JComboBox();
-        jLabel52 = new javax.swing.JLabel();
         jPanelConsecutive = new javax.swing.JPanel();
         jLabel61 = new javax.swing.JLabel();
         jScrollPane7 = new javax.swing.JScrollPane();
         jTableConsecutive = new javax.swing.JTable();
         jScrollPane9 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
+        jTableSession4 = new javax.swing.JTable();
         jButtonDeleteConsecutive = new javax.swing.JButton();
         jButtonAddConsecutive = new javax.swing.JButton();
         jPanelNotAvailable = new javax.swing.JPanel();
         jLabel62 = new javax.swing.JLabel();
         jScrollPane10 = new javax.swing.JScrollPane();
-        jTable4 = new javax.swing.JTable();
+        jTableNotAvailable = new javax.swing.JTable();
         jLabel68 = new javax.swing.JLabel();
         jLabel69 = new javax.swing.JLabel();
         jLabel70 = new javax.swing.JLabel();
@@ -284,8 +286,8 @@ public class ABC extends javax.swing.JFrame {
         jLabel76 = new javax.swing.JLabel();
         jComboBox5 = new javax.swing.JComboBox();
         jComboBox6 = new javax.swing.JComboBox();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        jTextFieldStart = new javax.swing.JTextField();
+        jTextFieldEnd = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -315,6 +317,49 @@ public class ABC extends javax.swing.JFrame {
         jTableSRoomTimetable2 = new javax.swing.JTable();
         jLabel39 = new javax.swing.JLabel();
         jLabel40 = new javax.swing.JLabel();
+        jPanelOverlapping = new javax.swing.JPanel();
+        jLabel92 = new javax.swing.JLabel();
+        jScrollPane13 = new javax.swing.JScrollPane();
+        jTableOverlapping = new javax.swing.JTable();
+        jScrollPane14 = new javax.swing.JScrollPane();
+        jTableSession2 = new javax.swing.JTable();
+        jButtonDeleteOverlapping = new javax.swing.JButton();
+        jButtonAddOverlapping = new javax.swing.JButton();
+        jPanelParallel = new javax.swing.JPanel();
+        jLabel93 = new javax.swing.JLabel();
+        jScrollPane15 = new javax.swing.JScrollPane();
+        jTableParallel = new javax.swing.JTable();
+        jScrollPane16 = new javax.swing.JScrollPane();
+        jTableSession3 = new javax.swing.JTable();
+        jButtonDeleteParallel = new javax.swing.JButton();
+        jButtonAddParallel = new javax.swing.JButton();
+        jPanelRoomAllocate = new javax.swing.JPanel();
+        jLabel73 = new javax.swing.JLabel();
+        jLabel113 = new javax.swing.JLabel();
+        jLabel52 = new javax.swing.JLabel();
+        jScrollPaneSession1 = new javax.swing.JScrollPane();
+        jTableSession1 = new javax.swing.JTable();
+        jButtonAddSession1 = new javax.swing.JButton();
+        jButtonUpdateSession1 = new javax.swing.JButton();
+        jButtonDeleteSession1 = new javax.swing.JButton();
+        jButtonClearSession1 = new javax.swing.JButton();
+        jPanel12 = new javax.swing.JPanel();
+        jLabel114 = new javax.swing.JLabel();
+        jComboBoxRoomsession = new javax.swing.JComboBox();
+        jLabel115 = new javax.swing.JLabel();
+        jLabel94 = new javax.swing.JLabel();
+        jLabel104 = new javax.swing.JLabel();
+        jLabel105 = new javax.swing.JLabel();
+        jLabel106 = new javax.swing.JLabel();
+        jLabel107 = new javax.swing.JLabel();
+        jLabel108 = new javax.swing.JLabel();
+        jLabel109 = new javax.swing.JLabel();
+        jLabel110 = new javax.swing.JLabel();
+        jLabel111 = new javax.swing.JLabel();
+        jLabel112 = new javax.swing.JLabel();
+        jLabel116 = new javax.swing.JLabel();
+        jLabel117 = new javax.swing.JLabel();
+        jLabel118 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItemWorkingDays = new javax.swing.JMenuItem();
@@ -329,6 +374,9 @@ public class ABC extends javax.swing.JFrame {
         jMenuItemSessionManagement = new javax.swing.JMenuItem();
         jMenuItemConsecutiveSession = new javax.swing.JMenuItem();
         jMenuItemNotAvailable = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenuItemLecturerTimetable = new javax.swing.JMenuItem();
         jMenuItemGroupTimeTable = new javax.swing.JMenuItem();
@@ -1808,13 +1856,13 @@ public class ABC extends javax.swing.JFrame {
 
         jTableSession.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Id", "Lecture1", "Lecture2", "Subject Code", "GroupId", "Tag", "Room", "TotalStudents", "Duration"
+                "Id", "Lecture1", "Lecture2", "Subject Code", "GroupId", "Tag", "TotalStudents", "Duration"
             }
         ));
         jTableSession.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1987,42 +2035,6 @@ public class ABC extends javax.swing.JFrame {
         jLabel53.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel53.setText("Session Management");
 
-        jPanel5.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-
-        jLabel73.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel73.setText("Allocate Room");
-
-        jLabel52.setText("Select Room");
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel73)
-                .addContainerGap(139, Short.MAX_VALUE))
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jLabel52)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jComboBoxRoomsession, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel73)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel52)
-                .addGap(32, 32, 32)
-                .addComponent(jComboBoxRoomsession, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(100, 100, 100))
-        );
-
         javax.swing.GroupLayout jPanelSessionLayout = new javax.swing.GroupLayout(jPanelSession);
         jPanelSession.setLayout(jPanelSessionLayout);
         jPanelSessionLayout.setHorizontalGroup(
@@ -2034,12 +2046,11 @@ public class ABC extends javax.swing.JFrame {
                         .addComponent(jScrollPaneSession)
                         .addContainerGap())
                     .addGroup(jPanelSessionLayout.createSequentialGroup()
+                        .addGap(0, 152, Short.MAX_VALUE)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addGap(80, 80, 80)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30)
-                        .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(30, 30, 30)
+                        .addGap(100, 100, 100)
                         .addGroup(jPanelSessionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jButtonClearSession, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButtonDeleteSession, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2069,8 +2080,7 @@ public class ABC extends javax.swing.JFrame {
                         .addGap(33, 33, 33)
                         .addComponent(jButtonDeleteSession, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(30, 30, 30)
-                        .addComponent(jButtonClearSession, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jButtonClearSession, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
             .addGroup(jPanelSessionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanelSessionLayout.createSequentialGroup()
@@ -2086,42 +2096,61 @@ public class ABC extends javax.swing.JFrame {
 
         jTableConsecutive.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Section 1", "Section 2", "Section 3", "Section 4"
+                "Id", "Section 1", "Section 2", "Section 3", "Section 4"
             }
         ));
+        jTableConsecutive.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableConsecutiveMouseClicked(evt);
+            }
+        });
         jScrollPane7.setViewportView(jTableConsecutive);
 
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+        jTableSession4.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Check", "ID", "Subject", "Lecturer", "GroupId", "Tag"
+                "Check", "ID", "Subject", "Lecturer", "Lecturer2", "GroupId", "Tag", "Room Name", "Total Students", "Duration"
             }
-        ));
-        jScrollPane9.setViewportView(jTable3);
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane9.setViewportView(jTableSession4);
 
         jButtonDeleteConsecutive.setText("Delete");
+        jButtonDeleteConsecutive.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDeleteConsecutiveActionPerformed(evt);
+            }
+        });
 
         jButtonAddConsecutive.setText("Add");
+        jButtonAddConsecutive.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAddConsecutiveActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelConsecutiveLayout = new javax.swing.GroupLayout(jPanelConsecutive);
         jPanelConsecutive.setLayout(jPanelConsecutiveLayout);
         jPanelConsecutiveLayout.setHorizontalGroup(
             jPanelConsecutiveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelConsecutiveLayout.createSequentialGroup()
-                .addGap(435, 435, 435)
-                .addComponent(jLabel61)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelConsecutiveLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelConsecutiveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2134,21 +2163,25 @@ public class ABC extends javax.swing.JFrame {
                     .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 498, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonDeleteConsecutive, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelConsecutiveLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel61)
+                .addGap(372, 372, 372))
         );
         jPanelConsecutiveLayout.setVerticalGroup(
             jPanelConsecutiveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelConsecutiveLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel61)
                 .addGap(14, 14, 14)
+                .addComponent(jLabel61)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanelConsecutiveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonDeleteConsecutive, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonAddConsecutive))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelConsecutiveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 525, Short.MAX_VALUE)
-                    .addComponent(jScrollPane9))
-                .addContainerGap(68, Short.MAX_VALUE))
+                    .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 573, Short.MAX_VALUE)
+                    .addComponent(jScrollPane7))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         DynamicPanel.add(jPanelConsecutive, "card2");
@@ -2156,18 +2189,23 @@ public class ABC extends javax.swing.JFrame {
         jLabel62.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel62.setText("Not Available Time Management");
 
-        jTable4.setModel(new javax.swing.table.DefaultTableModel(
+        jTableNotAvailable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Id", "Lecturer Id", "Group Id", "Sub GroupId", "SessionId", "Room", "Day", "Start Time", "End Time"
             }
         ));
-        jScrollPane10.setViewportView(jTable4);
+        jTableNotAvailable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableNotAvailableMouseClicked(evt);
+            }
+        });
+        jScrollPane10.setViewportView(jTableNotAvailable);
 
         jLabel68.setText("Select LecturerId");
 
@@ -2177,14 +2215,6 @@ public class ABC extends javax.swing.JFrame {
 
         jLabel71.setText("Select Section Id");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         jLabel72.setText("Select Room");
 
         jLabel74.setText("Select Day");
@@ -2193,17 +2223,35 @@ public class ABC extends javax.swing.JFrame {
 
         jLabel76.setText("End Time");
 
-        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" }));
 
         jButton1.setText("Add");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Update");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Clear");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Delete");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelNotAvailableLayout = new javax.swing.GroupLayout(jPanelNotAvailable);
         jPanelNotAvailable.setLayout(jPanelNotAvailableLayout);
@@ -2225,26 +2273,29 @@ public class ABC extends javax.swing.JFrame {
                             .addComponent(jLabel69)
                             .addComponent(jLabel70)
                             .addComponent(jLabel71))
-                        .addGap(113, 113, 113)
                         .addGroup(jPanelNotAvailableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(202, 202, 202)
+                            .addGroup(jPanelNotAvailableLayout.createSequentialGroup()
+                                .addGap(113, 113, 113)
+                                .addGroup(jPanelNotAvailableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanelNotAvailableLayout.createSequentialGroup()
+                                .addGap(27, 27, 27)
+                                .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(36, 36, 36)
                         .addGroup(jPanelNotAvailableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel72)
                             .addComponent(jLabel74)
                             .addComponent(jLabel75)
                             .addComponent(jLabel76))
                         .addGap(79, 79, 79)
-                        .addGroup(jPanelNotAvailableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
-                            .addGroup(jPanelNotAvailableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jComboBox6, 0, 138, Short.MAX_VALUE)
-                                .addComponent(jComboBox5, 0, 138, Short.MAX_VALUE)
-                                .addComponent(jTextField1)))))
-                .addGap(95, 95, 95)
+                        .addGroup(jPanelNotAvailableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jComboBox6, 0, 138, Short.MAX_VALUE)
+                            .addComponent(jComboBox5, 0, 138, Short.MAX_VALUE)
+                            .addComponent(jTextFieldStart)
+                            .addComponent(jTextFieldEnd))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
                 .addGroup(jPanelNotAvailableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2261,7 +2312,7 @@ public class ABC extends javax.swing.JFrame {
                         .addGroup(jPanelNotAvailableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel75)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(24, 24, 24))
                     .addGroup(jPanelNotAvailableLayout.createSequentialGroup()
@@ -2275,7 +2326,7 @@ public class ABC extends javax.swing.JFrame {
                             .addComponent(jLabel72)
                             .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(37, 37, 37)
+                        .addGap(27, 27, 27)
                         .addGroup(jPanelNotAvailableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel69)
                             .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2284,14 +2335,14 @@ public class ABC extends javax.swing.JFrame {
                             .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(39, 39, 39)
                         .addComponent(jLabel70)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)))
                 .addGroup(jPanelNotAvailableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel71)
                     .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel76)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(72, Short.MAX_VALUE))
+                .addContainerGap(81, Short.MAX_VALUE))
         );
 
         DynamicPanel.add(jPanelNotAvailable, "card2");
@@ -2510,6 +2561,419 @@ public class ABC extends javax.swing.JFrame {
 
         DynamicPanel.add(jPanelStudentTimetable, "card2");
 
+        jLabel92.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel92.setText("Overlapping Session Management");
+
+        jTableOverlapping.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Id", "Section 1", "Section 2", "Section 3", "Section 4"
+            }
+        ));
+        jTableOverlapping.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableOverlappingMouseClicked(evt);
+            }
+        });
+        jScrollPane13.setViewportView(jTableOverlapping);
+
+        jTableSession2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Check", "ID", "Subject", "Lecturer", "Lecturer2", "GroupId", "Tag", "RoomName", "Total Students", "Duration"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane14.setViewportView(jTableSession2);
+
+        jButtonDeleteOverlapping.setText("Delete");
+        jButtonDeleteOverlapping.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDeleteOverlappingActionPerformed(evt);
+            }
+        });
+
+        jButtonAddOverlapping.setText("Add");
+        jButtonAddOverlapping.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAddOverlappingActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanelOverlappingLayout = new javax.swing.GroupLayout(jPanelOverlapping);
+        jPanelOverlapping.setLayout(jPanelOverlappingLayout);
+        jPanelOverlappingLayout.setHorizontalGroup(
+            jPanelOverlappingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelOverlappingLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelOverlappingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelOverlappingLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButtonAddOverlapping, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane14, javax.swing.GroupLayout.DEFAULT_SIZE, 702, Short.MAX_VALUE))
+                .addGap(30, 30, 30)
+                .addGroup(jPanelOverlappingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, 498, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonDeleteOverlapping, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelOverlappingLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel92)
+                .addGap(369, 369, 369))
+        );
+        jPanelOverlappingLayout.setVerticalGroup(
+            jPanelOverlappingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelOverlappingLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel92)
+                .addGap(18, 18, 18)
+                .addGroup(jPanelOverlappingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonDeleteOverlapping, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonAddOverlapping))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelOverlappingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane14, javax.swing.GroupLayout.DEFAULT_SIZE, 602, Short.MAX_VALUE)
+                    .addComponent(jScrollPane13))
+                .addContainerGap())
+        );
+
+        DynamicPanel.add(jPanelOverlapping, "card2");
+
+        jLabel93.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel93.setText("Parallel Session Management");
+
+        jTableParallel.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Id", "Section 1", "Section 2", "Section 3", "Section 4"
+            }
+        ));
+        jTableParallel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableParallelMouseClicked(evt);
+            }
+        });
+        jScrollPane15.setViewportView(jTableParallel);
+
+        jTableSession3.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Check", "ID", "Subject", "Lecturer", "Lecturer2", "GroupId", "Tag", "Room Name", "Total Students", "Duration"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane16.setViewportView(jTableSession3);
+
+        jButtonDeleteParallel.setText("Delete");
+        jButtonDeleteParallel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDeleteParallelActionPerformed(evt);
+            }
+        });
+
+        jButtonAddParallel.setText("Add");
+        jButtonAddParallel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAddParallelActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanelParallelLayout = new javax.swing.GroupLayout(jPanelParallel);
+        jPanelParallel.setLayout(jPanelParallelLayout);
+        jPanelParallelLayout.setHorizontalGroup(
+            jPanelParallelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelParallelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelParallelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane16, javax.swing.GroupLayout.DEFAULT_SIZE, 702, Short.MAX_VALUE)
+                    .addGroup(jPanelParallelLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButtonAddParallel, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(30, 30, 30)
+                .addGroup(jPanelParallelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane15, javax.swing.GroupLayout.PREFERRED_SIZE, 498, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonDeleteParallel, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelParallelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel93)
+                .addGap(388, 388, 388))
+        );
+        jPanelParallelLayout.setVerticalGroup(
+            jPanelParallelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelParallelLayout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(jLabel93)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelParallelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonDeleteParallel, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonAddParallel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelParallelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane16, javax.swing.GroupLayout.DEFAULT_SIZE, 606, Short.MAX_VALUE)
+                    .addComponent(jScrollPane15))
+                .addContainerGap())
+        );
+
+        DynamicPanel.add(jPanelParallel, "card2");
+
+        jLabel73.setText("Lecturer 2");
+
+        jLabel113.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel113.setText("Session Room Management");
+
+        jLabel52.setText("Lecturer 1");
+
+        jTableSession1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Id", "Lecture1", "Lecture2", "Subject Code", "GroupId", "Tag", "Room", "TotalStudents", "Duration"
+            }
+        ));
+        jTableSession1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableSession1MouseClicked(evt);
+            }
+        });
+        jScrollPaneSession1.setViewportView(jTableSession1);
+        if (jTableSession1.getColumnModel().getColumnCount() > 0) {
+            jTableSession1.getColumnModel().getColumn(6).setHeaderValue("Room");
+        }
+
+        jButtonAddSession1.setText("Add");
+        jButtonAddSession1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAddSession1ActionPerformed(evt);
+            }
+        });
+
+        jButtonUpdateSession1.setText("Update");
+        jButtonUpdateSession1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonUpdateSession1ActionPerformed(evt);
+            }
+        });
+
+        jButtonDeleteSession1.setText("Delete");
+        jButtonDeleteSession1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDeleteSession1ActionPerformed(evt);
+            }
+        });
+
+        jButtonClearSession1.setText("Clear");
+        jButtonClearSession1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonClearSession1ActionPerformed(evt);
+            }
+        });
+
+        jPanel12.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jLabel114.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel114.setText("Allocate Room");
+
+        jLabel115.setText("Select Room");
+
+        javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
+        jPanel12.setLayout(jPanel12Layout);
+        jPanel12Layout.setHorizontalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel12Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel114)
+                .addContainerGap(143, Short.MAX_VALUE))
+            .addGroup(jPanel12Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel12Layout.createSequentialGroup()
+                        .addComponent(jLabel115)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jComboBoxRoomsession, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel12Layout.setVerticalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel12Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel114)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel115)
+                .addGap(32, 32, 32)
+                .addComponent(jComboBoxRoomsession, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(100, 100, 100))
+        );
+
+        jLabel94.setText("Tag");
+
+        jLabel104.setText("Group");
+
+        jLabel105.setText("Subject");
+
+        jLabel106.setText("Number of Students");
+
+        jLabel107.setText("Duration");
+
+        jLabel108.setText("Kumara");
+
+        jLabel109.setText("senthil");
+
+        jLabel110.setText("lec");
+
+        jLabel111.setText("Information Security");
+
+        jLabel112.setText("Y1S1.2016.1");
+
+        jLabel116.setText("100");
+
+        jLabel117.setText("1");
+
+        jLabel118.setText("Hour");
+
+        javax.swing.GroupLayout jPanelRoomAllocateLayout = new javax.swing.GroupLayout(jPanelRoomAllocate);
+        jPanelRoomAllocate.setLayout(jPanelRoomAllocateLayout);
+        jPanelRoomAllocateLayout.setHorizontalGroup(
+            jPanelRoomAllocateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelRoomAllocateLayout.createSequentialGroup()
+                .addGap(82, 82, 82)
+                .addComponent(jScrollPaneSession1)
+                .addContainerGap())
+            .addGroup(jPanelRoomAllocateLayout.createSequentialGroup()
+                .addGap(71, 71, 71)
+                .addGroup(jPanelRoomAllocateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel52)
+                    .addComponent(jLabel73)
+                    .addComponent(jLabel94)
+                    .addComponent(jLabel105)
+                    .addComponent(jLabel104)
+                    .addComponent(jLabel106)
+                    .addComponent(jLabel107))
+                .addGap(50, 50, 50)
+                .addGroup(jPanelRoomAllocateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelRoomAllocateLayout.createSequentialGroup()
+                        .addComponent(jLabel117)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel118))
+                    .addComponent(jLabel116)
+                    .addComponent(jLabel112)
+                    .addComponent(jLabel111)
+                    .addComponent(jLabel110)
+                    .addComponent(jLabel109)
+                    .addComponent(jLabel108))
+                .addGap(180, 180, 180)
+                .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 132, Short.MAX_VALUE)
+                .addGroup(jPanelRoomAllocateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButtonClearSession1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonDeleteSession1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonUpdateSession1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonAddSession1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(297, 297, 297))
+            .addGroup(jPanelRoomAllocateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelRoomAllocateLayout.createSequentialGroup()
+                    .addContainerGap(525, Short.MAX_VALUE)
+                    .addComponent(jLabel113)
+                    .addContainerGap(525, Short.MAX_VALUE)))
+        );
+        jPanelRoomAllocateLayout.setVerticalGroup(
+            jPanelRoomAllocateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelRoomAllocateLayout.createSequentialGroup()
+                .addGap(61, 61, 61)
+                .addComponent(jScrollPaneSession1, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanelRoomAllocateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelRoomAllocateLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanelRoomAllocateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel52)
+                            .addComponent(jLabel108))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanelRoomAllocateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel73)
+                            .addComponent(jLabel109))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanelRoomAllocateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel94)
+                            .addComponent(jLabel110))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanelRoomAllocateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel105)
+                            .addComponent(jLabel111))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanelRoomAllocateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel104)
+                            .addComponent(jLabel112))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanelRoomAllocateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel106)
+                            .addComponent(jLabel116))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanelRoomAllocateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel107)
+                            .addComponent(jLabel117)
+                            .addComponent(jLabel118))
+                        .addGap(40, 40, 40))
+                    .addGroup(jPanelRoomAllocateLayout.createSequentialGroup()
+                        .addGap(92, 92, 92)
+                        .addGroup(jPanelRoomAllocateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelRoomAllocateLayout.createSequentialGroup()
+                                .addGap(0, 33, Short.MAX_VALUE)
+                                .addComponent(jButtonAddSession1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(27, 27, 27)
+                                .addComponent(jButtonUpdateSession1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(33, 33, 33)
+                                .addComponent(jButtonDeleteSession1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(30, 30, 30)
+                                .addComponent(jButtonClearSession1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap())))
+            .addGroup(jPanelRoomAllocateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelRoomAllocateLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jLabel113, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(628, Short.MAX_VALUE)))
+        );
+
+        DynamicPanel.add(jPanelRoomAllocate, "card2");
+
         jMenu1.setText("Detail Management");
 
         jMenuItemWorkingDays.setText("Working Days Management");
@@ -2599,6 +3063,30 @@ public class ABC extends javax.swing.JFrame {
             }
         });
         jMenu3.add(jMenuItemNotAvailable);
+
+        jMenuItem1.setText("Parallel Session");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem1);
+
+        jMenuItem2.setText("Overlap Session");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem2);
+
+        jMenuItem3.setText("Session Room Allcation");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem3);
 
         jMenuBar1.add(jMenu3);
 
@@ -2749,6 +3237,9 @@ public class ABC extends javax.swing.JFrame {
             DynamicPanel.add(jPanelConsecutive);
             DynamicPanel.repaint();
             DynamicPanel.revalidate();
+            
+            this.loadSessionTable();
+            this.loadConcecutive();
     }//GEN-LAST:event_jMenuItemConsecutiveSessionActionPerformed
 
     private void jMenuItemNotAvailableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemNotAvailableActionPerformed
@@ -2759,6 +3250,9 @@ public class ABC extends javax.swing.JFrame {
             DynamicPanel.add(jPanelNotAvailable);
             DynamicPanel.repaint();
             DynamicPanel.revalidate();
+            
+            this.fillCombo();
+            this.loadNotAvailable();
     }//GEN-LAST:event_jMenuItemNotAvailableActionPerformed
 
     private void jMenuItemLecturerTimetableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemLecturerTimetableActionPerformed
@@ -3288,9 +3782,8 @@ public class ABC extends javax.swing.JFrame {
         this.jComboBoxsubject.setSelectedItem(jTableSession.getValueAt(z,3).toString()+"-"+this.sub_dict.get(jTableSession.getValueAt(z,3).toString()));
         this.jComboBoxGroup.setSelectedItem(jTableSession.getValueAt(z,4).toString());
         this.jComboBoxTag.setSelectedItem(jTableSession.getValueAt(z,5).toString());
-        this.jComboBoxRoomsession.setSelectedItem(this.room_dict.get(jTableSession.getValueAt(z,6).toString())+"-"+jTableSession.getValueAt(z,6).toString());
-        this.jTextFieldNoOfStudent.setText(jTableSession.getValueAt(z,7).toString());
-        this.jTextFieldDuration.setText(jTableSession.getValueAt(z,8).toString());
+        this.jTextFieldNoOfStudent.setText(jTableSession.getValueAt(z,6).toString());
+        this.jTextFieldDuration.setText(jTableSession.getValueAt(z,7).toString());
     }//GEN-LAST:event_jTableSessionMouseClicked
 
     private void jButtonAddSessionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddSessionActionPerformed
@@ -3300,8 +3793,8 @@ public class ABC extends javax.swing.JFrame {
         sql.append(this.jComboBoxLedcturer1.getSelectedItem().toString().split("-")[0]).append("','");
         sql.append(this.jComboBoxsubject.getSelectedItem().toString().split("-")[0]).append("','");
         sql.append(this.jComboBoxGroup.getSelectedItem().toString()).append("','");
-        sql.append(this.jComboBoxTag.getSelectedItem().toString()).append("','");
-        sql.append(this.jComboBoxRoomsession.getSelectedItem().toString().split("-")[0]).append("',");
+        sql.append(this.jComboBoxTag.getSelectedItem().toString()).append("',");
+        sql.append("1,");
         sql.append(this.jTextFieldNoOfStudent.getText()).append(",");
         sql.append(this.jTextFieldDuration.getText()).append(")");
         
@@ -3325,8 +3818,7 @@ public class ABC extends javax.swing.JFrame {
         sql.append(this.jComboBoxLedcturer1.getSelectedItem().toString().split("-")[0]).append("', SubjectCode ='");
         sql.append(this.jComboBoxsubject.getSelectedItem().toString().split("-")[0]).append("', GroupId ='");
         sql.append(this.jComboBoxGroup.getSelectedItem().toString()).append("', Tag ='");
-        sql.append(this.jComboBoxTag.getSelectedItem().toString()).append("', Room ='");
-        sql.append(this.jComboBoxRoomsession.getSelectedItem().toString().split("-")[0]).append("', TotalStudent =");
+        sql.append(this.jComboBoxTag.getSelectedItem().toString()).append("', TotalStudent =");
         sql.append(this.jTextFieldNoOfStudent.getText()).append(", Duration =");
         sql.append(this.jTextFieldDuration.getText()).append(" WHERE Id = ").append(this.Id);
         
@@ -3358,6 +3850,329 @@ public class ABC extends javax.swing.JFrame {
     private void jButtonClearSessionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClearSessionActionPerformed
         this.clearSessionForm();
     }//GEN-LAST:event_jButtonClearSessionActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        DynamicPanel.removeAll();
+            DynamicPanel.repaint();
+            DynamicPanel.revalidate();
+            
+            DynamicPanel.add(jPanelParallel);
+            DynamicPanel.repaint();
+            DynamicPanel.revalidate();
+            
+            this.loadSessionTable();
+            this.loadParallel();
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        DynamicPanel.removeAll();
+            DynamicPanel.repaint();
+            DynamicPanel.revalidate();
+            
+            DynamicPanel.add(jPanelOverlapping);
+            DynamicPanel.repaint();
+            DynamicPanel.revalidate();
+            
+            this.loadSessionTable();
+            this.loadOverlap();
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jTableSession1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableSession1MouseClicked
+        int z = this.jTableSession1.getSelectedRow();
+
+        this.Id =  (Integer) jTableSession1.getValueAt(z,0);
+        this.jLabel108.setText(this.lec_dict.get(jTableSession1.getValueAt(z,1).toString())+"-"+jTableSession1.getValueAt(z,1).toString());
+        this.jLabel109.setText(this.lec_dict.get(jTableSession1.getValueAt(z,2).toString())+"-"+jTableSession1.getValueAt(z,2).toString());
+        this.jLabel111.setText(jTableSession1.getValueAt(z,3).toString()+"-"+this.sub_dict.get(jTableSession1.getValueAt(z,3).toString()));
+        this.jLabel112.setText(jTableSession1.getValueAt(z,4).toString());
+        this.jLabel110.setText(jTableSession1.getValueAt(z,5).toString());
+        this.jComboBoxRoomsession.setSelectedItem(this.room_dict.get(jTableSession1.getValueAt(z,6).toString())+"-"+jTableSession1.getValueAt(z,6).toString());
+        this.jLabel116.setText(jTableSession1.getValueAt(z,7).toString());
+        this.jLabel117.setText(jTableSession1.getValueAt(z,8).toString());
+    }//GEN-LAST:event_jTableSession1MouseClicked
+
+    private void jButtonAddSession1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddSession1ActionPerformed
+        StringBuilder sql = new StringBuilder();
+        sql.append("UPDATE session SET Room = ");
+        sql.append(this.jComboBoxRoomsession.getSelectedItem().toString().split("-")[0]).append(" WHERE Id = ").append(this.Id);
+        
+        try {
+          PreparedStatement ps = conn.prepareStatement(sql.toString());
+          ps.execute();
+        } catch (SQLException ex) {
+            System.out.print(ex);
+        }
+        
+        this.loadRoomSession();
+    }//GEN-LAST:event_jButtonAddSession1ActionPerformed
+
+    private void jButtonUpdateSession1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateSession1ActionPerformed
+        StringBuilder sql = new StringBuilder();
+        sql.append("UPDATE session SET Room = ");
+        sql.append(this.jComboBoxRoomsession.getSelectedItem().toString().split("-")[0]).append(" WHERE Id = ").append(this.Id);
+        try {
+          PreparedStatement ps = conn.prepareStatement(sql.toString());
+          ps.execute();
+        } catch (SQLException ex) {
+            System.out.print(ex);
+        }
+        
+        this.loadRoomSession();
+    }//GEN-LAST:event_jButtonUpdateSession1ActionPerformed
+
+    private void jButtonDeleteSession1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteSession1ActionPerformed
+        StringBuilder sql = new StringBuilder();
+        sql.append("UPDATE session SET Room = ");
+        sql.append("1").append(" WHERE Id = ").append(this.Id);
+        
+        try {
+          PreparedStatement ps = conn.prepareStatement(sql.toString());
+          ps.execute();
+        } catch (SQLException ex) {
+            System.out.print(ex);
+        }
+        
+        this.loadRoomSession();
+    }//GEN-LAST:event_jButtonDeleteSession1ActionPerformed
+
+    private void jButtonClearSession1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClearSession1ActionPerformed
+        this.jComboBoxRoomsession.setSelectedItem("1-NotAllocate");
+    }//GEN-LAST:event_jButtonClearSession1ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        DynamicPanel.removeAll();
+            DynamicPanel.repaint();
+            DynamicPanel.revalidate();
+            
+            DynamicPanel.add(jPanelRoomAllocate);
+            DynamicPanel.repaint();
+            DynamicPanel.revalidate();
+            this.loadRoomSession();
+            this.fillCombo();
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jButtonAddOverlappingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddOverlappingActionPerformed
+        ArrayList overlap = new ArrayList();
+        
+        for(int row =0; row< jTableSession2.getRowCount(); row++){
+            if(jTableSession2.getValueAt(row,0).toString() == "true"){
+                overlap.add((int)jTableSession2.getValueAt(row, 1));
+            }
+        }
+        if(overlap.size() < 2){
+            JOptionPane.showMessageDialog(null, "Please Add more than 1 session");
+        } else{
+        StringBuilder sql = new StringBuilder();
+        sql.append("INSERT INTO overlap (Session1, Session3, Session4, Session2) values(");
+        sql.append(overlap.get(0)).append(",");
+        sql.append(overlap.size() > 2 ? overlap.get(2): 0).append(",");
+        sql.append(overlap.size() > 3 ? overlap.get(3): 0).append(",");
+        sql.append(overlap.get(1)).append(")");
+        
+        try {
+          PreparedStatement ps = conn.prepareStatement(sql.toString());
+          ps.execute();
+        } catch (SQLException ex) {
+            System.out.print(ex);
+        } 
+        }
+        
+        this.loadOverlap();
+    }//GEN-LAST:event_jButtonAddOverlappingActionPerformed
+
+    private void jButtonAddConsecutiveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddConsecutiveActionPerformed
+        ArrayList concecutive = new ArrayList();
+        
+        for(int row =0; row< jTableSession4.getRowCount(); row++){
+            if(jTableSession4.getValueAt(row,0).toString() == "true"){
+                concecutive.add((int)jTableSession4.getValueAt(row, 1));
+            }
+        }
+        if(concecutive.size() < 2){
+            JOptionPane.showMessageDialog(null, "Please Add more than 1 session");
+        } else{
+        StringBuilder sql = new StringBuilder();
+        sql.append("INSERT INTO consecutive (Session1, Session3, Session4, Session2) values(");
+        sql.append(concecutive.get(0)).append(",");
+        sql.append(concecutive.size() > 2 ? concecutive.get(2): 0).append(",");
+        sql.append(concecutive.size() > 3 ? concecutive.get(3): 0).append(",");
+        sql.append(concecutive.get(1)).append(")");
+        
+        try {
+          PreparedStatement ps = conn.prepareStatement(sql.toString());
+          ps.execute();
+        } catch (SQLException ex) {
+            System.out.print(ex);
+        } 
+        }
+        
+        this.loadConcecutive();
+        
+    }//GEN-LAST:event_jButtonAddConsecutiveActionPerformed
+
+    private void jButtonAddParallelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddParallelActionPerformed
+        ArrayList parallel = new ArrayList();
+        
+        for(int row =0; row< jTableSession3.getRowCount(); row++){
+            if(jTableSession3.getValueAt(row,0).toString() == "true"){
+                parallel.add((int)jTableSession3.getValueAt(row, 1));
+            }
+        }
+        if(parallel.size() < 2){
+            JOptionPane.showMessageDialog(null, "Please Add more than 1 session");
+        } else{
+        StringBuilder sql = new StringBuilder();
+        sql.append("INSERT INTO parallel (Session1, Session3, Session4, Session2) values(");
+        sql.append(parallel.get(0)).append(",");
+        sql.append(parallel.size() > 2 ? parallel.get(2): 0).append(",");
+        sql.append(parallel.size() > 3 ? parallel.get(3): 0).append(",");
+        sql.append(parallel.get(1)).append(")");
+        
+        try {
+          PreparedStatement ps = conn.prepareStatement(sql.toString());
+          ps.execute();
+        } catch (SQLException ex) {
+            System.out.print(ex);
+        } 
+        }
+        
+        this.loadParallel();
+    }//GEN-LAST:event_jButtonAddParallelActionPerformed
+
+    private void jTableParallelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableParallelMouseClicked
+        int z = this.jTableParallel.getSelectedRow();
+
+        this.Id =  (Integer) jTableParallel.getValueAt(z,0);
+    }//GEN-LAST:event_jTableParallelMouseClicked
+
+    private void jButtonDeleteParallelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteParallelActionPerformed
+        String sql = "DELETE FROM parallel WHERE Id = " + this.Id ;
+        
+        try {
+          PreparedStatement ps = conn.prepareStatement(sql);
+          ps.execute();
+        } catch (SQLException ex) {
+            System.out.print(ex);
+        }
+        this.loadParallel();
+    }//GEN-LAST:event_jButtonDeleteParallelActionPerformed
+
+    private void jTableOverlappingMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableOverlappingMouseClicked
+        int z = this.jTableOverlapping.getSelectedRow();
+
+        this.Id =  (Integer) jTableOverlapping.getValueAt(z,0);
+    }//GEN-LAST:event_jTableOverlappingMouseClicked
+
+    private void jButtonDeleteOverlappingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteOverlappingActionPerformed
+        String sql = "DELETE FROM overlap WHERE Id = " + this.Id ;
+        
+        try {
+          PreparedStatement ps = conn.prepareStatement(sql);
+          ps.execute();
+        } catch (SQLException ex) {
+            System.out.print(ex);
+        }
+        this.loadOverlap();
+    }//GEN-LAST:event_jButtonDeleteOverlappingActionPerformed
+
+    private void jTableConsecutiveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableConsecutiveMouseClicked
+        int z = this.jTableConsecutive.getSelectedRow();
+
+        this.Id =  (Integer) jTableConsecutive.getValueAt(z,0);
+    }//GEN-LAST:event_jTableConsecutiveMouseClicked
+
+    private void jButtonDeleteConsecutiveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteConsecutiveActionPerformed
+        String sql = "DELETE FROM consecutive WHERE Id = " + this.Id ;
+        
+        try {
+          PreparedStatement ps = conn.prepareStatement(sql);
+          ps.execute();
+        } catch (SQLException ex) {
+            System.out.print(ex);
+        }
+        this.loadConcecutive();
+    }//GEN-LAST:event_jButtonDeleteConsecutiveActionPerformed
+
+    private void jTableNotAvailableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableNotAvailableMouseClicked
+        int z = this.jTableNotAvailable.getSelectedRow();
+
+        this.Id =  (Integer) jTableNotAvailable.getValueAt(z,0);
+        this.jComboBox1.setSelectedItem(this.lec_dict.get(jTableNotAvailable.getValueAt(z,1).toString())+"-"+jTableNotAvailable.getValueAt(z,1).toString());
+        this.jComboBox3.setSelectedItem(jTableNotAvailable.getValueAt(z,2).toString());
+        this.jComboBox2.setSelectedItem(jTableNotAvailable.getValueAt(z,3).toString());
+        this.jComboBox4.setSelectedItem(this.sussion_dict.get(jTableNotAvailable.getValueAt(z,4).toString())+"-"+jTableNotAvailable.getValueAt(z,4).toString());
+        this.jComboBox5.setSelectedItem(this.room_dict.get(jTableNotAvailable.getValueAt(z,5).toString())+"-"+jTableNotAvailable.getValueAt(z,5).toString());
+        this.jComboBox6.setSelectedItem(jTableNotAvailable.getValueAt(z,6).toString());
+        this.jTextFieldStart.setText(jTableNotAvailable.getValueAt(z,7).toString());
+        this.jTextFieldEnd.setText(jTableNotAvailable.getValueAt(z,8).toString());
+    }//GEN-LAST:event_jTableNotAvailableMouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        StringBuilder sql = new StringBuilder();
+        sql.append("INSERT INTO not_available (LecturerId, GroupId, SubGroupId, SessionId, RoomId, Day, StartTime, EndTime) values('");
+        sql.append(this.jComboBox1.getSelectedItem().toString().split("-")[0]).append("','");
+        sql.append(this.jComboBox3.getSelectedItem().toString()).append("','");
+        sql.append(this.jComboBox2.getSelectedItem().toString()).append("','");
+        sql.append(this.jComboBox4.getSelectedItem().toString().split("-")[0]).append("','");
+        sql.append(this.jComboBox5.getSelectedItem().toString().split("-")[0]).append("','");
+        sql.append(this.jComboBox6.getSelectedItem().toString()).append("',");
+        sql.append(this.jTextFieldStart.getText()).append(",");
+        sql.append(this.jTextFieldEnd.getText()).append(")");
+        
+                
+        try {
+          PreparedStatement ps = conn.prepareStatement(sql.toString());
+          ps.execute();
+          
+        } catch (SQLException ex) {
+            System.out.print(ex);
+        } 
+        
+        this.loadNotAvailable();
+        this.clearNotAvailable();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+       StringBuilder sql = new StringBuilder();
+        sql.append("UPDATE not_available SET LecturerId = '");
+        sql.append(this.jComboBox1.getSelectedItem().toString().split("-")[0]).append("', GroupId = '");
+        sql.append(this.jComboBox3.getSelectedItem().toString()).append("',SubGroupId = '");
+        sql.append(this.jComboBox2.getSelectedItem().toString()).append("',SessionId = '");
+        sql.append(this.jComboBox4.getSelectedItem().toString().split("-")[0]).append("',RoomId = ");
+        sql.append(this.jComboBox5.getSelectedItem().toString().split("-")[0]).append(",Day = '");
+        sql.append(this.jComboBox6.getSelectedItem().toString()).append("',StartTime = ");
+        sql.append(this.jTextFieldStart.getText()).append(", EndTime = ");
+        sql.append(this.jTextFieldEnd.getText()).append(" WHERE Id = ").append(this.Id);
+        
+                
+        try {
+          PreparedStatement ps = conn.prepareStatement(sql.toString());
+          ps.execute();
+          
+        } catch (SQLException ex) {
+            System.out.print(ex);
+        } 
+        
+        this.loadNotAvailable();
+        this.clearNotAvailable();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        String sql = "DELETE FROM not_available WHERE Id = " + this.Id ;
+        
+        try {
+          PreparedStatement ps = conn.prepareStatement(sql);
+          ps.execute();
+        } catch (SQLException ex) {
+            System.out.print(ex);
+        }
+        this.loadNotAvailable();
+        this.clearNotAvailable();
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        this.clearNotAvailable();
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -3679,6 +4494,38 @@ public class ABC extends javax.swing.JFrame {
                         v.add(rs.getString("SubjectCode"));
                         v.add(rs.getString("GroupId"));
                         v.add(rs.getString("Tag"));
+                        v.add(rs.getString("TotalStudent"));
+                        v.add(rs.getString("Duration"));
+
+                        dtm.addRow(v);
+
+                    }
+        } catch (SQLException ex) {
+            System.out.print(ex);
+        } 
+        
+        
+       
+    }
+    
+    private void loadRoomSession() {
+            String sql = "SELECT * FROM session t JOIN lecturer t1 ON t1.EmployeeId = t.Lecturer1Id JOIN lecturer t2 ON t2.EmployeeId = t.Lecturer2Id JOIN location t3 ON t3.Id = t.Room";  
+        try {
+          PreparedStatement ps = conn.prepareStatement(sql);
+          ResultSet rs = ps.executeQuery();
+          
+          DefaultTableModel dtm = (DefaultTableModel) jTableSession1.getModel();
+                    dtm.setRowCount(0);
+
+                    while (rs.next()) {
+
+                        Vector v = new Vector();
+                        v.add(rs.getInt("Id"));
+                        v.add(rs.getString(19));
+                        v.add(rs.getString(11));
+                        v.add(rs.getString("SubjectCode"));
+                        v.add(rs.getString("GroupId"));
+                        v.add(rs.getString("Tag"));
                         v.add(rs.getString("RoomName"));
                         v.add(rs.getString("TotalStudent"));
                         v.add(rs.getString("Duration"));
@@ -3695,11 +4542,12 @@ public class ABC extends javax.swing.JFrame {
     }
         
     private void fillCombo(){
-        String rq1 = "SELECT *  FROM  location";
+       String rq1 = "SELECT *  FROM  location";
        String rq2 = "SELECT *  FROM  lecturer";
        String rq3 = "SELECT *  FROM  tag";
        String rq4 = "SELECT *  FROM  subject";
        String rq5 = "SELECT *  FROM  studentgroub";
+       String rq6 = "SELECT *  FROM  session";
 
        
 
@@ -3711,6 +4559,7 @@ public class ABC extends javax.swing.JFrame {
            while (rs.next()) {
             this.jComboBoxLedcturer1.addItem(rs.getString("EmployeeId") + "-"+rs.getString("LecturerName"));
             this.jComboBoxLedcturer.addItem(rs.getString("EmployeeId") + "-"+rs.getString("LecturerName"));
+            this.jComboBox1.addItem(rs.getString("EmployeeId") + "-"+rs.getString("LecturerName"));
             this.lec_dict.put(rs.getString("LecturerName"),rs.getString("EmployeeId"));
            }
            
@@ -3726,6 +4575,8 @@ public class ABC extends javax.swing.JFrame {
            
            while (rs.next()) {
                this.jComboBoxGroup.addItem(rs.getString("GroupId"));
+               this.jComboBox3.addItem(rs.getString("GroupId"));
+               this.jComboBox2.addItem(rs.getString("SubGroupId"));
            }
            
            st = conn.createStatement();
@@ -3741,7 +4592,16 @@ public class ABC extends javax.swing.JFrame {
            
            while (rs.next()) {
                this.jComboBoxRoomsession.addItem(rs.getString("Id")+"-"+rs.getString("RoomName"));
+               this.jComboBox5.addItem(rs.getString("Id")+"-"+rs.getString("RoomName"));
                this.room_dict.put(rs.getString("RoomName"),rs.getString("Id"));
+           }
+           
+           st = conn.createStatement();
+           rs = st.executeQuery(rq6);
+           
+           while (rs.next()) {
+               this.sussion_dict.put(rs.getString("SubjectCode")+"-"+rs.getString("Tag"),rs.getString("Id"));
+               this.jComboBox4.addItem(rs.getString("Id")+"-"+rs.getString("SubjectCode")+"-"+rs.getString("Tag"));
            }
            
            st.close();
@@ -3750,12 +4610,169 @@ public class ABC extends javax.swing.JFrame {
        }  catch (SQLException e) { 
             e.printStackTrace();
        }
-    }   
+    } 
+    
+    private void loadSessionTable(){
+        String sql = "SELECT * FROM session t JOIN lecturer t1 ON t1.EmployeeId = t.Lecturer1Id JOIN lecturer t2 ON t2.EmployeeId = t.Lecturer2Id JOIN location t3 ON t3.Id = t.Room";  
+        try {
+          PreparedStatement ps = conn.prepareStatement(sql);
+          ResultSet rs = ps.executeQuery();
+          
+          DefaultTableModel dtm = (DefaultTableModel) jTableSession2.getModel();
+          DefaultTableModel dtm2 = (DefaultTableModel) jTableSession3.getModel();
+          DefaultTableModel dtm3 = (DefaultTableModel) jTableSession4.getModel();
+                    dtm.setRowCount(0);
+                    dtm2.setRowCount(0);
+                    dtm3.setRowCount(0);
+                    int i = 0;
+                    while (rs.next()) {
+
+                        Vector v = new Vector();
+                        v.add(true);
+                        v.add(rs.getInt("Id"));
+                        v.add(rs.getString("SubjectCode"));
+                        v.add(rs.getString(19));
+                        v.add(rs.getString(11));
+                        v.add(rs.getString("GroupId"));
+                        v.add(rs.getString("Tag"));
+                        v.add(rs.getString("RoomName"));
+                        v.add(rs.getString("TotalStudent"));
+                        v.add(rs.getString("Duration"));
+
+                        dtm.addRow(v);
+                        dtm.setValueAt(false,i,0);
+                        dtm2.addRow(v);
+                        dtm3.addRow(v);
+                        i++;
+
+                    }
+        } catch (SQLException ex) {
+            System.out.print(ex);
+        } 
+    }
     private void clearSessionForm() {
         this.jTextFieldNoOfStudent.setText("");
         this.jTextFieldDuration.setText("");
     }
+    
+    private void loadConcecutive(){
+         String sql = "SELECT * FROM consecutive";  
+        try {
+          PreparedStatement ps = conn.prepareStatement(sql);
+          ResultSet rs = ps.executeQuery();
+          
+          DefaultTableModel dtm = (DefaultTableModel) this.jTableConsecutive.getModel();
+                    dtm.setRowCount(0);
 
+                    while (rs.next()) {
+
+                        Vector v = new Vector();
+                        v.add(rs.getInt("Id"));
+                        v.add(rs.getInt("Session1"));
+                        v.add(rs.getInt("Session2"));
+                        v.add(rs.getInt("Session3"));
+                        v.add(rs.getInt("Session4"));
+
+                        dtm.addRow(v);
+
+                    }
+        } catch (SQLException ex) {
+            System.out.print(ex);
+        } 
+    }
+    
+    private void loadParallel(){
+        String sql = "SELECT * FROM parallel";  
+        try {
+          PreparedStatement ps = conn.prepareStatement(sql);
+          ResultSet rs = ps.executeQuery();
+          
+          DefaultTableModel dtm = (DefaultTableModel) this.jTableParallel.getModel();
+                    dtm.setRowCount(0);
+
+                    while (rs.next()) {
+
+                        Vector v = new Vector();
+                        v.add(rs.getInt("Id"));
+                        v.add(rs.getInt("Session1"));
+                        v.add(rs.getInt("Session2"));
+                        v.add(rs.getInt("Session3"));
+                        v.add(rs.getInt("Session4"));
+
+                        dtm.addRow(v);
+
+                    }
+        } catch (SQLException ex) {
+            System.out.print(ex);
+        } 
+    }
+    
+    private void loadOverlap(){
+        String sql = "SELECT * FROM overlap";  
+        try {
+          PreparedStatement ps = conn.prepareStatement(sql);
+          ResultSet rs = ps.executeQuery();
+          
+          DefaultTableModel dtm = (DefaultTableModel) this.jTableOverlapping.getModel();
+                    dtm.setRowCount(0);
+
+                    while (rs.next()) {
+
+                        Vector v = new Vector();
+                        v.add(rs.getInt("Id"));
+                        v.add(rs.getInt("Session1"));
+                        v.add(rs.getInt("Session2"));
+                        v.add(rs.getInt("Session3"));
+                        v.add(rs.getInt("Session4"));
+
+                        dtm.addRow(v);
+
+                    }
+        } catch (SQLException ex) {
+            System.out.print(ex);
+        } 
+    }
+    
+    
+    private void loadNotAvailable() {
+        String sql = "SELECT * FROM not_available n, lecturer l, location r, session s where n.LecturerId = l.EmployeeId and n.RoomId = r.Id and n.SessionId = s.Id";  
+        try {
+          PreparedStatement ps = conn.prepareStatement(sql);
+          ResultSet rs = ps.executeQuery();
+          
+          DefaultTableModel dtm = (DefaultTableModel) this.jTableNotAvailable.getModel();
+                    dtm.setRowCount(0);
+
+                    while (rs.next()) {
+
+                        Vector v = new Vector();
+                        v.add(rs.getInt("Id"));
+                        v.add(rs.getString("LecturerName"));
+                        v.add(rs.getString("GroupId"));
+                        v.add(rs.getString("SubGroupId"));
+                        v.add(rs.getString("SubjectCode")+"-"+rs.getString("Tag"));
+                        v.add(rs.getString("RoomName"));
+                        v.add(rs.getString("Day"));
+                        v.add(rs.getDouble("StartTime"));
+                        v.add(rs.getDouble("EndTime"));
+
+                        dtm.addRow(v);
+
+                    }
+        } catch (SQLException ex) {
+            System.out.print(ex);
+        } 
+    }
+    
+    private void clearNotAvailable(){
+        this.jTextFieldStart.setText("");
+        this.jTextFieldEnd.setText("");
+        this.jComboBox1.setSelectedItem("NotSelected");
+        this.jComboBox2.setSelectedItem("NotSelected");
+        this.jComboBox3.setSelectedItem("NotSelected");
+        this.jComboBox4.setSelectedItem("0");
+        this.jComboBox5.setSelectedItem("0");
+    }
         
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -3798,7 +4815,10 @@ public class ABC extends javax.swing.JFrame {
     private javax.swing.JButton jButtonAddConsecutive;
     private javax.swing.JButton jButtonAddLecturer;
     private javax.swing.JButton jButtonAddLocation;
+    private javax.swing.JButton jButtonAddOverlapping;
+    private javax.swing.JButton jButtonAddParallel;
     private javax.swing.JButton jButtonAddSession;
+    private javax.swing.JButton jButtonAddSession1;
     private javax.swing.JButton jButtonAddStudentGroup;
     private javax.swing.JButton jButtonAddSubject;
     private javax.swing.JButton jButtonAddTag;
@@ -3806,6 +4826,7 @@ public class ABC extends javax.swing.JFrame {
     private javax.swing.JButton jButtonClearLecturer;
     private javax.swing.JButton jButtonClearLocation;
     private javax.swing.JButton jButtonClearSession;
+    private javax.swing.JButton jButtonClearSession1;
     private javax.swing.JButton jButtonClearStudentGroup;
     private javax.swing.JButton jButtonClearSubject;
     private javax.swing.JButton jButtonClearTag;
@@ -3813,7 +4834,10 @@ public class ABC extends javax.swing.JFrame {
     private javax.swing.JButton jButtonDeleteConsecutive;
     private javax.swing.JButton jButtonDeleteLecturer;
     private javax.swing.JButton jButtonDeleteLocation;
+    private javax.swing.JButton jButtonDeleteOverlapping;
+    private javax.swing.JButton jButtonDeleteParallel;
     private javax.swing.JButton jButtonDeleteSession;
+    private javax.swing.JButton jButtonDeleteSession1;
     private javax.swing.JButton jButtonDeleteStudentGroup;
     private javax.swing.JButton jButtonDeleteSubject;
     private javax.swing.JButton jButtonDeleteTag;
@@ -3829,6 +4853,7 @@ public class ABC extends javax.swing.JFrame {
     private javax.swing.JButton jButtonUpdateLecturer;
     private javax.swing.JButton jButtonUpdateLocation;
     private javax.swing.JButton jButtonUpdateSession;
+    private javax.swing.JButton jButtonUpdateSession1;
     private javax.swing.JButton jButtonUpdateStudentGroup;
     private javax.swing.JButton jButtonUpdateSubject;
     private javax.swing.JButton jButtonUpdateTag;
@@ -3868,7 +4893,22 @@ public class ABC extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel101;
     private javax.swing.JLabel jLabel102;
     private javax.swing.JLabel jLabel103;
+    private javax.swing.JLabel jLabel104;
+    private javax.swing.JLabel jLabel105;
+    private javax.swing.JLabel jLabel106;
+    private javax.swing.JLabel jLabel107;
+    private javax.swing.JLabel jLabel108;
+    private javax.swing.JLabel jLabel109;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel110;
+    private javax.swing.JLabel jLabel111;
+    private javax.swing.JLabel jLabel112;
+    private javax.swing.JLabel jLabel113;
+    private javax.swing.JLabel jLabel114;
+    private javax.swing.JLabel jLabel115;
+    private javax.swing.JLabel jLabel116;
+    private javax.swing.JLabel jLabel117;
+    private javax.swing.JLabel jLabel118;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
@@ -3957,6 +4997,9 @@ public class ABC extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabel90;
     private javax.swing.JLabel jLabel91;
+    private javax.swing.JLabel jLabel92;
+    private javax.swing.JLabel jLabel93;
+    private javax.swing.JLabel jLabel94;
     private javax.swing.JLabel jLabel95;
     private javax.swing.JLabel jLabel96;
     private javax.swing.JLabel jLabel97;
@@ -3974,6 +5017,9 @@ public class ABC extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItemConsecutiveSession;
     private javax.swing.JMenuItem jMenuItemGroupTimeTable;
     private javax.swing.JMenuItem jMenuItemLecturerTimetable;
@@ -3988,10 +5034,10 @@ public class ABC extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemTags;
     private javax.swing.JMenuItem jMenuItemWorkingDays;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
@@ -4001,6 +5047,9 @@ public class ABC extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelLecturerTimetable;
     private javax.swing.JPanel jPanelLocation;
     private javax.swing.JPanel jPanelNotAvailable;
+    private javax.swing.JPanel jPanelOverlapping;
+    private javax.swing.JPanel jPanelParallel;
+    private javax.swing.JPanel jPanelRoomAllocate;
     private javax.swing.JPanel jPanelRoomTimetable;
     private javax.swing.JPanel jPanelSession;
     private javax.swing.JPanel jPanelStatistic;
@@ -4021,6 +5070,10 @@ public class ABC extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane11;
     private javax.swing.JScrollPane jScrollPane12;
+    private javax.swing.JScrollPane jScrollPane13;
+    private javax.swing.JScrollPane jScrollPane14;
+    private javax.swing.JScrollPane jScrollPane15;
+    private javax.swing.JScrollPane jScrollPane16;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
@@ -4030,6 +5083,7 @@ public class ABC extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JScrollPane jScrollPaneSession;
+    private javax.swing.JScrollPane jScrollPaneSession1;
     private javax.swing.JSpinner jSpinnerEvalutionHour;
     private javax.swing.JSpinner jSpinnerGroupNo;
     private javax.swing.JSpinner jSpinnerHour;
@@ -4039,32 +5093,37 @@ public class ABC extends javax.swing.JFrame {
     private javax.swing.JSpinner jSpinnerSubGroupNo;
     private javax.swing.JSpinner jSpinnerTutorialHour;
     private javax.swing.JSpinner jSpinnerWorkingDays;
-    private javax.swing.JTable jTable3;
-    private javax.swing.JTable jTable4;
     private javax.swing.JTable jTableConsecutive;
     private javax.swing.JTable jTableLecturer;
     private javax.swing.JTable jTableLocation;
+    private javax.swing.JTable jTableNotAvailable;
+    private javax.swing.JTable jTableOverlapping;
+    private javax.swing.JTable jTableParallel;
     private javax.swing.JTable jTableSRoomTimetable;
     private javax.swing.JTable jTableSRoomTimetable2;
     private javax.swing.JTable jTableSRoomTimetable3;
     private javax.swing.JTable jTableSession;
+    private javax.swing.JTable jTableSession1;
+    private javax.swing.JTable jTableSession2;
+    private javax.swing.JTable jTableSession3;
+    private javax.swing.JTable jTableSession4;
     private javax.swing.JTable jTableStudent;
     private javax.swing.JTable jTableSubject;
     private javax.swing.JTable jTableTag;
     private javax.swing.JTable jTableWorkingDay;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextFieldAcadamicYearSem;
     private javax.swing.JTextField jTextFieldBuildingName;
     private javax.swing.JTextField jTextFieldCapacity;
     private javax.swing.JTextField jTextFieldDepartment;
     private javax.swing.JTextField jTextFieldDuration;
     private javax.swing.JTextField jTextFieldEmpId;
+    private javax.swing.JTextField jTextFieldEnd;
     private javax.swing.JTextField jTextFieldGroupId;
     private javax.swing.JTextField jTextFieldLecturerName;
     private javax.swing.JTextField jTextFieldNoOfStudent;
     private javax.swing.JTextField jTextFieldRand;
     private javax.swing.JTextField jTextFieldRoomName;
+    private javax.swing.JTextField jTextFieldStart;
     private javax.swing.JTextField jTextFieldSubGroupId;
     private javax.swing.JTextField jTextFieldSubjectCode;
     private javax.swing.JTextField jTextFieldSubjectName;
