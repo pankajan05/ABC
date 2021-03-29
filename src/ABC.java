@@ -254,7 +254,6 @@ public class ABC extends javax.swing.JFrame {
         jComboBoxsubject = new javax.swing.JComboBox();
         jTextFieldNoOfStudent = new javax.swing.JTextField();
         jTextFieldDuration = new javax.swing.JTextField();
-        jLabel51 = new javax.swing.JLabel();
         jButtonAddSession = new javax.swing.JButton();
         jButtonUpdateSession = new javax.swing.JButton();
         jButtonDeleteSession = new javax.swing.JButton();
@@ -1945,8 +1944,6 @@ public class ABC extends javax.swing.JFrame {
 
         jLabel50.setText("Duration");
 
-        jLabel51.setText("Hours");
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -1962,7 +1959,7 @@ public class ABC extends javax.swing.JFrame {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel47)
                                 .addGap(138, 138, 138)
-                                .addComponent(jComboBoxGroup, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(jComboBoxGroup, 0, 146, Short.MAX_VALUE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel48)
@@ -1970,13 +1967,9 @@ public class ABC extends javax.swing.JFrame {
                                     .addComponent(jLabel50))
                                 .addGap(103, 103, 103)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jTextFieldDuration, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jLabel51)
-                                        .addGap(16, 16, 16))
                                     .addComponent(jTextFieldNoOfStudent)
-                                    .addComponent(jComboBoxsubject, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                                    .addComponent(jComboBoxsubject, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jTextFieldDuration))))))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -1999,8 +1992,7 @@ public class ABC extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel50)
-                    .addComponent(jTextFieldDuration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel51))
+                    .addComponent(jTextFieldDuration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(37, Short.MAX_VALUE))
         );
 
@@ -4528,7 +4520,7 @@ public class ABC extends javax.swing.JFrame {
                         v.add(rs.getString("Tag"));
                         v.add(rs.getString("RoomName"));
                         v.add(rs.getString("TotalStudent"));
-                        v.add(rs.getString("Duration"));
+                        v.add(rs.getDouble("Duration"));
 
                         dtm.addRow(v);
 
@@ -4952,7 +4944,6 @@ public class ABC extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel50;
-    private javax.swing.JLabel jLabel51;
     private javax.swing.JLabel jLabel52;
     private javax.swing.JLabel jLabel53;
     private javax.swing.JLabel jLabel54;

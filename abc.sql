@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Mar 29, 2021 at 04:25 AM
+-- Generation Time: Mar 29, 2021 at 04:29 AM
 -- Server version: 5.7.26
 -- PHP Version: 7.3.5
 
@@ -212,7 +212,7 @@ CREATE TABLE IF NOT EXISTS `session` (
   `Tag` varchar(10) NOT NULL,
   `Room` int(11) NOT NULL,
   `TotalStudent` int(11) NOT NULL,
-  `Duration` int(11) NOT NULL,
+  `Duration` double NOT NULL,
   PRIMARY KEY (`Id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
