@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Mar 08, 2021 at 10:30 AM
+-- Generation Time: Mar 29, 2021 at 04:25 AM
 -- Server version: 5.7.26
 -- PHP Version: 7.3.5
 
@@ -21,6 +21,30 @@ SET time_zone = "+00:00";
 --
 -- Database: `abc`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `consecutive`
+--
+
+DROP TABLE IF EXISTS `consecutive`;
+CREATE TABLE IF NOT EXISTS `consecutive` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `Session1` int(11) NOT NULL,
+  `Session2` int(11) NOT NULL,
+  `Session3` int(11) NOT NULL,
+  `Session4` int(11) NOT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `consecutive`
+--
+
+INSERT INTO `consecutive` (`Id`, `Session1`, `Session2`, `Session3`, `Session4`) VALUES
+(4, 2, 0, 0, 3),
+(5, 2, 5, 0, 3);
 
 -- --------------------------------------------------------
 
@@ -70,7 +94,8 @@ CREATE TABLE IF NOT EXISTS `location` (
 --
 
 INSERT INTO `location` (`Id`, `BuildingName`, `RoomName`, `Capacity`, `RoomType`) VALUES
-(2, 'ElecBuilding', 'Kanangara', 100, 'LectureHall');
+(2, 'ElecBuilding', 'Kanangara', 100, 'LectureHall'),
+(1, 'NotAllocate', 'NotAllocate', 0, 'NotAllocate');
 
 -- --------------------------------------------------------
 
@@ -97,6 +122,83 @@ INSERT INTO `new` (`SubjectName`, `LecturerName`, `RoomName`, `Id`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `not_available`
+--
+
+DROP TABLE IF EXISTS `not_available`;
+CREATE TABLE IF NOT EXISTS `not_available` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `LecturerId` varchar(12) NOT NULL,
+  `GroupId` varchar(30) NOT NULL,
+  `SubGroupId` varchar(30) NOT NULL,
+  `SessionId` int(11) NOT NULL,
+  `RoomId` int(11) NOT NULL,
+  `Day` varchar(15) NOT NULL,
+  `StartTime` double NOT NULL,
+  `EndTime` double NOT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `not_available`
+--
+
+INSERT INTO `not_available` (`Id`, `LecturerId`, `GroupId`, `SubGroupId`, `SessionId`, `RoomId`, `Day`, `StartTime`, `EndTime`) VALUES
+(1, '000123', 'Y1S1.IT.1', 'Y1S1.IT.1.1', 2, 1, 'Monday', 4, 5),
+(3, '000123', 'Y1S1.IT.1', 'Y1S1.IT.1.1', 2, 1, 'Monday', 0, 0),
+(4, '000123', 'Y1S1.IT.1', 'Y1S1.IT.1.1', 2, 1, 'Monday', 4, 5),
+(7, '000123', 'NotSelected', 'NotSelected', 2, 1, 'Monday', 4, 4);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `overlap`
+--
+
+DROP TABLE IF EXISTS `overlap`;
+CREATE TABLE IF NOT EXISTS `overlap` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `Session1` int(11) NOT NULL,
+  `Session2` int(11) NOT NULL,
+  `Session3` int(11) NOT NULL,
+  `Session4` int(11) NOT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `overlap`
+--
+
+INSERT INTO `overlap` (`Id`, `Session1`, `Session2`, `Session3`, `Session4`) VALUES
+(2, 2, 3, 5, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `parallel`
+--
+
+DROP TABLE IF EXISTS `parallel`;
+CREATE TABLE IF NOT EXISTS `parallel` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `Session1` int(11) NOT NULL,
+  `Session2` int(11) NOT NULL,
+  `Session3` int(11) NOT NULL,
+  `Session4` int(11) NOT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `parallel`
+--
+
+INSERT INTO `parallel` (`Id`, `Session1`, `Session2`, `Session3`, `Session4`) VALUES
+(1, 2, 5, 0, 0),
+(2, 3, 5, 0, 0);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `session`
 --
 
@@ -112,7 +214,7 @@ CREATE TABLE IF NOT EXISTS `session` (
   `TotalStudent` int(11) NOT NULL,
   `Duration` int(11) NOT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `session`
@@ -120,7 +222,8 @@ CREATE TABLE IF NOT EXISTS `session` (
 
 INSERT INTO `session` (`Id`, `Lecturer1Id`, `Lecturer2Id`, `SubjectCode`, `GroupId`, `Tag`, `Room`, `TotalStudent`, `Duration`) VALUES
 (2, '000123', '000123', 'IT1113', 'Y1S1.IT.1', 'tute', 2, 100, 1),
-(3, '000155', '000155', 'IT1133', 'Y1S2.CSSE.1', 'lect', 2, 122, 3);
+(3, '000155', '000155', 'IT1133', 'Y1S2.CSSE.1', 'lect', 1, 122, 3),
+(5, '000155', '000123', 'IT1113', 'Y1S1.IT.1', 'lect', 2, 20, 2);
 
 -- --------------------------------------------------------
 
