@@ -31,6 +31,12 @@ public class ABC extends javax.swing.JFrame {
      Hashtable<String, String> room_dict;
      Hashtable<String, String> sub_dict;
      Hashtable<String, String> sussion_dict;
+     
+     ArrayList<Session> monday = new ArrayList();
+     ArrayList<Session> tuesday = new ArrayList();
+     ArrayList<Session> wednesday = new ArrayList();
+     ArrayList<Session> thursday = new ArrayList();
+     ArrayList<Session> friday = new ArrayList();
     /**
      * Creates new form ABC
      */
@@ -1287,7 +1293,7 @@ public class ABC extends javax.swing.JFrame {
         jLabelStudentNumber.setText("1000");
 
         jLabel64.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
-        jLabel64.setText("Total Number Of Students");
+        jLabel64.setText("Totol Students Groups");
 
         jLabel101.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagepackage/194931d.png"))); // NOI18N
 
@@ -1299,7 +1305,7 @@ public class ABC extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel64)
+                        .addComponent(jLabel64, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel101)
@@ -1516,7 +1522,7 @@ public class ABC extends javax.swing.JFrame {
                 .addComponent(jLabel97)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jProgressBar2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
                 .addComponent(jLabel98)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jProgressBar3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1546,7 +1552,7 @@ public class ABC extends javax.swing.JFrame {
                         .addGap(38, 38, 38)
                         .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
         jPanelStatisticLayout.setVerticalGroup(
             jPanelStatisticLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2344,18 +2350,23 @@ public class ABC extends javax.swing.JFrame {
         jComboBoxLecturer.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jButtonGenerateLecturerTimetable2.setText("Generate");
+        jButtonGenerateLecturerTimetable2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonGenerateLecturerTimetable2ActionPerformed(evt);
+            }
+        });
 
         jButtonPringLecturerTimetable2.setText("Print");
 
         jTableSRoomTimetable3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Timeslot", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"
+                "Timeslot", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"
             }
         ));
         jScrollPane12.setViewportView(jTableSRoomTimetable3);
@@ -2411,13 +2422,13 @@ public class ABC extends javax.swing.JFrame {
 
         jTableSRoomTimetable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Timeslot", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"
+                "Timeslot", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"
             }
         ));
         jScrollPane8.setViewportView(jTableSRoomTimetable);
@@ -2427,6 +2438,11 @@ public class ABC extends javax.swing.JFrame {
         jComboBoxRoom.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jButtonGenerateRoomTimetable.setText("Generate");
+        jButtonGenerateRoomTimetable.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonGenerateRoomTimetableActionPerformed(evt);
+            }
+        });
 
         jButtonPringRoomTimetable.setText("Print");
 
@@ -2477,20 +2493,30 @@ public class ABC extends javax.swing.JFrame {
         jLabel35.setText("Student Group");
 
         jComboBoxStudentGroup.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxStudentGroup.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxStudentGroupActionPerformed(evt);
+            }
+        });
 
         jButtonGenerateStudentTimetable.setText("Generate");
+        jButtonGenerateStudentTimetable.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonGenerateStudentTimetableActionPerformed(evt);
+            }
+        });
 
         jButtonPringStudentTimetable.setText("Print");
 
         jTableSRoomTimetable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Timeslot", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"
+                "Timeslot", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"
             }
         ));
         jScrollPane11.setViewportView(jTableSRoomTimetable2);
@@ -3255,6 +3281,8 @@ public class ABC extends javax.swing.JFrame {
             DynamicPanel.add(jPanelLecturerTimetable);
             DynamicPanel.repaint();
             DynamicPanel.revalidate();
+            generateTimetable();
+            this.fillCombo();
     }//GEN-LAST:event_jMenuItemLecturerTimetableActionPerformed
 
     private void jMenuItemGroupTimeTableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemGroupTimeTableActionPerformed
@@ -3265,6 +3293,8 @@ public class ABC extends javax.swing.JFrame {
             DynamicPanel.add(jPanelStudentTimetable);
             DynamicPanel.repaint();
             DynamicPanel.revalidate();
+            generateTimetable();
+            this.fillCombo();
     }//GEN-LAST:event_jMenuItemGroupTimeTableActionPerformed
 
     private void jMenuItemRoomTImeTableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemRoomTImeTableActionPerformed
@@ -3275,6 +3305,9 @@ public class ABC extends javax.swing.JFrame {
             DynamicPanel.add(jPanelRoomTimetable);
             DynamicPanel.repaint();
             DynamicPanel.revalidate();
+            generateTimetable();
+            this.fillCombo();
+            
     }//GEN-LAST:event_jMenuItemRoomTImeTableActionPerformed
 
     private void jButtonAddWorkingdayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddWorkingdayActionPerformed
@@ -4166,6 +4199,144 @@ public class ABC extends javax.swing.JFrame {
         this.clearNotAvailable();
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void jButtonGenerateLecturerTimetable2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGenerateLecturerTimetable2ActionPerformed
+        DefaultTableModel dtm2 = (DefaultTableModel) this.jTableSRoomTimetable3.getModel();   
+        this.jTableSRoomTimetable3.setRowHeight(90);
+
+        dtm2.setRowCount(0);
+        
+        double time = 8.30;
+        
+                int i = 0;
+                    while (i <= 10) {
+
+                        Vector v = new Vector();
+                        v.add( String.valueOf((time+i)) + "0 - " + String.valueOf((time+i+1)) + "0");
+                        if(monday.get(i) != null)
+                            if(this.monday.get(i).getLecturer2().equals(this.jComboBoxLecturer.getSelectedItem().toString().split("-")[1]) || this.monday.get(i).getLecturer1().equals(this.jComboBoxLecturer.getSelectedItem().toString().split("-")[1]))
+                                v.add(monday.get(i).toString());
+                            else
+                                v.add("");
+                        if(tuesday.get(i) != null)
+                            if(this.tuesday.get(i).getLecturer2().equals(this.jComboBoxLecturer.getSelectedItem().toString().split("-")[1]) || this.tuesday.get(i).getLecturer1().equals(this.jComboBoxLecturer.getSelectedItem().toString().split("-")[1]))
+                                v.add(tuesday.get(i).toString());
+                            else
+                                v.add("");
+                        if(wednesday.get(i) != null)
+                            if(this.wednesday.get(i).getLecturer2().equals(this.jComboBoxLecturer.getSelectedItem().toString().split("-")[1]) || this.wednesday.get(i).getLecturer1().equals(this.jComboBoxLecturer.getSelectedItem().toString().split("-")[1]))
+                                v.add(wednesday.get(i).toString());
+                            else
+                                v.add("");
+                        if(thursday.get(i) != null)
+                            if(this.thursday.get(i).getLecturer2().equals(this.jComboBoxLecturer.getSelectedItem().toString().split("-")[1]) || this.thursday.get(i).getLecturer1().equals(this.jComboBoxLecturer.getSelectedItem().toString().split("-")[1]))                           
+                                v.add(thursday.get(i).toString());
+                            else
+                                v.add("");
+                        if(friday.get(i) != null)
+                            if(this.friday.get(i).getLecturer2().equals(this.jComboBoxLecturer.getSelectedItem().toString().split("-")[1]) || this.friday.get(i).getLecturer1().equals(this.jComboBoxLecturer.getSelectedItem().toString().split("-")[1]))
+                                v.add(friday.get(i).toString());
+                            else
+                                v.add("");
+                        
+                        dtm2.addRow(v);
+                        i++;
+                    }
+        
+    }//GEN-LAST:event_jButtonGenerateLecturerTimetable2ActionPerformed
+
+    private void jButtonGenerateRoomTimetableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGenerateRoomTimetableActionPerformed
+        DefaultTableModel dtm2 = (DefaultTableModel) this.jTableSRoomTimetable.getModel();   
+        this.jTableSRoomTimetable.setRowHeight(90);
+
+        dtm2.setRowCount(0);
+        
+        double time = 8.30;
+        
+                int i = 0;
+                    while (i <= 10) {
+
+                        Vector v = new Vector();
+                        v.add( String.valueOf((time+i)) + "0 - " + String.valueOf((time+i+1)) + "0");
+                        if(monday.get(i) != null)
+                            if(this.monday.get(i).getRoom().equals(this.jComboBoxRoom.getSelectedItem().toString().split("-")[1]) || this.monday.get(i).getRoom().equals(this.jComboBoxRoom.getSelectedItem().toString().split("-")[1]))
+                                v.add(monday.get(i).toString());
+                            else
+                                v.add("");
+                        if(tuesday.get(i) != null)
+                            if(this.tuesday.get(i).getRoom().equals(this.jComboBoxRoom.getSelectedItem().toString().split("-")[1]) || this.tuesday.get(i).getRoom().equals(this.jComboBoxRoom.getSelectedItem().toString().split("-")[1]))
+                                v.add(tuesday.get(i).toString());
+                            else
+                                v.add("");
+                        if(wednesday.get(i) != null)
+                            if(this.wednesday.get(i).getRoom().equals(this.jComboBoxRoom.getSelectedItem().toString().split("-")[1]) || this.wednesday.get(i).getRoom().equals(this.jComboBoxRoom.getSelectedItem().toString().split("-")[1]))
+                                v.add(wednesday.get(i).toString());
+                            else
+                                v.add("");
+                        if(thursday.get(i) != null)
+                            if(this.thursday.get(i).getRoom().equals(this.jComboBoxRoom.getSelectedItem().toString().split("-")[1]) || this.thursday.get(i).getRoom().equals(this.jComboBoxRoom.getSelectedItem().toString().split("-")[1]))                           
+                                v.add(thursday.get(i).toString());
+                            else
+                                v.add("");
+                        if(friday.get(i) != null)
+                            if(this.friday.get(i).getRoom().equals(this.jComboBoxRoom.getSelectedItem().toString().split("-")[1]) || this.friday.get(i).getRoom().equals(this.jComboBoxRoom.getSelectedItem().toString().split("-")[1]))
+                                v.add(friday.get(i).toString());
+                            else
+                                v.add("");
+                        
+                        dtm2.addRow(v);
+                        i++;
+                    }
+        
+    }//GEN-LAST:event_jButtonGenerateRoomTimetableActionPerformed
+
+    private void jButtonGenerateStudentTimetableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGenerateStudentTimetableActionPerformed
+        DefaultTableModel dtm2 = (DefaultTableModel) this.jTableSRoomTimetable2.getModel();   
+        this.jTableSRoomTimetable2.setRowHeight(90);
+
+        dtm2.setRowCount(0);
+        
+        double time = 8.30;
+        
+                int i = 0;
+                    while (i <= 10) {
+
+                        Vector v = new Vector();
+                        v.add( String.valueOf((time+i)) + "0 - " + String.valueOf((time+i+1)) + "0");
+                        if(monday.get(i) != null)
+                            if(this.monday.get(i).getGroupId().equals(this.jComboBoxStudentGroup.getSelectedItem().toString()) || this.monday.get(i).getGroupId().equals(this.jComboBoxStudentGroup.getSelectedItem().toString()))
+                                v.add(monday.get(i).toString());
+                            else
+                                v.add("");
+                        if(tuesday.get(i) != null)
+                            if(this.tuesday.get(i).getGroupId().equals(this.jComboBoxStudentGroup.getSelectedItem().toString()) || this.tuesday.get(i).getGroupId().equals(this.jComboBoxStudentGroup.getSelectedItem().toString()))
+                                v.add(tuesday.get(i).toString());
+                            else
+                                v.add("");
+                        if(wednesday.get(i) != null)
+                            if(this.wednesday.get(i).getGroupId().equals(this.jComboBoxStudentGroup.getSelectedItem().toString()) || this.wednesday.get(i).getGroupId().equals(this.jComboBoxStudentGroup.getSelectedItem().toString()))
+                                v.add(wednesday.get(i).toString());
+                            else
+                                v.add("");
+                        if(thursday.get(i) != null)
+                            if(this.thursday.get(i).getGroupId().equals(this.jComboBoxStudentGroup.getSelectedItem().toString()) || this.thursday.get(i).getGroupId().equals(this.jComboBoxStudentGroup.getSelectedItem().toString()))                           
+                                v.add(thursday.get(i).toString());
+                            else
+                                v.add("");
+                        if(friday.get(i) != null)
+                            if(this.friday.get(i).getGroupId().equals(this.jComboBoxStudentGroup.getSelectedItem().toString()) || this.friday.get(i).getGroupId().equals(this.jComboBoxStudentGroup.getSelectedItem().toString()))
+                                v.add(friday.get(i).toString());
+                            else
+                                v.add("");
+                        
+                        dtm2.addRow(v);
+                        i++;
+                    }
+    }//GEN-LAST:event_jButtonGenerateStudentTimetableActionPerformed
+
+    private void jComboBoxStudentGroupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxStudentGroupActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxStudentGroupActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -4540,8 +4711,22 @@ public class ABC extends javax.swing.JFrame {
        String rq4 = "SELECT *  FROM  subject";
        String rq5 = "SELECT *  FROM  studentgroub";
        String rq6 = "SELECT *  FROM  session";
-
        
+       
+           this.jComboBoxsubject.removeAllItems();
+           this.jComboBoxLedcturer1.removeAllItems();
+           this.jComboBoxLedcturer.removeAllItems();
+           this.jComboBox1.removeAllItems();
+           this.jComboBoxTag.removeAllItems();
+           this.jComboBoxGroup.removeAllItems();
+           this.jComboBox3.removeAllItems();
+           this.jComboBox2.removeAllItems();
+           this.jComboBoxRoomsession.removeAllItems();
+           this.jComboBox5.removeAllItems();
+          this.jComboBox4.removeAllItems();
+          this.jComboBoxLecturer.removeAllItems();
+          this.jComboBoxRoom.removeAllItems();
+          this.jComboBoxStudentGroup.removeAllItems();
 
        try {
 
@@ -4551,6 +4736,7 @@ public class ABC extends javax.swing.JFrame {
            while (rs.next()) {
             this.jComboBoxLedcturer1.addItem(rs.getString("EmployeeId") + "-"+rs.getString("LecturerName"));
             this.jComboBoxLedcturer.addItem(rs.getString("EmployeeId") + "-"+rs.getString("LecturerName"));
+            this.jComboBoxLecturer.addItem(rs.getString("EmployeeId") + "-"+rs.getString("LecturerName"));
             this.jComboBox1.addItem(rs.getString("EmployeeId") + "-"+rs.getString("LecturerName"));
             this.lec_dict.put(rs.getString("LecturerName"),rs.getString("EmployeeId"));
            }
@@ -4567,6 +4753,7 @@ public class ABC extends javax.swing.JFrame {
            
            while (rs.next()) {
                this.jComboBoxGroup.addItem(rs.getString("GroupId"));
+               this.jComboBoxStudentGroup.addItem(rs.getString("GroupId"));
                this.jComboBox3.addItem(rs.getString("GroupId"));
                this.jComboBox2.addItem(rs.getString("SubGroupId"));
            }
@@ -4584,6 +4771,7 @@ public class ABC extends javax.swing.JFrame {
            
            while (rs.next()) {
                this.jComboBoxRoomsession.addItem(rs.getString("Id")+"-"+rs.getString("RoomName"));
+               this.jComboBoxRoom.addItem(rs.getString("Id")+"-"+rs.getString("RoomName"));
                this.jComboBox5.addItem(rs.getString("Id")+"-"+rs.getString("RoomName"));
                this.room_dict.put(rs.getString("RoomName"),rs.getString("Id"));
            }
@@ -4606,6 +4794,7 @@ public class ABC extends javax.swing.JFrame {
     
     private void loadSessionTable(){
         String sql = "SELECT * FROM session t JOIN lecturer t1 ON t1.EmployeeId = t.Lecturer1Id JOIN lecturer t2 ON t2.EmployeeId = t.Lecturer2Id JOIN location t3 ON t3.Id = t.Room";  
+        System.out.println(sql);
         try {
           PreparedStatement ps = conn.prepareStatement(sql);
           ResultSet rs = ps.executeQuery();
@@ -4765,6 +4954,105 @@ public class ABC extends javax.swing.JFrame {
         this.jComboBox4.setSelectedItem("0");
         this.jComboBox5.setSelectedItem("0");
     }
+    
+    private void generateTimetable(){
+        String sql = "SELECT * FROM session t JOIN lecturer t1 ON t1.EmployeeId = t.Lecturer1Id JOIN lecturer t2 ON t2.EmployeeId = t.Lecturer2Id JOIN location t3 ON t3.Id = t.Room JOIN tag t4 ON t4.TagCode = t.tag JOIN subject t5 ON t5.SubjectCode = t.SubjectCode" ;  
+        System.out.println(sql);
+        
+                
+        this.monday.clear();
+        this.tuesday.clear();
+        this.wednesday.clear();
+        this.thursday.clear();
+        this.friday.clear();
+        
+        
+        try {
+          PreparedStatement ps = conn.prepareStatement(sql);
+          ResultSet rs = ps.executeQuery();
+          
+          
+                    int i = 0;
+                    while (rs.next()) {
+
+                        Session v = new Session(rs.getInt("Id"),rs.getString(19),rs.getString(11),rs.getString("SubjectCode"),rs.getString("SubjectName"),
+                                rs.getString("GroupId"),rs.getString("RelatedTag"),rs.getInt("TotalStudent"),rs.getInt("Duration"),rs.getString("RoomName"));
+                        
+                        i++;
+                        
+                        switch(i%5){
+                            case 0:
+                                monday.add(v);
+                                break;
+                            
+                            case 1:
+                                tuesday.add(v);
+                                break;
+                            
+                            case 2:
+                                wednesday.add(v);
+                                break;
+                            
+                            case 3:
+                                thursday.add(v);
+                                break;
+                            
+                            case 4:
+                                friday.add(v);
+                                break;
+                        }
+                    }
+                    
+                    this.loadTimeTable();
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
+    }
+    
+    
+    private void loadTimeTable() {
+        DefaultTableModel dtm = (DefaultTableModel) this.jTableSRoomTimetable.getModel();
+        this.jTableSRoomTimetable.setRowHeight(90);
+        this.jTableSRoomTimetable2.setRowHeight(90);
+        DefaultTableModel dtm1 = (DefaultTableModel) this.jTableSRoomTimetable2.getModel();
+        DefaultTableModel dtm2 = (DefaultTableModel) this.jTableSRoomTimetable3.getModel();   
+        this.jTableSRoomTimetable3.setRowHeight(90);
+
+        dtm.setRowCount(0);
+        dtm1.setRowCount(0);
+        dtm2.setRowCount(0);
+        
+        double time = 8.30;
+        String s = String.valueOf(time);
+
+        
+                int i = 0;
+                    while (i <= 10) {
+
+                        Vector v = new Vector();
+                        v.add( String.valueOf((time+i)) + "0 - " + String.valueOf((time+i+1)) + "0");
+                        if(monday.get(i) != null)
+                            v.add(monday.get(i).toString());
+                        if(tuesday.get(i) != null)
+                            v.add(tuesday.get(i).toString());
+                        if(wednesday.get(i) != null)
+                            v.add(wednesday.get(i).toString());
+                        if(thursday.get(i) != null)
+                            v.add(thursday.get(i).toString());
+                        if(friday.get(i) != null)
+                            v.add(friday.get(i).toString());
+                        
+                        dtm.addRow(v);
+                        dtm1.addRow(v);
+                        dtm2.addRow(v);
+                        i++;
+                    }
+        
+        
+    }
+    
+    
         
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -5121,6 +5409,7 @@ public class ABC extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldTagCode;
     private javax.swing.JTextField jTextFieldTagName;
     // End of variables declaration//GEN-END:variables
+
 
 
 
