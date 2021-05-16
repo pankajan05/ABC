@@ -4535,9 +4535,9 @@ public class ABC extends javax.swing.JFrame {
           
           DefaultTableModel dtm = (DefaultTableModel) this.jTableSubject.getModel();
                     dtm.setRowCount(0);
-
+                    int i = 0;
                     while (rs.next()) {
-
+                        i++;
                         Vector v = new Vector();
                         v.add(rs.getString("SubjectCode"));
                         v.add(rs.getString("SubjectName"));
@@ -4582,19 +4582,22 @@ public class ABC extends javax.swing.JFrame {
             System.out.print(ex);
         } 
         
-        sql = "SELECT COUNT(*) AS count FROM lecturer";  
+        sql = "SELECT COUNT(*) AS count FROM lecturer";
+        int LecturerNo = 0;
         try {
           PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             
             rs.next();
             this.jLabelLectureNumber.setText(rs.getString("count"));
+            LecturerNo = rs.getInt("count");
             rs.close();
             
           } catch (SQLException ex) {
             System.out.print(ex);
         } 
         
+        int StudentNo = 0;
         sql = "SELECT COUNT(*) AS count FROM studentgroub";  
         try {
           PreparedStatement ps = conn.prepareStatement(sql);
@@ -4602,12 +4605,14 @@ public class ABC extends javax.swing.JFrame {
             
             rs.next();
             this.jLabelStudentNumber.setText(rs.getString("count"));
+            StudentNo = rs.getInt("count");
             rs.close();
             
           } catch (SQLException ex) {
             System.out.print(ex);
         } 
         
+        int RoomNo = 0;
         sql = "SELECT COUNT(*) AS count FROM location";  
         try {
           PreparedStatement ps = conn.prepareStatement(sql);
@@ -4615,6 +4620,7 @@ public class ABC extends javax.swing.JFrame {
             
             rs.next();
             this.jLabelRoomNumber.setText(rs.getString("count"));
+            RoomNo = rs.getInt("count");
             rs.close();
             
           } catch (SQLException ex) {
@@ -4637,6 +4643,22 @@ public class ABC extends javax.swing.JFrame {
             System.out.print(ex);
         } 
         
+        
+        this.jProgressBar1.setValue(0);
+        this.jProgressBar1.setStringPainted(true);
+        
+        this.jProgressBar2.setValue(0);
+        this.jProgressBar2.setStringPainted(true);
+        
+        this.jProgressBar3.setValue(0);
+        this.jProgressBar3.setStringPainted(true);
+        
+        
+        this.jProgressBar1.setValue( ((LecturerNo*100) /50));
+        
+        this.jProgressBar2.setValue((StudentNo * 100) / 50);
+        
+        this.jProgressBar3.setValue((RoomNo * 100)/50);
     }
     
     private void loadSession() {
