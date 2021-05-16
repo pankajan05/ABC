@@ -4643,6 +4643,7 @@ public class ABC extends javax.swing.JFrame {
             System.out.print(ex);
         } 
         
+        this.generateTimetable();
         
         this.jProgressBar1.setValue(0);
         this.jProgressBar1.setStringPainted(true);
@@ -4653,12 +4654,14 @@ public class ABC extends javax.swing.JFrame {
         this.jProgressBar3.setValue(0);
         this.jProgressBar3.setStringPainted(true);
         
+        int total_allocate = this.monday.size() + this.tuesday.size() + this.wednesday.size() + this.thursday.size() + this.friday.size();
         
-        this.jProgressBar1.setValue( ((LecturerNo*100) /50));
+        this.jProgressBar1.setValue( ((LecturerNo*100) /total_allocate));
         
-        this.jProgressBar2.setValue((StudentNo * 100) / 50);
+        this.jProgressBar2.setValue((StudentNo * 100) / total_allocate);
         
-        this.jProgressBar3.setValue((RoomNo * 100)/50);
+        this.jProgressBar3.setValue((RoomNo * 100) / total_allocate);
+        
     }
     
     private void loadSession() {
